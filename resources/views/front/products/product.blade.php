@@ -1,6 +1,6 @@
 @extends('layouts.front.app') 
  
-@section('og')
+@section('og') 
     <meta property="og:type" content="product"/>
     <meta property="og:title" content="{{ $product->name }}"/>
     <meta property="og:description" content="{{ strip_tags($product->description) }}"/>
@@ -27,5 +27,6 @@
             </div>
         </div>
     </div>
-    @include('layouts.front.product')    
+    <!-- Aqui se deberian de pasar los produtos destacados o relacionados -->
+    @include('layouts.front.product',['products_temp' => $features])    
 @endsection

@@ -411,7 +411,7 @@
         @section('js')
         @show
         <!-- Preloader Start Here -->
-        <!-- <div id="preloader"></div> -->
+        <div id="preloader"></div>
         <!-- Preloader End Here -->
         <!-- jquery-->
         <script src={{asset("indexMetro/js/vendor/jquery-2.2.4.min.js")}} type="text/javascript"></script>

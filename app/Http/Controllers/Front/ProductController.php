@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers\Front;
 
@@ -7,22 +7,29 @@ use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
 
+use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
+
 class ProductController extends Controller
 {
     use ProductTransformable;
 
     /**
      * @var ProductRepositoryInterface
+     * @var CategoryRepositoryInterface
      */
     private $productRepo;
+
+    private $categoryRepo;
 
     /**
      * ProductController constructor.
      * @param ProductRepositoryInterface $productRepository
+     * @param CategoryRepositoryInterface $categoryRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(ProductRepositoryInterface $productRepository,CategoryRepositoryInterface $categoryRepository)
     {
         $this->productRepo = $productRepository;
+        $this->categoryRepo = $categoryRepository;
     }
 
     /**
@@ -53,6 +60,12 @@ class ProductController extends Controller
         $images = $product->images()->get();
         $productAttributes = $product->attributes()->get();
 
-        return view('front.products.product', compact('product', 'images', 'productAttributes'));
+        $category2 = $this->categoryRepo->findCategoryById(2);
+        $category3 = $this->categoryRepo->findCategoryById(3);
+
+        $newests = $category2->products;
+        $features = $category3->products;
+
+        return view('front.products.product', compact('product', 'images', 'productAttributes','newests', 'features', 'category2', 'category3')); 
     }
 }
