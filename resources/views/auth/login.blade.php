@@ -1,32 +1,49 @@
 @extends('layouts.front.app')
 
 @section('content')
-    <hr>
-    <!-- Main content -->
-    <section class="container content">
-        <div class="col-md-12">@include('layouts.errors-and-messages')</div>
-        <div class="col-md-4 col-md-offset-4">
-            <h2>Login to your account</h2>
-            <form action="{{ route('login') }}" method="post" class="form-horizontal">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email" autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="" class="form-control" placeholder="xxxxx">
-                </div>
+    
+    <!-- Inner Page Banner Area Start Here -->
+        <div class="inner-page-banner-area">
+            <div class="container">
                 <div class="row">
-                    <button class="btn btn-default btn-block" type="submit">Login now</button>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcrumb-area">
+                            <h1>My Account</h1>
+                            <ul>
+                                <li><a href="#">Home</a> /</li>
+                                <li>Account</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <div class="row">
-                <hr>
-                <a href="{{route('password.request')}}">I forgot my password</a><br>
-                <a href="{{route('register')}}" class="text-center">No account? Register here.</a>
             </div>
         </div>
-    </section>
-    <!-- /.content -->
+        <!-- Inner Page Banner Area End Here -->
+    <!-- Login Registration Page Area Start Here -->
+    <div class="login-registration-page-area">
+        <div class="container">
+            <div class="col-md-12">@include('layouts.errors-and-messages')</div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="login-registration-field">
+                        <h2 class="cart-area-title">Login</h2>
+                        <form action="{{ route('login') }}" method="POST">
+                            {{ csrf_field() }}
+                            <label for="email">Email address *</label>
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Name or E-mail" autofocus />
+                            <label  for="password">Password *</label>
+                            <input type="password" name="password" id="password" value="" placeholder="Password" />
+                            <a href="{{route('password.request')}}">Lost your password?</a>
+                            <br>
+                            <a href="{{route('register')}}">No account? Register here</a>
+                            <br>
+                            <button class="btn-send-message disabled" type="submit">Login</button>
+                            <span><input type="checkbox" name="remember"/>Remember Me</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Registration Page Area End Here -->
 @endsection

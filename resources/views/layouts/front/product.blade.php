@@ -71,14 +71,14 @@
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                     </ul>
-                    <p class="price">$ {{ $product->price }}</p>
-                    <p>{!! $product->description !!}</p>
+                    <p class="price">$ {{ config('cart.currency') }} {{ $product->price }}</p>
+                    <p>{!!  str_limit($product->description, 10, ' ...') !!}</p>
                     <div class="product-details-content">
                         <p><span>SKU:</span> {{ $product->sku }} </p>
                         <p><span>Availability:</span>{{ $product->quantity }}</p>
                         <p><span>Category:</span> Demo Products</p>
                     </div>
-                    <form id="checkout-form">
+                    <!-- <form id="checkout-form"> ---------------- -->
                         <ul class="more-option">
                             <li>
                                 <div class="form-group">
@@ -126,11 +126,6 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <!-- 
-                                    <a href="#">
-                                        Add To Cart
-                                    </a>
-                                    -->
                                     <button type="submit">                                        
                                         Add to cart
                                     </button>
@@ -142,7 +137,7 @@
                             <li><a href="#"><i aria-hidden="true" class="fa fa-heart-o"></i></a></li>
                             <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
                         </ul>
-                    </form>
+                    <!-- </form> ---------- -->
                     <ul class="product-details-social">
                         <li>Share:</li>
                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -165,7 +160,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="tab-content">
                         <div class="tab-pane fade active in" id="description">
-                            <p>{{ $product -> description }}</p>
+                            <p>{!! $product->description !!}</p>
                         </div>
                         <div class="tab-pane fade" id="review">
                             <p>Porem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
@@ -215,7 +210,6 @@
         background-color: rgb(0,0,0); /* Fallback color */
         background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
     }
-
     /* Modal Content (image) */
     .modal-content {
         margin: auto;
@@ -223,7 +217,6 @@
         width: 80%;
         max-width: 700px;
     }
-
     /* Caption of Modal Image */
     #caption {
         margin: auto;
@@ -235,7 +228,6 @@
         padding: 10px 0;
         height: 150px;
     }
-
     /* Add Animation */
     .modal-content, #caption {    
         -webkit-animation-name: zoom;
@@ -243,17 +235,14 @@
         animation-name: zoom;
         animation-duration: 0.6s;
     }
-
     @-webkit-keyframes zoom {
         from {-webkit-transform:scale(0)} 
         to {-webkit-transform:scale(1)}
     }
-
     @keyframes zoom {
         from {transform:scale(0)} 
         to {transform:scale(1)}
     }
-
     /* The Close Button */
     .close {
         position: absolute;
@@ -264,14 +253,12 @@
         font-weight: bold;
         transition: 0.3s;
     }
-
     .close:hover,
     .close:focus {
         color: #bbb;
         text-decoration: none;
         cursor: pointer;
     }
-
     /* 100% Image Width on Smaller Screens */
     @media only screen and (max-width: 700px){
         .modal-content {
@@ -284,7 +271,6 @@
     <script>
     // Get the modal
     var modal = document.getElementById('modal-main-image');
-
     // Get the image and insert it inside the modal - use its "alt" text as a caption
     var img = document.getElementById('main-image');
     var modalImg = document.getElementById("img01");
@@ -294,10 +280,8 @@
         modalImg.src = this.src;
         captionText.innerHTML = this.alt;
     }
-
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() { 
         modal.style.display = "none";
