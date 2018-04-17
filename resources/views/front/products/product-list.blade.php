@@ -56,7 +56,7 @@
                 </div>
                 <div class="product-content-holder">
                     <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
-                    <span><span>$40.00</span> ${{ number_format($product->price,1) }}</span>
+                    <span><span>$40.00</span> >{{ config('cart.currency') }}{{ number_format($product->price,1) }}</span>
                 </div>
             </div>
             <!-- Ventana modal vista rapida -->

@@ -1,6 +1,6 @@
 <div class="product-details2-area">
     <div class="container">
-        <div class="row">
+        <div class="row"> 
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="inner-product-details-left">
                     <div class="tab-content">
@@ -59,7 +59,7 @@
                             @endforeach
                         @endif                       
                     </ul>
-                </div>
+                </div> 
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="inner-product-details-right">
@@ -71,12 +71,31 @@
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                     </ul>
-                    <p class="price">$ {{ config('cart.currency') }} {{ $product->price }}</p>
+                    <p class="price">{{ config('cart.currency') }} {{ $product->price }}</p>
                     <p>{!!  str_limit($product->description, 10, ' ...') !!}</p>
                     <div class="product-details-content">
                         <p><span>SKU:</span> {{ $product->sku }} </p>
                         <p><span>Availability:</span>{{ $product->quantity }}</p>
-                        <p><span>Category:</span> Demo Products</p>
+                        
+                        <p><span>Category:</span> 
+                        <!-- include('admin.shared.categories', ['categories' => $categories, 'ids' => $product]) -->
+                        <!-- Tomada de la plantilla admin.shared.categories ------------------ -->
+                        @foreach($categories as $category)
+                            @if(isset($selectedIds) && in_array($category->id, $selectedIds)) 
+                                {{ $category->name }} 
+                            @endif  
+                            @if($category->children->count() >= 1)
+                                <!--include('admin.shared.category-children', ['categories' => $category->children, 'selectedIds' => $selectedIds])
+                                <!-- Tomada de la plantilla admin.shared.category-children -------------- -->
+                                @foreach($categories as $category)
+                                        @if(isset($selectedIds) && in_array($category->id, $selectedIds)) 
+                                            {{ $category->name }} 
+                                        @endif 
+                                @endforeach
+                            @endif
+                        @endforeach
+                        </p>
+                            
                     </div>
                     <!-- <form id="checkout-form"> ---------------- -->
                         <ul class="more-option">

@@ -7,7 +7,7 @@
     @if(!is_null($product->cover))
         <meta property="og:image" content="{{ asset("storage/$product->cover") }}"/>
     @endif
-@endsection
+@endsection 
 
 @section('content')
     <div class="inner-page-banner-area">
@@ -27,6 +27,9 @@
             </div>
         </div>
     </div>
-    <!-- Aqui se deberian de pasar los produtos destacados o relacionados -->
-    @include('layouts.front.product',['products_temp' => $features])    
+    <!-- products_temp -- Aqui se deberian de pasar los produtos destacados o relacionados ------------ -->
+    <!-- categories - selectedIds -- Estas variables son necesarias para mostrar el producto a que categoria pertenece -->
+    @include('layouts.front.product',['products_temp' => $features,
+                                        'categories' => $categories,
+                                        'selectedIds' => $selectedIds])    
 @endsection

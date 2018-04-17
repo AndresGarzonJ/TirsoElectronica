@@ -59,13 +59,20 @@ class ProductController extends Controller
         $product = $this->productRepo->findProductBySlug(['slug' => $slug]);
         $images = $product->images()->get();
         $productAttributes = $product->attributes()->get();
-
+      
         $category2 = $this->categoryRepo->findCategoryById(2);
-        $category3 = $this->categoryRepo->findCategoryById(3);
+        $category3 = $this->categoryRepo->findCategoryById(3); 
 
         $newests = $category2->products;
         $features = $category3->products;
-
-        return view('front.products.product', compact('product', 'images', 'productAttributes','newests', 'features', 'category2', 'category3')); 
+        
+        // categories - selectedIds -- Estas variables son necesarias para mostrar el producto a que categoria pertenece ... basado sobre la funcion edit de app/Http/Controllers/Admin/Products/ProductController para la vista de admin/products/edit .. 
+        return view('front.products.product', 
+            [
+            'categories' => $this->categoryRepo->listCategories('name', 'asc')->where('parent_id', 1),
+            'selectedIds' => $product->categories()->pluck('category_id')->all()            
+            ],
+            compact('product', 'images', 'productAttributes','newests', 'features', 'category2', 'category3')
+        ); 
     }
 }
