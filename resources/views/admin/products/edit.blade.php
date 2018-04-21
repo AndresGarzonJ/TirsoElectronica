@@ -14,7 +14,17 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist" id="tablist">
                                 <li role="presentation" @if(!request()->has('combination')) class="active" @endif><a href="#info" aria-controls="home" role="tab" data-toggle="tab">Info</a></li>
-                                <li role="presentation" @if(request()->has('combination')) class="active" @endif><a href="#combinations" aria-controls="profile" role="tab" data-toggle="tab">Combinations</a></li>
+
+                                <li role="presentation" 
+                                    @if(request()->has('combination')) class="active" @endif>
+                                    <a 
+                                        href="#combinations" 
+                                        aria-controls="profile"    
+                                        role="tab" 
+                                        data-toggle="tab">
+                                        Combinations
+                                    </a>
+                                </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content" id="tabcontent">

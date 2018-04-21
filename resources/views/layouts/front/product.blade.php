@@ -1,5 +1,5 @@
 <div class="product-details2-area">
-    <div class="container">
+    <div class="container"> 
         <div class="row"> 
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="inner-product-details-left">
@@ -71,13 +71,12 @@
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                     </ul>
-                    <p class="price">{{ config('cart.currency') }} {{ $product->price }}</p>
+                    
                     <p>{!!  str_limit($product->description, 10, ' ...') !!}</p>
                     <div class="product-details-content">
                         <p><span>SKU:</span> {{ $product->sku }} </p>
-                        <p><span>Availability:</span>{{ $product->quantity }}</p>
-                        
-                        <p><span>Category:</span> 
+
+                        <p><span>Categoria:</span> 
                         <!-- include('admin.shared.categories', ['categories' => $categories, 'ids' => $product]) -->
                         <!-- Tomada de la plantilla admin.shared.categories ------------------ -->
                         @foreach($categories as $category)
@@ -95,67 +94,103 @@
                             @endif
                         @endforeach
                         </p>
-                            
-                    </div>
-                    <!-- <form id="checkout-form"> ---------------- -->
-                        <ul class="more-option">
-                            <li>
-                                <div class="form-group">
-                                    <div class="custom-select">
-                                        <select id="size" class='select2'>
-                                            <option value="0">Select Your Size</option>
-                                            <option value="1">XL</option>
-                                            <option value="2">L</option>
-                                            <option value="3">M</option>
-                                            <option value="4">S</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                    <div class="custom-select">
-                                        <select id="color" class='select2'>
-                                            <option value="0">Select Your Color</option>
-                                            <option value="1">Black</option>
-                                            <option value="2">White</option>
-                                            <option value="3">Blue</option>
-                                            <option value="4">Green</option>
-                                            <option value="5">Pink</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="inner-product-details-cart">
-                            @include('layouts.errors-and-messages')
-                            <form action="{{ route('cart.store') }}"  method="post">
-                                {{ csrf_field() }}
 
+                        <!-- Lo que se quiere es que el precio varie en funcion de las caratesristicas del producto... ya se logro para un solo atributo .. ahora se quiere para mas atributos y luego poder enviar esos datos al carro -------------------------- -->
+
+                        
+                        @if($productAttributes->isEmpty())
+                            <!-- Si No Hay Atributos -->
+                            <p><span>Disponibilidad:</span>{{ $product->quantity }}</p>
+                            <p class="price">{{ config('cart.currency') }} {{ $product->price }}</p>
+                        @else
+                            <!-- 
+                            <ul class="more-option">
                                 <li>
-                                    <div class="input-group quantity-holder" id="quantity-holder">
-                                        
-                                        <input type="text" name='quantity' id="quantity" class="form-control quantity-input" value="1" placeholder="1">
-                                        <input type="hidden" name="product" value="{{ $product->id }}" />
-
-                                        <div class="input-group-btn-vertical">
-                                            <button class="btn btn-default quantity-plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                            <button class="btn btn-default quantity-minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    <div class="form-group">
+                                        <div class="custom-select">
+                                            
+                                            <select id="id_atributo" class='select2'>
+                                                <?php $count_atrib = 0; ?>
+                                                @foreach($productAttributes as $pa)
+                                                    @foreach($pa->attributesValues as $item)
+                                                        @if ($count_atrib == 0)
+                                                            <option value="0">Select Your {{ $item->attribute->name }}</option>                                                     
+                                                            <?php $count_atrib = 1; ?>
+                                                        @endif                                                        
+                                                        <option value="{{ $item->value }}">{{ $item->value }}</option>
+                                                    @endforeach
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <button type="submit">                                        
+                            </ul>
+                            -->
+                            <!-- Crea etiquetas con el valor de los atributos, al dar click sobre una etiqueta_atributo aparecia autoamticamente el valor del precio y unid disponibles. -------------------- -->
+
+                            <ul class="inner-product-details-cart">
+                                <?php $count_attr1 = 2; ?>
+                                @foreach($productAttributes as $pa)                                        
+                                    @foreach($pa->attributesValues as $item)                             
+                                        <li>
+                                            <a href="#refAttribute{{$count_attr1++}}" data-toggle="tab" aria-expanded="false" class="btn btn-outline mw-md btn-dark btn-sm">
+                                                <i>
+                                                    {{ $item->attribute->name }} : {{ $item->value }}
+                                                </i>
+                                            </a>
+                                        </li>
+                                    @endforeach                                    
+                                @endforeach        
+                            </ul>
+                            <ul>  
+                                <div class="tab-content">                          
+                                    <?php $count_attr2 = 2; ?>
+                                    @foreach($productAttributes as $pa)                                        
+                                        @foreach($pa->attributesValues as $item)
+                                            <div class="tab-pane fade " id="refAttribute{{$count_attr2++}}">
+                                                <p><span>Disponibilidad: </span>{{ $pa->quantity }} Unid</p>
+                                                <p class="price">{{ config('cart.currency') }} {{ $pa->price }}</p>
+                                            </div>
+                                        @endforeach                                               
+                                    @endforeach
+                                </div>
+                            </ul>
+                            
+                        @endif
+                    </div> 
+                    
+                    <ul class="inner-product-details-cart">
+                        @include('layouts.errors-and-messages')
+                        <form action="{{ route('cart.store') }}"  method="post" id="checkout-form">
+                            {{ csrf_field() }}
+
+                            <li>
+                                <div class="input-group quantity-holder" id="quantity-holder">
+                                    
+                                    <input type="text" name='quantity' id="quantity" class="form-control quantity-input" value="1" placeholder="1">
+                                    <input type="hidden" name="product" value="{{ $product->id }}" /> 
+
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-default quantity-plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button class="btn btn-default quantity-minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a>
+                                    <button type="submit">
                                         Add to cart
                                     </button>
-                                </li>
-                                
-
-                            </form>
-
+                                </a>
+                            </li>
                             <li><a href="#"><i aria-hidden="true" class="fa fa-heart-o"></i></a></li>
                             <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                        </ul>
+                        </form>
+
+                        <!-- Numero de caja -->
+
+                        
+                    </ul>
                     <!-- </form> ---------- -->
                     <ul class="product-details-social">
                         <li>Share:</li>

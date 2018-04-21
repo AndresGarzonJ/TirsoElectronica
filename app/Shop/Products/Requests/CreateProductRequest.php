@@ -1,4 +1,5 @@
 <?php
+//Modificar para crear el campo de N° de caja
 
 namespace App\Shop\Products\Requests;
 

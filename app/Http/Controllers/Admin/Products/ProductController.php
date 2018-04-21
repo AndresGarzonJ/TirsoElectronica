@@ -134,7 +134,7 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(int $id) 
     {
         return view('admin.products.show', ['product' => $this->productRepo->findProductById($id)]);
     }
@@ -168,7 +168,7 @@ class ProductController extends Controller
             'attributes' => $this->attributeRepo->listAttributes(),
             'productAttributes' => $productAttributes,
             'qty' => $qty
-        ]);
+        ]); 
     }
 
     /**
