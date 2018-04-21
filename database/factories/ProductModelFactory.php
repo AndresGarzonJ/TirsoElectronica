@@ -22,6 +22,7 @@ $factory->define(Product::class, function (Faker\Generator $faker) {
     return [
         'sku' => $this->faker->numberBetween(1111111, 999999),
         'name' => $product,
+        'nBox' => $product,        
         'slug' => str_slug($product),
         'description' => $this->faker->paragraph,
         'cover' => $file->store('products', ['disk' => 'public']),

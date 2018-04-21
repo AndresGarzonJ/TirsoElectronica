@@ -6,7 +6,7 @@
         inicialmente implementado en front/index.. para lograr este acople fue necesario 
         agregar la variable form_list (tiene valores como grid o listCarousel)
 
-        por ende se usa el siguiente if
+        por ende se usa el siguiente if 
 
         -->
         <div

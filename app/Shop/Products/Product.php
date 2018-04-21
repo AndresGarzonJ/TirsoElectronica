@@ -26,6 +26,7 @@ class Product extends Model implements Buyable
     protected $fillable = [
         'sku',
         'name',
+        'nBox',
         'slug',
         'description',
         'cover',

@@ -22,6 +22,7 @@ trait ProductTransformable
         $prod = new Product;
         $prod->id = (int) $product->id;
         $prod->name = $product->name;
+        $prod->nBox = $product->nBox;        
         $prod->sku = $product->sku;
         $prod->slug = $product->slug;
         $prod->description = $product->description;

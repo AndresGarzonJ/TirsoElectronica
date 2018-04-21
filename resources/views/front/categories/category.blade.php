@@ -34,7 +34,8 @@
             </div>
             <hr>
             <div class="row">
-                @include('front.products.product-list', ['products' => $products])
+                @include('front.products.product-list', ['products' => $products,
+                                                        'form_list' => "listCarousel"])
             </div>
         </div>
     </div>

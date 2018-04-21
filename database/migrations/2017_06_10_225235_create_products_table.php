@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('sku');
             $table->string('name');
+            $table->string('nBox');
             $table->string('slug');
             $table->text('description')->nullable();
             $table->string('cover')->nullable();
