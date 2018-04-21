@@ -1,6 +1,22 @@
 @if(!empty($products) && !collect($products)->isEmpty())
-    @foreach($products as $product)
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale">
+    @foreach($products as $product) 
+
+        <!-- 
+        debido a que en layout/front/product es necesario reutilizar esta vista 
+        inicialmente implementado en front/index.. para lograr este acople fue necesario 
+        agregar la variable form_list (tiene valores como grid o listCarousel)
+
+        por ende se usa el siguiente if
+
+        -->
+        <div
+        @if($form_list == "grid")         
+         class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale"
+        @else
+
+
+        @endif
+         >
             <div class="product-box1">
                 <ul class="product-social">
                     <li>
@@ -23,11 +39,13 @@
                         <a href="{{ route('front.get.product', str_slug($product->slug)) }}">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
-                    </li>
+                    </li> 
                     
                 </ul>
                 <div class="product-img-holder">
                     <!-- <div class="hot-sale"><span>Sale</span></div> -->
+                    <!-- <div class="hot-sale"><span>New</span></div> -->
+
                     <div class="hot-sale"><span>Hot</span></div>
                     @if(isset($product->cover))
                         <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-bordered img-responsive">
@@ -38,7 +56,7 @@
                 </div>
                 <div class="product-content-holder">
                     <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
-                    <span><span>$40.00</span> ${{ number_format($product->price,1) }}</span>
+                    <span><span>$40.00</span> >{{ config('cart.currency') }}{{ number_format($product->price,1) }}</span>
                 </div>
             </div>
             <!-- Ventana modal vista rapida -->

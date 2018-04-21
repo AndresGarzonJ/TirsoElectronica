@@ -1,0 +1,105 @@
+cambiar el nombre del proyecto
+	"php artisan app:name TirsoElectronica"
+
+.env
+configurar el debug en "true"
+
+config/app.php
+configurar el timezone
+	America/Bogota
+configurar el idioma
+	'locale' => 'es'
+
+	mejor -- con el siguiente comando
+	"php artisan laraveles:install-lang"
+
+config/database.php
+configuracion de la db
+tambien se puede en .env
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+ROUTES
+
+http://www.igdonline.com/blog/rapido-y-completo-expresiones-regulares-en-php/
+http://www.igdonline.com/blog/rapido-y-completo-expresiones-regulares-en-php/
+
+Route::get('saludo', function () {
+    return 'Hola mundo';
+});
+//	/saludo
+
+/*
+Route::get('/usuario', function () {
+    return 'Hola usuario: '.$_GET['nombre'];
+});
+//	/usuario?nombre=Andres
+*/
+
+Route::get('/usuario/nuevo', function () {
+    return 'Crear nuevo usuario';
+});
+//	/usuario/Andres 
+
+
+Route::get('/usuario/{nombre}', function ($nombre) {
+    //return 'Hola usuario: '.$nombre;
+    return "Hola usuario: {$nombre}";
+})
+//con expresiones regulares/
+//->where('nombre', '[0-9]+')
+;
+//	/usuario/Andres 
+
+
+//apodo es obligatorio
+//Route::get('/usuario/{nombre}/{apodo}', function () {
+
+//apodo es opcional
+Route::get('/saludo/{nombre}/{apodo?}', function ($nombre, $apodo=null) {
+	if ($apodo) {
+		return "Bienvenido {$nombre}, tu apodo es {$apodo}.";
+	}else{
+		return "Bienvenido {$nombre}, NO tienes apodo.";
+	}    
+});
+
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+PRUEBAS
+
+test/Feature
+	simula peticiones HTTP
+
+test/Unit
+	escribimos pruebas que pruebas partes del codigo 
+	sin simular peticiones HTTP
+
+se escribe en la consola
+	"vendor/bin/phpunit"
+
+	esto se encarga de probar todas las clases con el sufijo Test
+
+
+// Create a test in the Feature directory...
+php artisan make:test UserTest
+
+// Create a test in the Unit directory...
+php artisan make:test UserTest --unit
+
+
+VER ERRORES EN CONSOLA
+	"this->withoutExceptionHandling();"
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+CONTROLADOR
+
+para crear un controlador
+	"php artisan make:controller UserController"
+
+
+

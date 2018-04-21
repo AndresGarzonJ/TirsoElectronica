@@ -1,0 +1,246 @@
+﻿{{asset( )}}
+[]
+{}
+
+Notas version
+
+
+v2
+-------------------------------------------------------------------------
+
+layoutSearch
+	Se quito la busqueda por cuidad
+
+index.blade
+	Del top-area se le quito el tiempo/conteo regresivo de promociones a las publicaciones
+
+products.blade.php
+	-Se creo el controlador --> ProductController
+	-Se utilizo la plantilla index-coupon-layout-1.html
+	-Las partes no necesarias se comentaron
+
+layoutMenu.blade.php
+	Se acomodo el nombre de las secciones
+
+layoutCarLogin
+	Comente los icono de Login y Carrito de Compras .. y los cambie por los de redes sociales
+
+article.blade.php
+	se acoplo la plantilla... {{asset( )}} ..para las imagenes
+	product-shop-centered.html
+
+category.blade.php
+
+
+
+Tarea
+* Al hacer click en la imagen del top-area ..Redireccionar
+* Falta redireccionar los links del menu
+* Colocar la imagen para layoutProduct.blade.php .. guardada en la BD
+* 
+
+
+
+
+Revisar con Don Tirso
+------------------------------------------------
+
+*Pagina productos
+	Seleccionada PAGINA PRINCIPAL
+		index-coupon-layout-1.html
+
+	Falta seleccionar el modo en que se presentara el listado de productos por categoria
+		category-page-thumbnails-coupon-layout-3.html
+			Quitar icono de carro
+		category-page-thumbnails-coupon-horizontal.html
+
+		category-page-thumbnails-shop-layout-5.html
+			Me gusta el icono de Vista
+
+		category-page-thumbnails-shop-layout-4.html
+			Tiene indicador de "New"
+
+		Las estrellas -- Posiblemente Quitar
+
+*Pagina un solo Producto
+	La que mas me gusto--- Teniendo en cuenta tambien MercadoLibre-Aliexpress-Amazon
+	product-shop-centered.html
+
+	product-shop-sidebar-left.html
+	product-shop-sidebar.html
+
+	De la plantilla product-coupon-default.html se cogio la cuenta regresiva..Descuento
+
+	
+
+*Menu
+	Si sea el mismo para todas las paginas
+
+*Verificar la pagina principal
+	index-header-layout-
+
+*Tutoriales
+	post-sidebar-left.html
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+26 de enero
+
+Pasos para generador de crud
+
+	pagina oficial del frame
+
+	1.Descargar el proyecto de github 
+		https://github.com/InfyOmLabs/adminlte-generator/tree/5.4
+
+		o
+		tambien se puede encontrar en
+		E:\Andres Garzon\2017 II\htdocs
+
+	2.para terminar de clonar el proyecto se deben hacer lo siguiente
+		-instalar las dependencias con el comando
+			composer install
+		-crear el archivo .env
+			copy NUL .env
+		-copiar el contenido del archivo .env.example al .env
+		-generar la clave del proyecto
+			php artisan key:generate
+	3. crear base de datos ..ej: nombre de la db es myapp
+		create database myapp
+	4. editar el .env con los datos de la db
+	5. comprobar 
+		php artisan serve
+
+	6. crear modelo
+		php artisan infyom:scaffold $MODEL_NAME
+
+		es como decir una tabla de la db
+		despues del comando la consola nos preguntara los atributos de la tabla
+		-colocamos el nombre de la siguiente forma
+			name db_type html_type options
+
+				name - name of the field (snake_case recommended)
+				db_type - database type. e.g.
+					string - $table->string('field_name')
+					string,25 - $table->string('field_name', 25)
+					text - $table->text('field_name')
+					integer,false,true - $table->integer('field_name',false,true)
+					string:unique - $table->string('field_name')->unique()
+					For foreign keys,
+						integer:unsigned:foreign,table_name,id
+						$table->foreign('field_name')->references('id')->on('table_name')
+				html_type - html field type for forms. e.g.
+					text							text
+					textarea						textarea
+					email							email
+					date							date
+					number							number
+					password						password
+					file (partially supported)		file
+					select 
+					select,value1,value2,value3 
+					select,label1:value1,label2:value2,label3:value3	
+													select,Daily,Weekly,Monthly 
+													select,Sunday:0,Monday:1,Tuesday:2
+					checkbox 
+					checkbox,value	
+													checkbox 
+													checkbox,yes 
+													checkbox,1
+					radio 
+					radio,label1,label2 
+					radio,label1:value1,label2:value2
+													radio,Male,Female 
+													radio,Yes:1,No:0
+				options
+					options - Options to prevent field from being searchable, fillable, display in form & index
+					Here are all options by which you can prevent it, these all fields should be passed by comma separated string.  e.g. s,f,if,ii
+
+						s - specify to make field non-searchable
+						f - specify to make field non-fillable
+						if - to skip field from being asked in form
+						ii - to skip field from being displayed in index view	
+				exaples:
+					title string text
+					body text textarea s,ii
+					email string:unique email
+					writer_id integer:unsigned:foreign,writers,id text s
+		-colocamos las validaciones
+			required
+			min:5
+			email
+			numeric
+		-cuando se desee terminar .. se escribe 
+			exit
+
+	7. antes de migrar ..vamos a app/Providers/AppServiceProvider.php y dentro 
+		de la funcion register colocamos
+			Schema::defaultStringLength(191);
+	8. En la consola ..hacemos la migracion
+		php artisan migrate
+
+-----------------------------------------------
+-----------------------------------------------
+1 Febrero 2018
+
+Lista de consulta/pedido
+
+N°Orden
+Nombre
+Descripcion
+Tipo
+Grupo
+Costo de compra
+Precio de venta
+Fecha de ingreso
+Cantidad
+Salida
+Existencia
+N°Caja
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+6 de Febrero / 2018
+
+https://styde.net/como-instalar-proyectos-existentes-de-laravel/
+https://styde.net/como-instalar-proyectos-existentes-de-laravel/
+
+
+Tareas
+
+Yeison 
+	Terminara de hacer la parte de home.blade.php.. es decir 
+		resumen de la pagina web
+		seccion de noticias
+		vista de los ultimos proyectos/videos/productos
+	El login para el administrador -> para ingresar a la plantilla de crud de
+		Videos/Proyectos/Articulos
+
+Andres
+	Hara la adaptacion de plantilla de administrador ... separando por archivos/secciones/layout/...
+	CRUD de articulos
+	Hacer prueba con BD
+	Link que redirija al home 
+
+	La pagina principal seleccionada es
+		infinity2\Infinity-v2.0.0\topbar\dashboard.3.html
+
+//3 de marzo --> se decidio cambiar las interfaces diferentes a las de admin 
+				porque se realizo una busnqueda en las tendencias del desarrollo 
+				de las ultimas pag web
+
+
+//6 de marzo ... arreglar el menuVerical para que sea responsive	
+				posiblemente quitar el icono de categori porque no es un menu ni nada
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+7 de Abril / 2018
+
+Categorias
+	Destacados
+	En oferta
+	Destacados
+	Popular
+	Productos relacionados //Vista del producto individual
