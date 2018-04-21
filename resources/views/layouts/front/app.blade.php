@@ -139,6 +139,7 @@
                                                             <button type="button" class="btn btn-metro dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span>All Categories</span><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></button>
                                                             <div class="dropdown-menu dropdown-menu-right" role="menu">
                                                                 <ul class="sidenav-nav">
+
                                                                     @foreach($categories as $category)
                                                                         <li>
                                                                             @if($category->children()->count() > 0)
@@ -154,6 +155,7 @@
                                                                             @endif
                                                                         </li>
                                                                     @endforeach
+
                                                                     <!-- 
                                                                     <li><a href={{asset("#")}}><i class="flaticon-dress-1"></i>Women</a></li>
                                                                     <li><a href={{asset("#")}}><i class="flaticon-polo"></i>Men</a></li>
@@ -205,22 +207,27 @@
                                                 @if($category->children()->count() > 0)
                                                     @include('layouts.front.category-sub', ['subs' => $category->children])
                                                 @else
-                                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                                    {{-- En data toogle iba dropdown, se quito para que funcionaran los links --}}
+                                                    
+                                                    <a class="dropdown-toggle" data-toggle=""
                                                         @if(request()->segment(2) == $category->slug) 
                                                             class="active" 
                                                         @endif 
                                                         href="{{route('front.category.slug', $category->slug)}}">
                                                         <i class="flaticon-plug"></i>
                                                         {{$category->name}}
-                                                        <span><i class="flaticon-next"></i></span>
+                                                        
                                                     </a>
+                                                    
+                                                    <!--
                                                     <ul class="dropdown-menu">
                                                         <li><a href={{asset("#")}}>Women Sub Title 1</a></li>
                                                         <li><a href={{asset("#")}}>Women Sub Title 2</a></li>
                                                         <li><a href={{asset("#")}}>Women Sub Title 3</a></li>
                                                         <li><a href={{asset("#")}}>Women Sub Title 4</a></li>
                                                         <li><a href={{asset("#")}}>Women Sub Title 5</a></li>
-                                                    </ul>
+                                                    </ul> -->
+                                                    
                                                 @endif
                                             </li>
                                         @endforeach

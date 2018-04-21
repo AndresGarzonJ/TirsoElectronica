@@ -14,6 +14,7 @@ Route::namespace('Admin')->group(function () {
     Route::post('admin/login', 'LoginController@login')->name('admin.login');
     Route::get('admin/logout', 'LoginController@logout')->name('admin.logout');
 });
+
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ], function () {
     Route::namespace('Admin')->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard');
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
  * Frontend routes
  */
 Auth::routes();
+
 Route::namespace('Auth')->group(function () {
     Route::get('cart/login', 'CartLoginController@showLoginForm')->name('cart.login');
     Route::post('cart/login', 'CartLoginController@login')->name('cart.login');
