@@ -1,5 +1,5 @@
 <?php
-
+//Modificar para crear el campo de N° de caja 
 /*
 |--------------------------------------------------------------------------
 | Model Factories

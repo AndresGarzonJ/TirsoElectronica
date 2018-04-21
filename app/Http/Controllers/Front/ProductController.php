@@ -47,7 +47,7 @@ class ProductController extends Controller
             'products' => $this->productRepo->paginateArrayResults($products, 10)
         ]);
     }
-
+ 
     /**
      * Get the product
      *
@@ -58,8 +58,9 @@ class ProductController extends Controller
     {
         $product = $this->productRepo->findProductBySlug(['slug' => $slug]);
         $images = $product->images()->get();
+        //El precio del producto podria variar en funcion de color / tamaño / peso entre otros atributos .. Entonces lo que se quiere es que el precio en la vista varie en funcion de sus atributos .. si los tiene.
         $productAttributes = $product->attributes()->get();
-      
+        
         $category2 = $this->categoryRepo->findCategoryById(2);
         $category3 = $this->categoryRepo->findCategoryById(3); 
 
@@ -70,9 +71,10 @@ class ProductController extends Controller
         return view('front.products.product', 
             [
             'categories' => $this->categoryRepo->listCategories('name', 'asc')->where('parent_id', 1),
-            'selectedIds' => $product->categories()->pluck('category_id')->all()            
+            'selectedIds' => $product->categories()->pluck('category_id')->all(),
+            'productAttributes' => $productAttributes           
             ],
-            compact('product', 'images', 'productAttributes','newests', 'features', 'category2', 'category3')
+            compact('product', 'images', 'newests', 'features', 'category2', 'category3')
         ); 
     }
 }

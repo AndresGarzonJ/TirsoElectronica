@@ -1,6 +1,8 @@
-<?php
+<?php 
 
-namespace App\Shop\Products;
+//Modificar para crear el campo de N° de caja
+
+namespace App\Shop\Products; 
 
 use App\Shop\Categories\Category;
 use App\Shop\ProductAttributes\ProductAttribute;

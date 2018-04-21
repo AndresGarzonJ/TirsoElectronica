@@ -1,4 +1,4 @@
-@if(!$productAttributes->isEmpty())
+@if(!$productAttributes->isEmpty()) 
     <ul class="list-unstyled">
         <li>
             <table class="table">

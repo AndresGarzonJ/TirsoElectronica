@@ -1,6 +1,6 @@
 @extends('layouts.front.app') 
  
-@section('og') 
+@section('og')  
     <meta property="og:type" content="product"/>
     <meta property="og:title" content="{{ $product->name }}"/>
     <meta property="og:description" content="{{ strip_tags($product->description) }}"/>
@@ -31,5 +31,6 @@
     <!-- categories - selectedIds -- Estas variables son necesarias para mostrar el producto a que categoria pertenece -->
     @include('layouts.front.product',['products_temp' => $features,
                                         'categories' => $categories,
-                                        'selectedIds' => $selectedIds])    
+                                        'selectedIds' => $selectedIds,
+                                        'productAttributes' => $productAttributes])    
 @endsection
