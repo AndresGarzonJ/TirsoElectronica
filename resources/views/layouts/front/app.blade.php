@@ -214,7 +214,7 @@
                                                             class="active" 
                                                         @endif 
                                                         href="{{route('front.category.slug', $category->slug)}}">
-                                                        <i class="flaticon-plug"></i>
+                                                        <i class="{{ $category->iconClass}}"></i>
                                                         {{$category->name}}
                                                         
                                                     </a>
@@ -226,7 +226,8 @@
                                                         <li><a href={{asset("#")}}>Women Sub Title 3</a></li>
                                                         <li><a href={{asset("#")}}>Women Sub Title 4</a></li>
                                                         <li><a href={{asset("#")}}>Women Sub Title 5</a></li>
-                                                    </ul> -->
+                                                    </ul> 
+                                                -->
                                                     
                                                 @endif
                                             </li>

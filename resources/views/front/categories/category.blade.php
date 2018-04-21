@@ -34,7 +34,10 @@
             </div>
             <hr>
             <div class="row">
-                @include('front.products.product-list', ['products' => $products])
+                @include('front.products.product-list', ['products' => $products,
+                                                         'form_list'=> 'grid'])
+                                                         {{-- Cambiar a ListCarousel for List Style in category --}}
+                                                         
             </div>
         </div>
     </div>
