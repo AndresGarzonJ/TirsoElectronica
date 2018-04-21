@@ -36,6 +36,8 @@
             <div class="row">
                 @include('front.products.product-list', ['products' => $products,
                                                         'form_list' => "listCarousel"])
+                                                        <!-- orale putos -->
+                                                        
             </div>
         </div>
     </div>
