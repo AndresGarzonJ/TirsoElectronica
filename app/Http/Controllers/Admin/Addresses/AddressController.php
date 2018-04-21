@@ -1,5 +1,7 @@
 <?php
 
+//Objetivo de controlador: 
+
 namespace App\Http\Controllers\Admin\Addresses;
 
 use App\Shop\Addresses\Address;

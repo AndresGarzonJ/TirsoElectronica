@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     protected function loggedUser()
     {
-        return auth()->user();
+        return auth()->user(); // La libreria de Auth se encarga de devolver el usuarioLogueado.
     }
 }
