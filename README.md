@@ -1,3 +1,6 @@
+Tirso Electronica Version Beta 1.0
+
+
 [![Build Status](https://img.shields.io/travis/jsdecena/laracom/master.svg)](https://travis-ci.org/jsdecena/laracom)
 [![Build Status](https://img.shields.io/github/forks/jsdecena/laracom.svg)](https://github.com/jsdecena/laracom)
 [![Build Status](https://img.shields.io/github/stars/jsdecena/laracom.svg)](https://github.com/jsdecena/laracom)
