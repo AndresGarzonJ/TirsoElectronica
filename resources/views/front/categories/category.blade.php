@@ -26,13 +26,14 @@
             <div class="row">
                 <div class="category-image">
                     @if(isset($category->cover))
-                        <img src="{{ asset("storage/$category->cover") }}" alt="{{ $category->name }}" class="img-responsive" />
+                        <img src="http://www.techmastertest.com/techmaster/wp-content/uploads/2013/10/bnr_featuredProductsSmall.jpg }}" alt="{{ $category->name }}" class="img-responsive" />
                     @else
                         <img src="https://placehold.it/1200x200" alt="{{ $category->cover }}" class="img-responsive" />
                     @endif
                 </div>
             </div>
             <hr>
+
             <div class="row">
                 @include('front.products.product-list', ['products' => $products,
                                                          'form_list'=> 'grid'])
