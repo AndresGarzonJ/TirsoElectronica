@@ -79,7 +79,8 @@ Route::namespace('Front')->group(function () {
     });
     Route::resource('cart', 'CartController');
     Route::get("category/{slug}", 'CategoryController@getCategory')->name('front.category.slug');
-    
+    Route::get("category/getImgPr/{id}",'CategoryController@getImagesProduct');
+    //Route::get("/getImgP/{id}",function(){ if(Request::ajax()){return 'Prueba de get satisfactorio';}});
     Route::get("search", 'ProductController@search')->name('search.product');
     Route::get("{product}", 'ProductController@show')->name('front.get.product');
 });

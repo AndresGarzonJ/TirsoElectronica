@@ -10,6 +10,13 @@
 
         gtag('config', '{{ env('GOOGLE_ANALYTICS') }}');
     </script>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  
+    
+    
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,6 +42,55 @@
     <link rel="stylesheet" href={{asset("indexMetro/vendor/noUiSlider/nouislider.min.css")}}>
     <link rel="stylesheet" href={{asset("indexMetro/style.css")}}>
     <script src={{asset("indexMetro/js/vendor/modernizr-2.8.3.min.js")}}></script>
+
+    <script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+                });
+                var productId;
+        $(document).ready(function(){
+            
+            setTimeout(function(){
+
+
+ 
+
+                   //Siempre usar .on('click') en vez de .click, 
+                $('.verImgPrd').on('click', function() {
+
+                    
+
+                    var productId = $(this).attr("id");
+                    console.log(productId);
+
+                    $.get('getImgPr/'+productId,function(data){
+
+                        console.log(data);
+                        //Modifiquemos las vistas de el modal para colocar las imagenes
+                        var img = JSON.stringify(data);
+                        
+                        
+                        var imgJS = JSON.parse(img);
+
+                        console.log(imgJS[0]['src']);
+                        
+                        $('#img1').attr('src','http://localhost:8000/storage/'+imgJS[0]['src']);
+                        $('#img2').attr('src','http://localhost:8000/storage/'+imgJS[1]['src']);
+                        $('#img3').attr('src','http://localhost:8000/storage/'+imgJS[2]['src']);
+                        
+                    });
+                    
+                 });
+               
+                }, 1000);  
+
+         });
+
+         
+        
+        </script>
     <!-- Nivo Slider CSS --> <!-- necesario para index -->
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/nivo-slider.css")}} type="text/css" />
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/preview.css")}} type="text/css" media="screen"/> 
@@ -455,7 +511,9 @@
         <script src={{asset("indexMetro/lib/custom-slider/js/jquery.nivo.slider.js")}} type="text/javascript"></script>
         <script src={{asset("indexMetro/lib/custom-slider/home.js")}} type="text/javascript"></script>
         <!-- Isotope js -->
-        <script src={{asset("indexMetro/js/isotope.pkgd.min.js")}} type="text/javascript"></script>   
+        <script src={{asset("indexMetro/js/isotope.pkgd.min.js")}} type="text/javascript"></script>  
+        
+       
             
         
         

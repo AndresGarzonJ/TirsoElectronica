@@ -32,11 +32,11 @@
                     </li>
                     <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                     <li>
-                        <!-- Veista rapida -Ventana modal - Creo que relentiza la pag-->
-                        <!-- le quite un {
-                        <a href="{ route('front.get.product', str_slug($product->slug)) }}" data-toggle="modal" data-target="#myModal_{ $product->id }}">
-                        -->
-                        <a href="{{ route('front.get.product', str_slug($product->slug)) }}">
+                        
+                        
+                        <a href="{{ route('front.get.product', str_slug($product->slug)) }}" data-toggle="modal" data-target="#myModal_{ $product->id }}">
+                        
+                        <a href="myModal_{{ $product->id }}">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
                     </li> 
@@ -60,15 +60,15 @@
                 </div>
             </div>
             <!-- Ventana modal vista rapida -->
-            <!-- le quite un {
-            <div class="modal fade" id="myModal_{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            
+            <div class="modal fade" id="myModal_{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        include('layouts.front.product')
+                        @include('layouts.front.product')
                     </div>
                 </div>
             </div>
-            -->            
+                       
         </div>
     @endforeach
     @if($products instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)

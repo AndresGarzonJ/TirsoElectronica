@@ -1,4 +1,3 @@
-        
 
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12"> <!-- START ROW of 9 -->
 
@@ -74,8 +73,8 @@
                                             </a>
                                         </li>
                                         <li>
-                                        <a href="#" data-toggle="modal" data-target="#{{$product->slug}}">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                        <a data-toggle="modal" data-target="#{{$product->slug}}" >
+                                                <i class="verImgPrd fa fa-eye" aria-hidden="true" id="{{$product->id}}" ></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -121,7 +120,19 @@
         
             </div><!-- END row of 9-->
         
-        
+          <?php
+            function generateRandomString($length = 10) {
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                return $randomString;
+            }
+            ?>
+            {{-- Traer imagenes con todo y producto,  --}}
+            
             @foreach ($products as $product)
                 <!-- Modal Dialog Box Start Here-->
             <div id="{{ $product->slug }}" class="modal fade" role="dialog">
@@ -136,17 +147,17 @@
                                                 <div class="tab-content">
                                                     <div id="metro-related1" class="tab-pane fade active in">
                                                         <a href="#">
-                                                            <img class="img-responsive" src="https://placehold.it/400x400" alt="single">
+                                                            <img class="img-responsive" src="https://placehold.it/400x400" id="" alt="single">
                                                         </a>
                                                     </div>
                                                     <div id="metro-related2" class="tab-pane fade">
                                                         <a href="#">
-                                                            <img class="img-responsive" src="https://placehold.it/400x400" alt="single">
+                                                            <img class="img-responsive" src="https://placehold.it/400x400" id="<?php echo generateRandomString(); ?>" alt="single">
                                                         </a>
                                                     </div>
                                                     <div id="metro-related3" class="tab-pane fade">
                                                         <a href="#">
-                                                            <img class="img-responsive" src="https://placehold.it/400x400" alt="single">
+                                                            <img class="img-responsive" src="https://placehold.it/400x400"  id="<?php echo generateRandomString(); ?>" alt="single">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -171,7 +182,7 @@
                                         </div>
                                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                             <div class="inner-product-details-right">
-                                                <h3>Product Title Here</h3>
+                                            <h3>{{$product->name}}</h3>
                                                 <ul>
                                                     <li>
                                                         <i aria-hidden="true" class="fa fa-star"></i>
@@ -189,17 +200,15 @@
                                                         <i aria-hidden="true" class="fa fa-star"></i>
                                                     </li>
                                                 </ul>
-                                                <p class="price">$59.00</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinc
-                                                    amet risus consectetur, non consectetur nisl finibus. Ut ac eros quis mi volutpat cursus
-                                                    vel non risus.</p>
+                                            <p class="price">${{$product->price}}</p>
+                                            <p>{{$product->description}}</p>
                                                 <div class="product-details-content">
                                                     <p>
-                                                        <span>SKU:</span> 0010</p>
+                                                    <span>SKU:</span> {{$product->sku}}</p>
                                                     <p>
-                                                        <span>Availability:</span> In stock</p>
+                                                        <span>Availability:</span>In stock</p>
                                                     <p>
-                                                        <span>Category:</span> Demo Products</p>
+                                                        <span>Category:</span> {{$category->name}}</p>
                                                 </div>
                                                 <ul class="product-details-social">
                                                     <li>Share:</li>
@@ -260,3 +269,12 @@
                 </div>
         <!-- Modal Dialog Box End Here-->    
             @endforeach
+
+            <div class="row">
+
+                <button class="btn btn-warning" id ="prueba">Helow</button>
+            </div>
+
+             
+            
+            
