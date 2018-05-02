@@ -59,15 +59,19 @@
                                                 <label for="cover">Cover </label>
                                                 <input type="file" name="cover" id="cover" class="form-control">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" id="myId">
+
                                                 @foreach($images as $image)
                                                     <div class="col-md-3">
                                                         <div class="row">
                                                             <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive"> <br />
-                                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.product.remove.thumb', ['src' => $image->src]) }}" class="btn btn-danger btn-sm btn-block">Remove?</a><br />
+                                                            <a  href="#" onclick="myFunction('<?php  echo $image->src; ?>','{{ route('admin.product.remove.thumb')}}')"
+                                                              class="btn btn-danger btn-sm btn-block">Remove?</a>
+                                                              
                                                         </div>
                                                     </div>
                                                 @endforeach
+
                                             </div>
                                             <div class="row"></div>
                                             <div class="form-group">
@@ -175,7 +179,46 @@
     </style>
 @endsection
 @section('js')
+
+    <script  type="text/javascript" charset="utf-8" async defer>
+        
+
+         function myFunction(nombre, ruta) {
+            
+           if(confirm('Esta seguro?')){
+               $.ajax({
+                  url: ruta,
+                  type: "get", //send it through get method
+                  data: { 
+                    src: nombre
+                  },
+                  success: function(response) {
+                    console.log('Listo loca');
+                    $('#myId').load(location.href + ' #myId');
+                    //location.hash="myId";
+                    $('html, body').animate({
+                        scrollTop: $("#myId").offset().top
+                    }, 1000);
+                  },
+                  error: function(xhr) {
+                    console.log('Nonaz');
+                  }
+                });//End ajax
+           }
+           else{
+
+
+
+           }
+
+            }//End myFunction  
+          
+    </script>
     <script type="text/javascript">
+
+         
+                
+
         function backToInfo() {
             $('#tablist > li:first-child').addClass('active');
             $('#tablist > li:last-child').removeClass('active');
@@ -206,6 +249,15 @@
                     $('#combination').attr('disabled', true);
                 }
             });
+
+            //Javascript para borrar imagenes sin refrescar la pagina.
+                    
+              
+            
+                       
+                    
+                   
+
         });
     </script>
 @endsection
