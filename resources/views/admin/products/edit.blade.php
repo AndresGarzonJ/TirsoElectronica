@@ -48,12 +48,18 @@
                                                 <label for="nBox">N° Box <span class="text-danger">*</span></label>
                                                 <input type="text" name="nBox" id="nBox" placeholder="{!! $product->nBox !!}" class="form-control" value="{!! $product->nBox !!}">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" id="myId2">
                                                 @if(isset($product->cover))
                                                     <div class="col-md-3">
                                                         <div class="row">
                                                             <img src="{{ asset("storage/$product->cover") }}" alt="" class="img-responsive"> <br />
-                                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.product.remove.image', ['product' => $product->id, 'image' => substr($product->cover, 9)]) }}" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
+
+                                                            <!-- 
+
+
+                                                            -->
+                                                            <a onclick="myFunction2('<?php  echo $product->id; ?>','<?php echo substr($product->cover,9);?>','{{ route('admin.product.remove.image')}}')" 
+                                                            href="#" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
                                                         </div>
                                                     </div>
                                                 @endif
@@ -63,15 +69,19 @@
                                                 <label for="cover">Cover </label>
                                                 <input type="file" name="cover" id="cover" class="form-control">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" id="myId">
+
                                                 @foreach($images as $image)
                                                     <div class="col-md-3">
                                                         <div class="row">
                                                             <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive"> <br />
-                                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.product.remove.thumb', ['src' => $image->src]) }}" class="btn btn-danger btn-sm btn-block">Remove?</a><br />
+                                                            <a  href="#" onclick="myFunction('<?php  echo $image->src; ?>','{{ route('admin.product.remove.thumb')}}')"
+                                                              class="btn btn-danger btn-sm btn-block">Remove?</a>
+                                                              
                                                         </div>
                                                     </div>
                                                 @endforeach
+
                                             </div>
                                             <div class="row"></div>
                                             <div class="form-group">
@@ -96,6 +106,7 @@
                                                 @endif
                                                 @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Quantity is disabled. Total quantity is calculated by the sum of all the combinations.</span> @endif
                                             </div>
+
                                             <div class="form-group">
                                                 @if($productAttributes->isEmpty())
                                                     <label for="price">Price <span class="text-danger">*</span></label>
@@ -116,7 +127,7 @@
                                             <div class="form-group">
                                                 <label for="buyprice">Buy Price <span class="text-danger">*</span></label>
                                                 <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
+                                                    <span class="input-group-addon">{{ config('cart.currency') }}</span>
                                                     <input type="text" name="buyprice" id="buyprice" placeholder="{!! $product->buyprice !!}" class="form-control" value="{!! $product->buyprice !!}">
                                                 </div>
                                             </div>
@@ -128,10 +139,9 @@
                                         <div class="col-md-4">
                                             <h2>Categories</h2>
                                             @include('admin.shared.categories', ['categories' => $categories, 'ids' => $product])
-                                           <div class="form-group">
+                                            <div class="form-group">
                                                 @include('admin.shared.tag-select', ['tag' => $product->tag])
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="row">
@@ -190,7 +200,74 @@
     </style>
 @endsection
 @section('js')
+
+    <script  type="text/javascript" charset="utf-8" async defer>
+        
+        /*
+        * MyFunction
+        * Borra sin regar la pagina las imagenes del producto.
+        */
+         function myFunction(nombre, ruta) {
+            
+           if(confirm('Esta seguro?')){
+               $.ajax({
+                  url: ruta,
+                  type: "get", //send it through get method
+                  data: { 
+                    src: nombre
+                  },
+                  success: function(response) {
+                    console.log('Listo loca');
+                    $('#myId').load(location.href + ' #myId');
+                    //location.hash="myId";
+                    $('html, body').animate({
+                        scrollTop: $("#myId").offset().top
+                    }, 1000);
+                  },
+                  error: function(xhr) {
+                    console.log('Nonaz');
+                  }
+                });//End ajax
+           }
+           else{  }
+
+         }//End myFunction  
+
+         function myFunction2(idProduct,cover,ruta) {
+            
+            if(confirm('Esta seguro?')){
+                $.ajax({
+                   url: ruta,
+                   type: "get", //send it through get method
+                   data: { 
+                     product: idProduct,
+                     image  : cover
+                   },
+                   success: function(response) {
+                     console.log('Listo loca');
+                     $('#myId2').load(location.href + ' #myId2');
+                     //location.hash="myId";
+                     $('html, body').animate({
+                         scrollTop: $("#myId2").offset().top
+                     }, 1000);
+                   },
+                   error: function(xhr) {
+                     console.log('Nonaz');
+                   }
+                 });//End ajax
+            }
+            else{  }
+ 
+          }//End myFunction  
+
+
+          
+    </script>
     <script type="text/javascript">
+
+         
+                
+
         function backToInfo() {
             $('#tablist > li:first-child').addClass('active');
             $('#tablist > li:last-child').removeClass('active');
@@ -221,6 +298,15 @@
                     $('#combination').attr('disabled', true);
                 }
             });
+
+            //Javascript para borrar imagenes sin refrescar la pagina.
+                    
+              
+            
+                       
+                    
+                   
+
         });
     </script>
 @endsection

@@ -243,7 +243,7 @@ class ProductController extends Controller
     {
         $this->productRepo->deleteFile($request->only('product', 'image'), 'uploads');
         request()->session()->flash('message', 'Image delete successful');
-        return redirect()->back();
+        //return redirect()->back();
     }
 
     /**
@@ -254,7 +254,7 @@ class ProductController extends Controller
     {
         $this->productRepo->deleteThumb($request->input('src'));
         request()->session()->flash('message', 'Image delete successful');
-        return redirect()->back();
+        //return redirect()->back();
     }
 
     /**
