@@ -16,7 +16,7 @@
                     <tr>
                         <td>{{ $pa->id }}</td>
                         <td>{{ $pa->quantity }}</td>
-                        <td>{{ $pa->price }}</td>
+                        <td>{{ config('cart.currency') }}{{ $pa->price }}</td>
                         <td>
                             <ul class="list-unstyled">
                                 @foreach($pa->attributesValues as $item)

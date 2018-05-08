@@ -1,4 +1,5 @@
 <?php
+//Agregar campo tabla Productos 
 //Modificar para crear el campo de N° de caja 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,14 @@ $factory->define(Product::class, function (Faker\Generator $faker) {
     return [
         'sku' => $this->faker->numberBetween(1111111, 999999),
         'name' => $product,
-        'nBox' => $product,        
+        'nBox' => "numcaja-123",
+        'tag' => "Nuevo",        
         'slug' => str_slug($product),
         'description' => $this->faker->paragraph,
         'cover' => $file->store('products', ['disk' => 'public']),
         'quantity' => 10,
         'price' => 5.00,
+        'buyprice' => 2.00,
         'status' => 1
     ];
 });

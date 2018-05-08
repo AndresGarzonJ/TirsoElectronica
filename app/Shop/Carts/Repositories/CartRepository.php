@@ -72,9 +72,11 @@ class CartRepository extends BaseRepository implements CartRepositoryInterface
      * @param int $decimals
      * @return float
      */
-    public function getSubTotal(int $decimals = 2)
-    {
-        return $this->model->subtotal(2);
+    public function getSubTotal(int $decimals = 0, string $decimalPoint = ".", string $thousandSeperator = "")
+    {   
+        //Se tuvo que acomodar el formato del numero 
+        //FALTA unificar eso en la pagina
+        return $this->model->subtotal($decimals, $decimalPoint, $thousandSeperator);
     }
 
     /**
@@ -84,9 +86,9 @@ class CartRepository extends BaseRepository implements CartRepositoryInterface
      * @param float $shipping
      * @return float
      */
-    public function getTotal(int $decimals = 2, $shipping = 0.00)
+    public function getTotal(int $decimals = 0, $shipping = 0.00)
     {
-        return $this->model->total($decimals, null, null, $shipping);
+        return $this->model->total($decimals, ".", "", $shipping);
     }
 
     /**
@@ -116,7 +118,7 @@ class CartRepository extends BaseRepository implements CartRepositoryInterface
      * @param int $decimals
      * @return float
      */
-    public function getTax(int $decimals = 2)
+    public function getTax(int $decimals = 0)
     {
         return $this->model->tax($decimals);
     }

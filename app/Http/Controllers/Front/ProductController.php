@@ -1,5 +1,5 @@
 <?php 
-
+ 
 namespace App\Http\Controllers\Front;
 
 use App\Shop\Products\Product;
@@ -35,7 +35,7 @@ class ProductController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search()
+    /*public function search()
     {
         $list = $this->productRepo->searchProduct(request()->input('q'));
 
@@ -45,6 +45,23 @@ class ProductController extends Controller
 
         return view('front.products.product-search', [
             'products' => $this->productRepo->paginateArrayResults($products, 10)
+        ]);
+    }*/
+
+       public function search()
+    {
+        $list = $this->productRepo->listProducts();
+
+        if (request()->has('q') && request()->input('q') != '') {
+            $list = $this->productRepo->searchProduct(request()->input('q'));
+        }
+
+        $products = $list->map(function (Product $item) {
+            return $this->transformProduct($item);
+        });
+
+        return view('front.products.product-search', [
+            'products' => $this->productRepo->paginateArrayResults($products->all(), 10)
         ]);
     }
  
@@ -68,13 +85,37 @@ class ProductController extends Controller
         $features = $category3->products;
         
         // categories - selectedIds -- Estas variables son necesarias para mostrar el producto a que categoria pertenece ... basado sobre la funcion edit de app/Http/Controllers/Admin/Products/ProductController para la vista de admin/products/edit .. 
-        return view('front.products.product', 
-            [
+
+        //$varCategories = $this->categoryRepo->listCategories('name', 'asc')->where('parent_id', 1);
+        //$selectedIds = $product->categories()->pluck('category_id')->all();
+
+        return view('front.products.product', [
             'categories' => $this->categoryRepo->listCategories('name', 'asc')->where('parent_id', 1),
             'selectedIds' => $product->categories()->pluck('category_id')->all(),
-            'productAttributes' => $productAttributes           
-            ],
+            'productAttributes' => $productAttributes
+        ],
             compact('product', 'images', 'newests', 'features', 'category2', 'category3')
         ); 
+
+        /*
+         compact('product', 'images', 'newests', 'features', 'category2', 'category3','categories','selectedIds','productAttributes')
+
+            'categories' => $categories,
+            'selectedIds' => $selectedIds,
+            'productAttributes' => $productAttributes,
+            'product' => $product,
+            'images' => $images,
+            'newests' => $newests,
+            'features' => $features,
+            'category2' => $category2,
+            'catagory3' => $category3
+
+
+
+        [
+        'categories' => $this->categoryRepo->listCategories('name', 'asc')->where('parent_id', 1),
+        'selectedIds' => $product->categories()->pluck('category_id')->all(),
+        'productAttributes' => $productAttributes      
+        */
     }
 }

@@ -1,4 +1,5 @@
 <?php
+//Agregar campo tabla Productos
 //Modificar para crear el campo de N° de caja
 
 namespace App\Shop\Products\Requests;
@@ -10,7 +11,7 @@ class UpdateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
+     * 
      * @return bool
      */
     public function authorize()
@@ -29,8 +30,10 @@ class UpdateProductRequest extends FormRequest
             'sku' => ['required'],
             'name' => ['required', Rule::unique('products')->ignore($this->segment(3))],
             'nBox' => ['required'],
+            'tag' => ['required'],
             'quantity' => ['required', 'numeric'],
-            'price' => ['required']
+            'price' => ['required'],
+            'buyprice' => ['required']
         ];
     }
 }

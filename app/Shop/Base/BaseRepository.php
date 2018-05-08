@@ -78,7 +78,10 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function findBy(array $data)
     {
+        //Cambio sugerido por el github de laracom
+        //https://github.com/Laracommerce/laracom/issues/50
         return $this->model->where($data)->all();
+        //return $this->model->where($data)->get();
     }
 
     /**

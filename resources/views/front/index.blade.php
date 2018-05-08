@@ -145,7 +145,11 @@
                 -->
                 
                 @if(!is_null($features))
-                    @include('front.products.product-list', ['products' => $features, 'form_list' => "grid"])                        
+                    @include('front.products.product-list', [
+                        'products' => $features, 
+                        'form_list' => "grid"
+                        ])                        
+        
                     <div id="browse-all-btn"> 
                         <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
                         </a>

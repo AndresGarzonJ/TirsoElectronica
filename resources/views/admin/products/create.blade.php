@@ -24,6 +24,10 @@
                                 <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{{ old('description') }}</textarea>
                             </div>
                             <div class="form-group">
+                                <label for="nBox">N° Box <span class="text-danger">*</span></label>
+                                <input type="text" name="nBox" id="nBox" placeholder="N° Box" class="form-control" value="{{ old('nBox') }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="cover">Cover </label>
                                 <input type="file" name="cover" id="cover" class="form-control">
                             </div>
@@ -44,6 +48,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="buyprice">Buy Price <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">PHP</span>
+                                    <input type="text" name="buyprice" id="buyprice" placeholder="Price Buy" class="form-control" value="{{ old('buyprice') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="status">Status </label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="0">Disable</option>
@@ -54,6 +65,15 @@
                         <div class="col-md-4">
                             <h2>Categories</h2>
                             @include('admin.shared.categories', ['categories' => $categories])
+                            <div class="form-group">
+                                <label for="Etiqueta">Etiqueta </label>
+                                <select name="tag" id="tag" class="form-control">
+                                    <option value="Deshabilidado">Deshabilitado</option>
+                                    <option value="Nuevo">Nuevo</option>
+                                    <option value="En Oferta">En Oferta</option>
+                                    <option value="Destacado">Destacado</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div><!-- /.box-body -->

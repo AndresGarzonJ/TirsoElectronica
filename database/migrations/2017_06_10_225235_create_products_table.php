@@ -1,5 +1,5 @@
-<?php 
- 
+<?php  
+ //Agregar campo tabla Productos
 //Modificar para crear el campo de N° de caja
 
 use Illuminate\Support\Facades\Schema;
@@ -20,11 +20,13 @@ class CreateProductsTable extends Migration
             $table->string('sku');
             $table->string('name');
             $table->string('nBox');
+            $table->string('tag');
             $table->string('slug');
             $table->text('description')->nullable();
             $table->string('cover')->nullable();
             $table->integer('quantity');
             $table->decimal('price');
+            $table->decimal('buyprice');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

@@ -45,6 +45,10 @@
                                                 <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{!! $product->description  !!}</textarea>
                                             </div>
                                             <div class="form-group">
+                                                <label for="nBox">N° Box <span class="text-danger">*</span></label>
+                                                <input type="text" name="nBox" id="nBox" placeholder="{!! $product->nBox !!}" class="form-control" value="{!! $product->nBox !!}">
+                                            </div>
+                                            <div class="form-group">
                                                 @if(isset($product->cover))
                                                     <div class="col-md-3">
                                                         <div class="row">
@@ -96,18 +100,25 @@
                                                 @if($productAttributes->isEmpty())
                                                     <label for="price">Price <span class="text-danger">*</span></label>
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">PHP</span>
+                                                        <span class="input-group-addon">{{ config('cart.currency') }}</span>
                                                         <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{!! $product->price !!}">
                                                     </div>
                                                 @else
                                                     <label for="price">Price <span class="text-danger">*</span></label>
                                                     <input type="hidden" name="price" value="{!! $product->price !!}">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">PHP</span>
+                                                        <span class="input-group-addon">{{ config('cart.currency') }}</span>
                                                         <input type="text" id="price" placeholder="Price" class="form-control" value="{!! $product->price !!}" disabled>
                                                     </div>
                                                 @endif
                                                 @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Price is disabled. Price is derived based on the combination.</span> @endif
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="buyprice">Buy Price <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                    <input type="text" name="buyprice" id="buyprice" placeholder="{!! $product->buyprice !!}" class="form-control" value="{!! $product->buyprice !!}">
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 @include('admin.shared.status-select', ['status' => $product->status])
@@ -117,6 +128,10 @@
                                         <div class="col-md-4">
                                             <h2>Categories</h2>
                                             @include('admin.shared.categories', ['categories' => $categories, 'ids' => $product])
+                                           <div class="form-group">
+                                                @include('admin.shared.tag-select', ['tag' => $product->tag])
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="row">

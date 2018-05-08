@@ -272,6 +272,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Product Area End Here -->
     <!-- Offer Area 1 Start Here -->
     <div class="offer-area1 hidden-after-desk">

@@ -1,12 +1,12 @@
 <?php
-
+//Agregar campo tabla Productos
 //Modificar para crear el campo de N° de caja
 
 namespace App\Shop\Products\Transformations;
 
 use App\Shop\Products\Product;
 use Illuminate\Support\Facades\Storage;
-
+ 
 trait ProductTransformable
 {
     /**
@@ -22,13 +22,15 @@ trait ProductTransformable
         $prod = new Product;
         $prod->id = (int) $product->id;
         $prod->name = $product->name;
-        $prod->nBox = $product->nBox;        
+        $prod->nBox = $product->nBox; 
+        $prod->tag = $product->tag;        
         $prod->sku = $product->sku;
         $prod->slug = $product->slug;
         $prod->description = $product->description;
         $prod->cover = $file;
         $prod->quantity = $product->quantity;
         $prod->price = $product->price;
+        $prod->buyprice = $product->buyprice;
         $prod->status = $product->status;
 
         return $prod;

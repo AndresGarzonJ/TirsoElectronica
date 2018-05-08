@@ -72,10 +72,18 @@
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                     </ul>
                     
-                    <p>{!!  str_limit($product->description, 10, ' ...') !!}</p>
+                    <p>{!!  str_limit($product->description, 250, ' ...') !!}</p>
                     <div class="product-details-content">
                         <p><span>SKU:</span> {{ $product->sku }} </p>
+                        <p><span>Numero de caja:</span> {{ $product->nBox }} </p>
+                        <p><span>Precio de venta:</span> {{ $product->buyprice }} </p>
 
+                        <!-- ----------------------------
+                            SE QUIERE VER SI AL COMPRAR EL ADMIN PUEDE VER EL PRODUCTO Y EL NUMERO DE LA CAJA 
+                        -->
+
+                            
+                        
                         <p><span>Categoria:</span> 
                         <!-- include('admin.shared.categories', ['categories' => $categories, 'ids' => $product]) -->
                         <!-- Tomada de la plantilla admin.shared.categories ------------------ -->
@@ -92,8 +100,9 @@
                                         @endif 
                                 @endforeach
                             @endif
-                        @endforeach
+                        @endforeach 
                         </p>
+                        
 
                         <!-- Lo que se quiere es que el precio varie en funcion de las caratesristicas del producto... ya se logro para un solo atributo .. ahora se quiere para mas atributos y luego poder enviar esos datos al carro -------------------------- -->
 
@@ -184,10 +193,12 @@
                                 </a>
                             </li>
                             <li><a href="#"><i aria-hidden="true" class="fa fa-heart-o"></i></a></li>
+                            <!--
                             <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            -->
                         </form>
 
-                        <!-- Numero de caja -->
+                       
 
                         
                     </ul>
@@ -234,8 +245,8 @@
             </div>
             <div class="metro-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="true" data-r-large-dots="false">
                 
-                @if(!is_null($products_temp)) 
-                    @include('front.products.product-list', ['products' => $products_temp, 'form_list' => "listCarousel"])
+                @if(!is_null($features)) 
+                    @include('front.products.product-list', ['products' => $features, 'form_list' => "listCarousel"])
                 @endif
             </div>
         </div>

@@ -4,6 +4,7 @@
             <tr>
                 <td>ID</td>
                 <td>Name</td>
+                <td>nBox</td>                
                 <td>Quantity</td>
                 <td>Price</td>
                 <td>Status</td>
@@ -15,6 +16,7 @@
             <tr>
                 <td>{{ $product->id }}</td>
                 <td><a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name }}</a></td>
+                <td>{{ $product->nBox }}</td>               
                 <td>
                     {{ $product->quantity }}
                 </td>

@@ -27,10 +27,12 @@
             </div>
         </div>
     </div>
-    <!-- products_temp -- Aqui se deberian de pasar los produtos destacados o relacionados ------------ -->
+    <!-- products/features -- Aqui se deberian de pasar los produtos destacados o relacionados ------------ -->
     <!-- categories - selectedIds -- Estas variables son necesarias para mostrar el producto a que categoria pertenece -->
-    @include('layouts.front.product',['products_temp' => $features,
-                                        'categories' => $categories,
-                                        'selectedIds' => $selectedIds,
-                                        'productAttributes' => $productAttributes])    
+    @include('layouts.front.product',
+        [
+            'categories' => $categories,
+            'selectedIds' => $selectedIds,
+            'productAttributes' => $productAttributes            
+        ])    
 @endsection

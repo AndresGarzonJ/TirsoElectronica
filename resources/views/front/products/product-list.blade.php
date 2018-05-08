@@ -9,6 +9,18 @@
         por ende se usa el siguiente if 
 
         -->
+
+        <!-- 
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 featured on-sale"> 
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale featured popular">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 popular on-sale featured">
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+
+            ----------------
+            ESTOY ORGANIZANDO LA VISTA CATEGORIA
+            --------------------
+        -->
         <div
         @if($form_list == "grid")         
          class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale"
@@ -33,12 +45,15 @@
                     <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                     <li>
                         <!-- Veista rapida -Ventana modal - Creo que relentiza la pag-->
-                        <!-- le quite un {
-                        <a href="{ route('front.get.product', str_slug($product->slug)) }}" data-toggle="modal" data-target="#myModal_{ $product->id }}">
-                        -->
-                        <a href="{{ route('front.get.product', str_slug($product->slug)) }}">
+                        <!-- le quite un { -->
+                        <a data-toggle="modal" data-target="#myModal_{{ $product->id }}">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
+                        
+                        <!-- <a href="{ route('front.get.product', str_slug($product->slug)) }}">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                        -->
                     </li> 
                     
                 </ul>
@@ -46,7 +61,10 @@
                     <!-- <div class="hot-sale"><span>Sale</span></div> -->
                     <!-- <div class="hot-sale"><span>New</span></div> -->
 
-                    <div class="hot-sale"><span>Hot</span></div>
+                    @if ($product->tag != "Deshabilitado")
+                        <div class="hot-sale"><span>{{ $product->tag }}</span></div>
+                    @endif
+                    
                     @if(isset($product->cover))
                         <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-bordered img-responsive">
                     @else
@@ -56,19 +74,16 @@
                 </div>
                 <div class="product-content-holder">
                     <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
-                    <span><span>$40.00</span> {{ config('cart.currency') }}{{ number_format($product->price,1) }}</span>
+                    <span><span>$40.00</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
                 </div>
             </div>
             <!-- Ventana modal vista rapida -->
-            <!-- le quite un {
-            <div class="modal fade" id="myModal_{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        include('layouts.front.product')
-                    </div>
-                </div>
+            <!-- le quite un { -->
+            <!-- <div class="modal fade" id="myModal_{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> -->
+            <div id="myModal_{{ $product->id }}" class="modal fade" role="dialog">
+                @include('layouts.front.product_modal',["idModal" => $product->id])                
             </div>
-            -->            
+            
         </div>
     @endforeach
     @if($products instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)

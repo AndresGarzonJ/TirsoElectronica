@@ -19,15 +19,15 @@ interface CartRepositoryInterface extends BaseRepositoryInterface
 
     public function countItems() : int;
 
-    public function getSubTotal(int $decimals = 2);
+    public function getSubTotal(int $decimals = 0);
 
-    public function getTotal(int $decimals = 2, $shipping = 0.00);
+    public function getTotal(int $decimals = 0, $shipping = 0.00);
 
     public function updateQuantityInCart(string $rowId, int $quantity) : CartItem;
 
     public function findItem(string $rowId) : CartItem;
 
-    public function getTax(int $decimals = 2);
+    public function getTax(int $decimals = 0);
 
     public function getShippingFee(Courier $courier);
 

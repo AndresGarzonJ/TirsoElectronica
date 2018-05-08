@@ -35,7 +35,6 @@ class HomeController extends Controller
         $newests = $category2->products;
         $features = $category3->products;
 
-
         return view('front.index', compact('newests', 'features', 'category2', 'category3'));
     }
 

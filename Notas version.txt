@@ -1,4 +1,4 @@
-﻿{{asset( )}}
+{{asset( )}}
 []
 {}
 
@@ -244,3 +244,64 @@ Categorias
 	Destacados
 	Popular
 	Productos relacionados //Vista del producto individual
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+21 Abril 2018
+
+//Agregar campo tabla Productos 
+
+con las anteriores palabras se puede encotrar los archivos que se deben modificar para poder agregar un campo a la tabla productos de la db
+
+Los archivos son:
+
+C:\xampp\htdocs\laracom2\database\factories\ProductModelFactory.php
+C:\xampp\htdocs\laracom2\database\migrations\2017_06_10_225235_create_products_table.php
+C:\xampp\htdocs\laracom2\app\Shop\Products\Product.php
+C:\xampp\htdocs\laracom2\app\Shop\Products\Transformations\ProductTransformable.php
+C:\xampp\htdocs\laracom2\app\Shop\Products\Requests\UpdateProductRequest.php
+C:\xampp\htdocs\laracom2\app\Shop\Products\Requests\CreateProductRequest.php
+
+
+Formato precio -- sin decimales
+Ventana modal del producto
+Agregue dos variables a la tabla productos --> nBox, buyprice
+	ya esta por migraciones y se puede usar
+		falta adaptar al admin -- para que lo modifique el 
+
+Agregue a la db / tabla products -> el campo "tag" .. este se utilizara para decir si es
+	Nuevo - Destacado - En Oferta  -- Tambien tiene la opcion de Deshabilitado para no mostrar nada
+
+Se arreglo la barra de busqueda -- 
+	config/database.php --> se cambio la linea 'strict' => true,
+										por    'strict' => false,
+
+En la nueva version de Laracom se encontro:
+	ProductInvalidArgumentException.php
+		C:\xampp\htdocs\laracomV27Abril\app\Shop\Products\Exceptions
+
+-------
+Crear Todo lo relacionado para los Blogs
+
+1. Crear la migracion
+		php artisan make:migration create_blogs_table 
+
+2. Crear el Esquema/Migracion para la db
+		se crea el archivo create_blogs_table.php en Laravel/database/migrations
+
+3.Se hace las migraciones
+		php artisan migrate
+			Para remover migraciones 
+			php artisan migrate:rollback
+
+3.Crear el modelo Blog .. con el comando
+		php artisan make:model Shop/Blogs/Blog
+		
+4. Se crean las variables ... en Blog.php
+    	protected $searchableColumns = ['name_blog', 'description'];
+		protected $fillable
+		protected $hidden = [];
+
+5. Se crea el controlador
+		php artisan make:controller Front/BlogController --resource

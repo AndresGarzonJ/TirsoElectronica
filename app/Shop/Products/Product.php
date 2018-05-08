@@ -1,6 +1,6 @@
 <?php 
-
-//Modificar para crear el campo de N° de caja
+//Agregar campo tabla Productos
+//Modificar para crear el campo de N° de caja 
 
 namespace App\Shop\Products; 
 
@@ -27,11 +27,13 @@ class Product extends Model implements Buyable
         'sku',
         'name',
         'nBox',
+        'tag',
         'slug',
         'description',
         'cover',
         'quantity',
         'price',
+        'buyprice',
         'status'
     ];
 
