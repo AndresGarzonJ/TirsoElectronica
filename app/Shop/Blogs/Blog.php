@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Shop\Blogs;
 
@@ -19,6 +19,7 @@ class Blog extends Model
         'name_creator',
         'slug', 
         'description',
+        'cover',
         'src_video1',
         'src_video2',
         'src_video3',

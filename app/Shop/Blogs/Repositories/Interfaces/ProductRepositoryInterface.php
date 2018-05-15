@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Shop\Blogs\Repositories\Interfaces;
+
+//use App\Shop\AttributeValues\AttributeValue;
+//use App\Shop\ProductAttributes\ProductAttribute;
+
+use App\Shop\Base\Interfaces\BaseRepositoryInterface;
+use App\Shop\Blogs\Blog;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
+
+interface ProductRepositoryInterface extends BaseRepositoryInterface
+{
+    public function listBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
+
+    public function createBlog(array $data) : Blog;
+
+    public function updateBlog(array $params, int $id) : bool;
+
+    public function findBlogById(int $id) : Blog;
+
+    public function deleteBlog(Blog $blog) : bool;   
+
+    public function deleteFile(array $file, $disk = null) : bool;
+
+    public function deleteThumb(string $src) : bool;
+
+    public function findBlogBySlug(array $slug) : Blog;
+
+    public function searchBlog(string $text) : Collection;
+
+    public function findBlogImages() : Collection;
+
+    public function saveCoverImage(UploadedFile $file) : string;
+
+    public function saveBlogImages(Collection $collection, Blog $blog);
+
+    
+
+    //Funciones que no aplican
+    
+    //public function detachCategories();
+
+    //public function getCategories() : Collection;
+
+    //public function syncCategories(array $params);
+
+    //public function saveBlogAttributes(ProductAttribute $productAttribute) : ProductAttribute;
+
+    //public function listBlogAttributes() : Collection;
+
+    //public function removeBlogAttribute(ProductAttribute $productAttribute) : ?bool;
+
+    //public function saveCombination(ProductAttribute $productAttribute, AttributeValue ...$attributeValues) : Collection;
+
+    //public function listCombinations() : Collection;
+}

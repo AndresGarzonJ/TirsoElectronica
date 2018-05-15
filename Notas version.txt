@@ -298,10 +298,27 @@ Crear Todo lo relacionado para los Blogs
 3.Crear el modelo Blog .. con el comando
 		php artisan make:model Shop/Blogs/Blog
 		
-4. Se crean las variables ... en Blog.php
+4. Se crean las variables ... en app/Shop/Blogs/Blog.php
     	protected $searchableColumns = ['name_blog', 'description'];
 		protected $fillable
 		protected $hidden = [];
 
 5. Se crea el controlador
 		php artisan make:controller Front/BlogController --resource
+
+6. La configuracion de BlogController se asemeja a ProductController
+
+7. Se crea la tabla seeder database/seeds/BlogsTableSeeder.php
+		Semejante a ProductsTableSeeder.php
+
+--SE AGREGO A LA TABLA DE BLOGS
+		cover		->Imagen de portada
+		status		->Si es un blog visible o no
+
+8. Se organizan los archivos adicionales de Blog
+ 		App/Shop/Blogs
+ 						Blog.php
+ 						Transformations
+ 						Repositories
+
+9. Crear tabla para las imagenes relacionadas con el blog
