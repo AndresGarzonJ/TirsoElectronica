@@ -32,14 +32,14 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     }
 
     /**
-     * List all the products
+     * List all the blogs
      *
      * @param string $order
      * @param string $sort
      * @param array $columns
      * @return Collection
      */
-    public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
+    public function listBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
     {
         return $this->all($columns, $order, $sort);
     }
@@ -48,9 +48,9 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      * Create the product
      *
      * @param array $params
-     * @return Product
+     * @return Blog
      */
-    public function createProduct(array $params) : Product
+    public function createBlog(array $params) : Blog
     {
         try {
             $product = new Product($params);
@@ -62,13 +62,13 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     }
 
     /**
-     * Update the product
+     * Update the blog
      *
      * @param array $params
      * @param int $id
      * @return bool
      */
-    public function updateProduct(array $params, int $id) : bool
+    public function updateBlog(array $params, int $id) : bool
     {
         try {
             return $this->update($params, $id);
@@ -81,9 +81,9 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      * Find the product by ID
      *
      * @param int $id
-     * @return Product
+     * @return Blog
      */
-    public function findProductById(int $id) : Product
+    public function findBlogById(int $id) : Blog
     {
         try {
             return $this->transformProduct($this->findOneOrFail($id));
@@ -98,7 +98,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      * @param Product $product
      * @return bool
      */
-    public function deleteProduct(Product $product) : bool
+    public function deleteBlog(Product $product) : bool
     {
         return $product->delete();
     }    
@@ -133,7 +133,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
         try {
             return $this->findOneByOrFail($slug);
         } catch (ModelNotFoundException $e) {
-            throw new ProductNotFoundException($e->getMessage());
+            throw new BlogNotFoundException($e->getMessage());
         }
     }
 
@@ -141,7 +141,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      * @param string $text
      * @return mixed
      */
-    public function searchProduct(string $text) : Collection
+    public function searchBlog(string $text) : Collection
     {
         return $this->model->searchProduct($text);
     }
@@ -149,7 +149,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     /**
      * @return mixed
      */
-    public function findProductImages() : Collection
+    public function findBlogImages() : Collection
     {
         return $this->model->images()->get();
     }

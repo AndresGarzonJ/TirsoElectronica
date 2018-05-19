@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Shop\Products\Exceptions;
+namespace App\Shop\Blogs\Exceptions;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ProductNotFoundException extends NotFoundHttpException
+class BlogNotFoundException extends NotFoundHttpException
 {
 
     /**
@@ -12,6 +12,6 @@ class ProductNotFoundException extends NotFoundHttpException
      */
     public function __construct()
     {
-        parent::__construct('Product not found.');
+        parent::__construct('Blog not found.');
     }
 }

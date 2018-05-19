@@ -10,7 +10,7 @@ use App\Shop\Blogs\Blog;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
-interface ProductRepositoryInterface extends BaseRepositoryInterface
+interface BlogRepositoryInterface extends BaseRepositoryInterface
 {
     public function listBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
