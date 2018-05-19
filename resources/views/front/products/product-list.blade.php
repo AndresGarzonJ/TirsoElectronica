@@ -79,10 +79,10 @@
                                         </li>
                                     </ul>
         
-                                    <div class="product-img-holder">
+                                    <div class="product-img-holder" style=" width:200px; !important height:300px; !important ">
                                         @if(isset($product->cover))
-                                        <a href="#">
-                                                <img src="<?php echo asset("storage/$product->cover")?>" alt="{{ $product->name }}" width="300" height = "400" class="img-responsive">
+                                        <a href="#" id ="imageFormatSize" >
+                                                <img src="<?php echo asset("storage/$product->cover")?>" alt="{{ $product->name }}"  class="img-responsive">
                                             </a>
                                         @else
                                         <a href="#">

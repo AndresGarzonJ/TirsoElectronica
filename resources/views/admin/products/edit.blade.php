@@ -44,15 +44,17 @@
                                                 <label for="description">Description </label>
                                                 <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{!! $product->description  !!}</textarea>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" id="myId2">
                                                 @if(isset($product->cover))
                                                     <div class="col-md-3">
                                                         <div class="row">
                                                             <img src="{{ asset("storage/$product->cover") }}" alt="" class="img-responsive"> <br />
-                                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.product.remove.image', ['product' => $product->id, 'image' => substr($product->cover, 9)]) }}" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
+                                                            <a onclick="myFunction2('<?php  echo $product->id; ?>','<?php echo substr($product->cover,9);?>','{{ route('admin.product.remove.image')}}')" 
+                                                            href="#" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
                                                         </div>
                                                     </div>
                                                 @endif
+                                                
                                             </div>
                                             <div class="row"></div>
                                             <div class="form-group">
@@ -182,7 +184,10 @@
 
     <script  type="text/javascript" charset="utf-8" async defer>
         
-
+        /*
+        * MyFunction
+        * Borra sin regar la pagina las imagenes del producto.
+        */
          function myFunction(nombre, ruta) {
             
            if(confirm('Esta seguro?')){
@@ -205,13 +210,38 @@
                   }
                 });//End ajax
            }
-           else{
+           else{  }
+
+         }//End myFunction  
+
+         function myFunction2(idProduct,cover,ruta) {
+            
+            if(confirm('Esta seguro?')){
+                $.ajax({
+                   url: ruta,
+                   type: "get", //send it through get method
+                   data: { 
+                     product: idProduct,
+                     image  : cover
+                   },
+                   success: function(response) {
+                     console.log('Listo loca');
+                     $('#myId2').load(location.href + ' #myId2');
+                     //location.hash="myId";
+                     $('html, body').animate({
+                         scrollTop: $("#myId2").offset().top
+                     }, 1000);
+                   },
+                   error: function(xhr) {
+                     console.log('Nonaz');
+                   }
+                 });//End ajax
+            }
+            else{  }
+ 
+          }//End myFunction  
 
 
-
-           }
-
-            }//End myFunction  
           
     </script>
     <script type="text/javascript">

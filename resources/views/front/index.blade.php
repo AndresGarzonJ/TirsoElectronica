@@ -23,6 +23,7 @@
             <div class="row">
                 <!-- Se quita el menu que esta al lado de los slider -->
                 
+                
                 <!-- <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12"> -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="main-slider1">

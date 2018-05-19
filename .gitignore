@@ -4,8 +4,7 @@
 /public/fonts/vendor
 /public/css/app.css
 /public/js/app.js
-/storage/*.key
-/vendor
+
 /.idea
 /.vagrant
 Homestead.json
@@ -19,5 +18,4 @@ yarn.lock
 /build
 Envoy.blade.php
 /coverage
-storage/app/public/storage
 \.php_cs\.cache
