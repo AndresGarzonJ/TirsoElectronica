@@ -19,6 +19,7 @@
     <meta name="msapplication-TileImage" content="{{ asset('favicons/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     <meta property="og:url" content="{{ request()->url() }}"/>
+    <meta name="csrf-token" content="{{ Session::token() }}"> 
     <title>{{ config('app.name') }}</title>
 
     <link rel="shortcut icon" type="image/x-icon" href={{asset("indexMetro/img/favicon.png")}}>
@@ -39,7 +40,10 @@
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/nivo-slider.css")}} type="text/css" />
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/preview.css")}} type="text/css" media="screen"/> 
 
-         
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>    
 
     @yield('css')   
     
@@ -132,7 +136,7 @@
                                         <div class="search-area">
                                             <div class="input-group" id="adv-search">
                                                 <!--<input type="text" class="form-control" placeholder="Search Product" /> -->
-                                                <input type="text" name="q" class="form-control" placeholder="Search..." value="{!! request()->input('q') !!}">
+                                                <input type="text" name="q" class="form-control" id ="stringBusqueda" placeholder="Busqueda..." value="{!! request()->input('q') !!}">
                                                 <div class="input-group-btn">
                                                     <div class="btn-group" role="group">
                                                         <div class="dropdown dropdown-lg">

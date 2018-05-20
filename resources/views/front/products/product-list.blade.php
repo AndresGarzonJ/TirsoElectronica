@@ -80,9 +80,9 @@
             <!-- Ventana modal vista rapida -->
             <!-- le quite un { -->
             <!-- <div class="modal fade" id="myModal_{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> -->
-            <div id="myModal_{{ $product->id }}" class="modal fade" role="dialog">
-                @include('layouts.front.product_modal',["idModal" => $product->id])                
-            </div>
+            <!--<div id="myModal_{{ $product->id }}" class="modal fade" role="dialog">
+            {{-- @include('layouts.front.product_modal',["idModal" => $product->id]) --}}               
+            </div>-->
             
         </div>
     @endforeach

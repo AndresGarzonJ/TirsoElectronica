@@ -90,6 +90,8 @@ class Product extends Model implements Buyable
         return $this->hasMany(ProductImage::class);
     }
 
+    
+
     /**
      * @param string $term
      * @return Collection

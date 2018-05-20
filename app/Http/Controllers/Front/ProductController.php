@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
 
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
+use DB;
 
 class ProductController extends Controller
 {
@@ -52,17 +53,32 @@ class ProductController extends Controller
     {
         $list = $this->productRepo->listProducts();
 
-        if (request()->has('q') && request()->input('q') != '') {
-            $list = $this->productRepo->searchProduct(request()->input('q'));
+        if (request()->has('q') && request()->input('q') != '' && request()->input('inputMinimo') != '' && request()->input('inputMaximo') != '') {
+            //$list = $this->productRepo->searchProduct(request()->input('q'))->whereBetween('price', ['inputMinimo', 'inputMaximo']);
+
+            $products = DB::table('products')
+            ->where('name', 'like', '%'.request()->input('q').'%')
+            ->whereBetween('price', [intval(request()->input('inputMinimo')), intval(request()->input('inputMaximo'))])->paginate(10);
+
+            return view('front.products.product-search', [
+                'products' => $products
+            ]);
         }
 
-        $products = $list->map(function (Product $item) {
-            return $this->transformProduct($item);
-        });
+        if (request()->has('q') && request()->input('q') != '' && request()->input('inputMinimo') == '' && request()->input('inputMaximo') == '') {
+            $list = $this->productRepo->searchProduct(request()->input('q'));
+            $products = $list->map(function (Product $item) {
+                return $this->transformProduct($item);
+            });
 
-        return view('front.products.product-search', [
-            'products' => $this->productRepo->paginateArrayResults($products->all(), 10)
-        ]);
+            return view('front.products.product-search', [
+                'products' => $this->productRepo->paginateArrayResults($products->all(), 10)
+            ]);
+        }
+
+        
+
+        
     }
  
     /**
