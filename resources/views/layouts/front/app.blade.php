@@ -19,6 +19,7 @@
     <meta name="msapplication-TileImage" content="{{ asset('favicons/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     <meta property="og:url" content="{{ request()->url() }}"/>
+    <meta name="csrf-token" content="{{ Session::token() }}"> 
     <title>{{ config('app.name') }}</title>
 
     <link rel="shortcut icon" type="image/x-icon" href={{asset("indexMetro/img/favicon.png")}}>
@@ -39,7 +40,10 @@
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/nivo-slider.css")}} type="text/css" />
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/preview.css")}} type="text/css" media="screen"/> 
 
-         
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>    
 
     @yield('css')   
     
@@ -132,7 +136,7 @@
                                         <div class="search-area">
                                             <div class="input-group" id="adv-search">
                                                 <!--<input type="text" class="form-control" placeholder="Search Product" /> -->
-                                                <input type="text" name="q" class="form-control" placeholder="Search..." value="{!! request()->input('q') !!}">
+                                                <input type="text" name="q" class="form-control" id ="stringBusqueda" placeholder="Busqueda..." value="{!! request()->input('q') !!}">
                                                 <div class="input-group-btn">
                                                     <div class="btn-group" role="group">
                                                         <div class="dropdown dropdown-lg">
@@ -197,7 +201,7 @@
                                     <a href="{{ route('home') }}"><img class="img-responsive" src={{asset("indexMetro/img/logo.png")}} alt="logo"></a>
                                 </div>
                                 <div class="category-menu-area" id="category-menu-area-top">
-                                    <h2 class="category-menu-title"><a href={{asset("#")}}><i class="fa fa-bars" aria-hidden="true"></i></a>Categories</h2>
+                                    <h2 class="category-menu-title"><a href={{asset("#")}}><i class="fa fa-bars" aria-hidden="true"></i></a>Categorias</h2>
                                     <ul class="category-menu-area-inner">
 
                                         @foreach($categories as $category)
@@ -210,17 +214,12 @@
                                                             class="active" 
                                                         @endif 
                                                         href="{{route('front.category.slug', $category->slug)}}">
-                                                        <i class="flaticon-plug"></i>
-                                                        {{$category->name}}
-                                                        <span><i class="flaticon-next"></i></span>
+                                                        <i class="{{ $category->icon }} "></i>
+                                                        
+                                                        <a href="{{route('front.category.slug', $category->slug)}}">{{$category->name}}</a>
+                                                       
                                                     </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href={{asset("#")}}>Women Sub Title 1</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 2</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 3</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 4</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 5</a></li>
-                                                    </ul>
+                                                    
                                                 @endif
                                             </li>
                                         @endforeach
@@ -261,68 +260,17 @@
                                 <div class="main-menu-area">
                                     <nav>
                                         <ul>
-                                            <li><a href={{asset("#")}}>Home</a>
-                                                <ul>
-                                                    <li><a href={{asset("index.html")}}>Home 1</a></li>
-                                                    <li><a href={{asset("index2.html")}}>Home 2</a></li>
-                                                    <li><a href={{asset("index3.html")}}>Home 3</a></li>
-                                                    <li><a href={{asset("index4.html")}}>Home 4</a></li>
-                                                </ul>
+                                            <li><a href={{route('home')}}>Inicio</a>
+                                                
                                             </li>
-                                            <li><a href={{asset("about.html")}}>About</a></li>
-                                            <li><a href={{asset("#")}}>Blog</a>
-                                                <ul>
-                                                    <li><a href={{asset("blog.html")}}>Blog</a></li>
-                                                    <li><a href={{asset("single-blog.html")}}>Single Blog</a></li>
-                                                    <li class="has-child-menu"><a href={{asset("#")}}>Demo</a>
-                                                        <ul class="thired-level">
-                                                            <li><a href={{asset("#")}}>Demo 1</a></li>
-                                                            <li><a href={{asset("#")}}>Demo 2</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                            <li><a href={{route('home')}}>Tienda</a></li>
+                                            <li><a href={{route('home')}}>Videos/Tutoriales</a> <!-- BLOG -->
+                                               
                                             </li>
-                                            <li><a href={{asset("#")}}>Pages</a>
-                                                <ul class="mega-menu-area">
-                                                    <li>
-                                                        <a href={{asset("index.html")}}>Home 1</a>
-                                                        <a href={{asset("index2.html")}}>Home 2</a>
-                                                        <a href={{asset("index3.html")}}>Home 3</a>
-                                                        <a href={{asset("index4.html")}}>Home 4</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href={{asset("single-blog.html")}}>Single Blog 2</a>
-                                                        <a href={{asset("portfolio1.html")}}>Portfolio 1</a>
-                                                        <a href={{asset("portfolio2.html")}}>Portfolio 2</a>
-                                                        <a class="active" href={{asset("shop1.html")}}>Shop 1</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href={{asset("shop2.html")}}>Shop 2</a>
-                                                        <a href={{asset("shop3.html")}}>Shop 3</a>
-                                                        <a href={{asset("shop4.html")}}>Shop 4</a>
-                                                        <a href={{asset("shop5.html")}}>Shop 5</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href={{asset("shop6.html")}}>Shop 6</a>
-                                                        <a href={{asset("shop7.html")}}>Shop 7</a>
-                                                        <a href={{asset("product-details1.html")}}>Product Details 1</a>
-                                                        <a href={{asset("product-details2.html")}}>Product Details 2</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href={{asset("login-registration.html")}}>Login Registration</a>
-                                                        <a href={{asset("my-account.html")}}>My Account</a>
-                                                        <a href={{asset("wishlist.html")}}>Wishlist</a>
-                                                        <a href={{asset("cart.html")}}>Cart</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href={{asset("check-out.html")}}>Check Out</a>
-                                                        <a href={{asset("order-history.html")}}>Order History</a>
-                                                        <a href={{asset("order-details.html")}}>Order Details</a>
-                                                        <a href={{asset("404.html")}}>404</a>
-                                                    </li>
-                                                </ul>
+                                            <li><a href={{route('home')}}>Contacto</a>
+                                              
                                             </li>
-                                            <li><a href={{asset("contact.html")}}>Contact</a></li>
+                                            
                                         </ul>
                                     </nav>
                                 </div>

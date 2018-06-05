@@ -1,6 +1,7 @@
 <?php 
 //Agregar campo tabla Productos
 //Modificar para crear el campo de N° de caja 
+// 
 
 namespace App\Shop\Products; 
 
@@ -89,6 +90,8 @@ class Product extends Model implements Buyable
     {
         return $this->hasMany(ProductImage::class);
     }
+
+    
 
     /**
      * @param string $term

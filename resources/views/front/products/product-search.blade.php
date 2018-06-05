@@ -121,7 +121,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <h2 class="title-sidebar">BEST PRODUCTS</h2>
+                           <!-- <h2 class="title-sidebar">BEST PRODUCTS</h2>
                             <div class="best-products sidebar-section-margin">
                                 <div class="media">
                                     <a href="#" class="pull-left">
@@ -159,16 +159,26 @@
                                         <p><span>$99</span>$85</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
+                        <form action="{{route('search.product')}}">
+                        
                             <h2 class="title-sidebar">FILTER BY PRICE</h2>
                             <div id="price-range-wrapper" class="price-range-wrapper">
-                                <div id="price-range-filter"></div>
+                                <!--<div id="price-range-filter"></div>
                                 <div class="price-range-select">
                                     <div class="price-range" id="price-range-min"></div>
                                     <div class="price-range" id="price-range-max"></div>
-                                </div>
-                                <button class="btn-services-shop-now" type="submit" value="Login">Filter</button>
+                                </div>-->
+                                <input type="hidden" name="q"  id="busquedaForm">
+                                <input type="number" min="0" max="1000000" id="inputMinimo" name="inputMinimo" required>
+                                <input type="number" min="0" max="1000000" id="inputMaximo" name ="inputMaximo" required>
+                                <hr>
+                                
+                                <button id="btnFiltrarPrecios" class="btn-services-shop-now" 
+                                 type="submit" value="Login">Filter</button>
                             </div>
+                        </form>
+
                             <h2 class="title-sidebar">Product Tags</h2>
                             <div class="product-tags sidebar-section-margin">
                                 <ul>
@@ -214,14 +224,16 @@
                                 <!-- Vista Cuadricula ---------------------- -->
                                 <div role="tabpanel" class="tab-pane active clear products-container" id="gried-view">
 
-                                    @if(!is_null($products))
+                                     @if(!is_null($products))
                                         @include('front.products.product-list', [
                                             'products' => $products, 
                                             'form_list' => "grid"
                                             ]) 
                                     @else 
 
-                                    @endif
+                                    @endif 
+
+                                   
 
                                     
                                 </div>
@@ -349,4 +361,60 @@
             </div>
         </div>
         <!-- Shop Page Area End Here -->
+
+        <script type="text/javascript" charset="utf-8" >
+           
+           var busqueda = $("#stringBusqueda").attr("value"); 
+           $("#busquedaForm").val(busqueda);
+
+           
+
+            $("#inputMinimo").on("change paste keyup", function() {
+                
+                var minimo = $(this).val();
+                console.log(minimo); 
+            });
+
+            $("#inputMaximo").on("change paste keyup", function() {
+                
+                var maximo = $(this).val();
+                console.log(maximo); 
+            });
+            
+            
+            var busqueda = $("#stringBusqueda").attr("value");
+
+            console.log(busqueda);
+
+            function send() {
+            
+                        
+                            $.ajax({
+                            url: ruta,
+                            type: "get", //send it through get method
+                            data: { 
+                                q: busqueda,
+                                minimo:minimo,
+                                maximo:maximo
+                            },
+                            success: function(response) {
+                                console.log('Listo loca');
+                                console.log(response);
+                                $('#myId').load(location.href + ' #myId');
+                                //location.hash="myId";
+                                $('html, body').animate({
+                                    scrollTop: $("#myId").offset().top
+                                }, 1000);
+                            },
+                            error: function(xhr) {
+                                console.log('Nonaz');
+                            }
+                            });//End ajax
+                        
+                        
+            
+                    }//End send  */
+        </script>
+        <!-- COLOCAR LOS SCRIPTS DENTRO DE LAS SECCIONES SIEMPRE -->
 @endsection 
+
