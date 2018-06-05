@@ -214,17 +214,12 @@
                                                             class="active" 
                                                         @endif 
                                                         href="{{route('front.category.slug', $category->slug)}}">
-                                                        <i class="flaticon-plug"></i>
-                                                        {{$category->name}}
-                                                        <span><i class="flaticon-next"></i></span>
+                                                        <i class="{{ $category->icon }} "></i>
+                                                        
+                                                        <a href="{{route('front.category.slug', $category->slug)}}">{{$category->name}}</a>
+                                                       
                                                     </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href={{asset("#")}}>Women Sub Title 1</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 2</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 3</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 4</a></li>
-                                                        <li><a href={{asset("#")}}>Women Sub Title 5</a></li>
-                                                    </ul>
+                                                    
                                                 @endif
                                             </li>
                                         @endforeach
