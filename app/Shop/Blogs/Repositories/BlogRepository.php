@@ -1,21 +1,23 @@
-<?php
+<?php 
 
-namespace App\Shop\Products\Repositories;
+namespace App\Shop\Blogs\Repositories;
 
 use App\Shop\BlogImages\BlogImage;
-
 use App\Shop\Base\BaseRepository;
 use App\Shop\Blogs\Exceptions\BlogInvalidArgumentException;
 use App\Shop\Blogs\Exceptions\BlogNotFoundException;
 use App\Shop\Blogs\Blog;
 use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Shop\Blogs\Transformations\BlogTransformable;
-
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+
+
+
+
 
 class BlogRepository extends BaseRepository implements BlogRepositoryInterface
 {
@@ -33,9 +35,9 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
 
     /**
      * List all the blogs
-     *
+     * 
      * @param string $order
-     * @param string $sort
+     * @param string $sort 
      * @param array $columns
      * @return Collection
      */
@@ -45,7 +47,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     }
 
     /**
-     * Create the product
+     * Create the blog
      *
      * @param array $params
      * @return Blog
@@ -53,11 +55,11 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     public function createBlog(array $params) : Blog
     {
         try {
-            $product = new Product($params);
-            $product->save();
-            return $product;
+            $blog = new Blog($params);
+            $blog->save();
+            return $blog;
         } catch (QueryException $e) {
-            throw new ProductInvalidArgumentException($e->getMessage());
+            throw new BlogInvalidArgumentException($e->getMessage());
         }
     }
 
@@ -73,12 +75,12 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
         try {
             return $this->update($params, $id);
         } catch (QueryException $e) {
-            throw new ProductInvalidArgumentException($e->getMessage());
+            throw new BlogInvalidArgumentException($e->getMessage());
         }
     }
 
     /**
-     * Find the product by ID
+     * Find the blog by ID
      *
      * @param int $id
      * @return Blog
@@ -86,21 +88,21 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     public function findBlogById(int $id) : Blog
     {
         try {
-            return $this->transformProduct($this->findOneOrFail($id));
+            return $this->transformblog($this->findOneOrFail($id));
         } catch (ModelNotFoundException $e) {
-            throw new ProductNotFoundException($e->getMessage());
+            throw new BlogNotFoundException($e->getMessage());
         }
     }
 
     /**
-     * Delete the product
+     * Delete the blog
      *
-     * @param Product $product
+     * @param Blog $blog
      * @return bool
      */
-    public function deleteBlog(Product $product) : bool
+    public function deleteBlog(Blog $blog) : bool
     {
-        return $product->delete();
+        return $blog->delete();
     }    
 
     /**
@@ -110,20 +112,13 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      */
     public function deleteFile(array $file, $disk = null) : bool
     {
-        return $this->update(['cover' => null], $file['product']);
+        return $this->update(['cover' => null], $file['blog']);
     }
 
-    /**
-     * @param string $src
-     * @return bool
-     */
-    public function deleteThumb(string $src) : bool
-    {
-        return DB::table('product_images')->where('src', $src)->delete();
-    }
+    
 
     /**
-     * Get the product via slug
+     * Get the blog via slug
      *
      * @param array $slug
      * @return Blog
@@ -143,15 +138,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      */
     public function searchBlog(string $text) : Collection
     {
-        return $this->model->searchProduct($text);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function findBlogImages() : Collection
-    {
-        return $this->model->images()->get();
+        return $this->model->searchBlog($text);
     }
 
     /**
@@ -160,23 +147,47 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      */
     public function saveCoverImage(UploadedFile $file) : string
     {
-        return $file->store('products', ['disk' => 'public']);
+        return $file->store('blogs', ['disk' => 'public']);
     }
+
+    //Funciones de la tabla blog_images
+    /**
+     * @return mixed
+     */
+    /*
+    public function findBlogImages() : Collection
+    {
+        return $this->model->images()->get();
+    }   
+    */ 
+
+    /**
+     * @param string $src
+     * @return bool
+     */
+    /*
+    public function deleteThumb(string $src) : bool
+    {
+        return DB::table('blog_images')->where('src', $src)->delete();
+    }
+    */
 
     /**
      * @param Collection $collection
-     * @param Product $product
+     * @param Blog $blog
      * @return Collection
      */
-    public function saveProductImages(Collection $collection, Product $product)
+    /*
+    public function saveBlogImages(Collection $collection, Blog $blog)
     {
-        $collection->each(function (UploadedFile $file) use ($product) {
-            $filename = $file->store('products', ['disk' => 'public']);
-            $productImage = new ProductImage([
-                'product_id' => $product->id,
+        $collection->each(function (UploadedFile $file) use ($blog) {
+            $filename = $file->store('blogs', ['disk' => 'public']);
+            $blogImage = new BlogImage([
+                'blog_id' => $blog->id,
                 'src' => $filename
             ]);
-            $product->images()->save($productImage);
+            $blog->images()->save($blogImage);
         });
     }
+    */
 }

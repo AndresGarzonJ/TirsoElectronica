@@ -5,13 +5,13 @@
     <section class="content">
     @include('layouts.errors-and-messages')
     <!-- Default box -->
-        @if($products)
+        @if($blogs)
             <div class="box">
                 <div class="box-body">
-                    <h2>Products</h2>
-                    @include('layouts.search', ['route' => route('admin.products.index')])
-                    @include('admin.shared.products')
-                    {{ $products->links() }}
+                    <h2>Blogs</h2>
+                    @include('layouts.search', ['route' => route('admin.blogs.index')])
+                    @include('admin.shared.blogs')
+                    {{ $blogs->links() }}
                 </div>
                 <!-- /.box-body -->
             </div>

@@ -23,12 +23,16 @@ trait BlogTransformable
         $blg->name_creator = $blog->name_creator;
         $blg->slug = $blog->slug;
         $blg->description = $blog->description;
+        $blg->description_short = $blog->description_short;
         $blg->cover = $file;
         $blg->src_video1 = $blog->src_video1;
+        /*
         $blg->src_video2 = $blog->src_video2;
         $blg->src_video3 = $blog->src_video3;
         $blg->src_video4 = $blog->src_video4;
+        */
         $blg->status = $blog->status;
+        $blg->updated_at = $blog->updated_at;
 
         return $blg;
     }

@@ -19,9 +19,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::group(['middleware' => ['role:admin,guard:admin']], function () {
             Route::namespace('Products')->group(function () {
-                Route::resource('products', 'ProductController');
+                Route::resource('products', 'ProductController'); 
                 Route::get('remove-image-product', 'ProductController@removeImage')->name('product.remove.image');
                 Route::get('remove-image-thumb', 'ProductController@removeThumbnail')->name('product.remove.thumb');
+            });
+            Route::namespace('Blogs')->group(function () {
+                Route::resource('blogs', 'BlogController'); 
+                Route::get('remove-image-blog', 'BlogController@removeImage')->name('blog.remove.image');
+                Route::get('remove-image-thumb', 'BlogController@removeThumbnail')->name('blog.remove.thumb');
             });
             Route::namespace('Customers')->group(function () {
                 Route::resource('customers', 'CustomerController');
@@ -79,5 +84,6 @@ Route::namespace('Front')->group(function () {
     Route::get("category/{slug}", 'CategoryController@getCategory')->name('front.category.slug');
     Route::get("search", 'ProductController@search')->name('search.product');
     Route::get("{product}", 'ProductController@show')->name('front.get.product');
-    Route::get("blog/{slug}", 'BlogController@show')->name('front.get.blog');
+    Route::get("blogs/{slug}", 'BlogController@show')->name('front.get.blog');
+    Route::get("blogs/search", 'BlogController@search')->name('search.blog');
 });
