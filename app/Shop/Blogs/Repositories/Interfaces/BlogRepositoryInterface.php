@@ -14,6 +14,9 @@ interface BlogRepositoryInterface extends BaseRepositoryInterface
 {
     public function listBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
+    //Solo trae los 6 primeros blogs encontrados
+    public function listNBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*'], int $nBlogs = 6) : Collection;
+
     public function createBlog(array $data) : Blog;
 
     public function updateBlog(array $params, int $id) : bool;

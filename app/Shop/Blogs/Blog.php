@@ -1,5 +1,5 @@
 <?php 
-
+ 
 namespace App\Shop\Blogs; 
 
 //use App\Shop\Categories\Category;

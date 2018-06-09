@@ -322,16 +322,21 @@
                 </div>
             </div>
             <div class="metro-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
+
+                @if(!is_null($blogs)) 
+                    @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"])
+                @endif
+                <!--
                 <div class="blog-box">
-                    <a href={{asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+                    <a href={asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
                     <div class="blog-img-holder">
                         <div class="post-date">
                             <span>25 June</span>
                         </div>
-                        <a href={{asset("#")}}><img src={{asset("indexMetro/img/blog/1.jpg")}} alt="blog"></a>
+                        <a href={asset("#")}}><img src={asset("indexMetro/img/blog/1.jpg")}} alt="blog"></a>
                     </div>
                     <div class="blog-content-holder">
-                        <h3><a href={{asset("#")}}>Blog Title Goes Here</a></h3>
+                        <h3><a href={asset("#")}}>Blog Title Goes Here</a></h3>
                         <ul class="solid-underline">
                             <li><span>by</span> Admin</li>
                             <li>Comments (03)</li>
@@ -339,40 +344,8 @@
                         <p>Simply dummy text of the printing and typety esetting industryr drem Ipsum has been thety standard dummy since.</p>
                     </div>
                 </div>
-                <div class="blog-box">
-                    <a href={{asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-                    <div class="blog-img-holder">
-                        <div class="post-date">
-                            <span>25 June</span>
-                        </div>
-                        <a href={{asset("#")}}><img src={{asset("indexMetro/img/blog/2.jpg")}} alt="blog"></a>
-                    </div>
-                    <div class="blog-content-holder">
-                        <h3><a href={{asset("#")}}>Blog Title Goes Here</a></h3>
-                        <ul class="solid-underline">
-                            <li><span>by</span> Admin</li>
-                            <li>Comments (08)</li>
-                        </ul>
-                        <p>Simply dummy text of the printing and typety esetting industryr drem Ipsum has been thety standard dummy since.</p>
-                    </div>
-                </div>
-                <div class="blog-box">
-                    <a href={{asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-                    <div class="blog-img-holder">
-                        <div class="post-date">
-                            <span>25 June</span>
-                        </div>
-                        <a href={{asset("#")}}><img src={{asset("indexMetro/img/blog/3.jpg")}} alt="blog"></a>
-                    </div>
-                    <div class="blog-content-holder">
-                        <h3><a href={{asset("#")}}>Blog Title Goes Here</a></h3>
-                        <ul class="solid-underline">
-                            <li><span>by</span> Admin</li>
-                            <li>Comments (10)</li>
-                        </ul>
-                        <p>Simply dummy text of the printing and typety esetting industryr drem Ipsum has been thety standard dummy since.</p>
-                    </div>
-                </div>                
+                -->
+                               
             </div>
         </div>
     </div>
