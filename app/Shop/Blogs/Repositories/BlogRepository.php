@@ -37,13 +37,27 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      * List all the blogs
      * 
      * @param string $order
-     * @param string $sort 
+     * @param string $sort  
      * @param array $columns
      * @return Collection
      */
     public function listBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
     {
         return $this->all($columns, $order, $sort);
+    }
+
+    /**
+     * List N the blogs
+     * 
+     * @param string $order
+     * @param string $sort 
+     * @param array $columns
+     * @param int $nBlogs
+     * @return Collection
+     */
+    public function listNBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*'], int $nBlogs = 6) : Collection
+    {
+        return $this->all($columns, $order, $sort)->take($nBlogs);
     }
 
     /**
