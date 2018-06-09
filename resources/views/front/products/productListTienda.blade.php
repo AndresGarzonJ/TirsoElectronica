@@ -39,7 +39,7 @@
                                 <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
                             </ul>
                             <div class="product-img-holder">
-                                <a href="#"><img src="img/product/15.jpg" alt="product"></a>
+                                <a href="#"><img src="http://via.placeholder.com/272x334" alt="product"></a>
                             </div>
                             <div class="product-content-holder">
                             <h3><a href="#">{{$product->name}}</a></h3>
