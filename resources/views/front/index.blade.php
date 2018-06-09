@@ -137,14 +137,40 @@
                     </div>
                 </div>
             </div>
+            <div class="metro-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="true" data-r-large-dots="false">
+                
+                @if(!is_null($features)) 
+                    @include('front.products.product-list', ['products' => $features, 'form_list' => "listCarousel"])
+                @endif
+            </div>
+            @if(!is_null($features)) 
+                    <div id="browse-all-btn"> 
+                        <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
+                        </a>
+                    </div>
+                @endif
+
+            <!-- -----------
             <div class="row featuredContainer">
+<<<<<<< HEAD
               
                 @if(!is_null($features))
                     @include('front.products.product-list', [
+=======
+                 
+                Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 featured on-sale"> 
+                Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale featured popular">
+                Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 popular on-sale featured">
+                
+                
+                if(!is_null($features))
+                    include('front.products.product-list', [
+>>>>>>> d71ad9cd7da48158a5f3d793178a6a1cb30769b1
                         'products' => $features, 
                         'form_list' => "grid"
                         ])                        
         
+<<<<<<< HEAD
                    
                 @endif
 
@@ -160,6 +186,19 @@
            
 
            
+=======
+                    <div id="browse-all-btn"> 
+                        <a class="btn btn-default browse-all-btn" href="{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
+                        </a>
+                    </div>
+                endif
+                
+            </div>
+                
+            --------------- -->
+
+
+>>>>>>> d71ad9cd7da48158a5f3d793178a6a1cb30769b1
 
         </div>
     </div>

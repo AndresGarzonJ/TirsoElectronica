@@ -6,30 +6,32 @@
 
     @include('layouts.errors-and-messages')
     <!-- Default box -->
-        @if($product)
+        @if($blog)
             <div class="box">
                 <div class="box-body">
                     <table class="table">
                         <tbody>
                         <tr>
                             <td class="col-md-2">Name</td>
-                            <td class="col-md-3">Description</td>
+                            <td class="col-md-3">Creator</td>
                             <td class="col-md-3">Cover</td>
-                            <td class="col-md-2">Quantity</td>
-                            <td class="col-md-2">Price</td>
+                            <td class="col-md-2">Description</td>
+                            <td class="col-md-2">Link videos</td>
                         </tr>
                         </tbody>
                         <tbody>
                             <tr>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->description }}</td>
+                                <td>{{ $blog->name_blog }}</td>
+                                <td>{{ $blog->name_creator }}</td>
                                 <td>
-                                    @if(isset($product->cover))
-                                        <img src="{{ asset("storage/$product->cover") }}" class="img-responsive" alt="">
+                                    @if(isset($blog->cover))
+                                        <img src="{{ asset("storage/$blog->cover") }}" class="img-responsive" alt="">
                                     @endif
                                 </td>
-                                <td>{{ $product->quantity }}</td>
-                                <td>{{ config('cart.currency') }} {{ $product->price }}</td>
+                                <td>{{ $blog->description_short }}</td>
+                                <td>
+                                    {{ $blog->src_video1 }} <br>                                    
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -37,7 +39,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="btn-group">
-                        <a href="{{ route('admin.products.index') }}" class="btn btn-default btn-sm">Back</a>
+                        <a href="{{ route('admin.blogs.index') }}" class="btn btn-default btn-sm">Back</a>
                     </div>
                 </div>
             </div>

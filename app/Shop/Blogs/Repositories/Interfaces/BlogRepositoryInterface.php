@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Shop\Blogs\Repositories\Interfaces;
 
@@ -24,19 +24,21 @@ interface BlogRepositoryInterface extends BaseRepositoryInterface
 
     public function deleteFile(array $file, $disk = null) : bool;
 
-    public function deleteThumb(string $src) : bool;
-
     public function findBlogBySlug(array $slug) : Blog;
 
     public function searchBlog(string $text) : Collection;
 
-    public function findBlogImages() : Collection;
-
     public function saveCoverImage(UploadedFile $file) : string;
 
-    public function saveBlogImages(Collection $collection, Blog $blog);
+    //Funciones de la tabla blog_images
 
-    
+    //public function saveBlogImages(Collection $collection, Blog $blog);
+    //public function findBlogImages() : Collection;
+    //public function deleteThumb(string $src) : bool;
+
+
+
+        
 
     //Funciones que no aplican
     

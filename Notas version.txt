@@ -291,7 +291,7 @@ Crear Todo lo relacionado para los Blogs
 		se crea el archivo create_blogs_table.php en Laravel/database/migrations
 
 3.Se hace las migraciones
-		php artisan migrate
+		php artisan migrate --seed
 			Para remover migraciones 
 			php artisan migrate:rollback
 
@@ -322,3 +322,51 @@ Crear Todo lo relacionado para los Blogs
  						Repositories
 
 9. Crear tabla para las imagenes relacionadas con el blog
+
+------------19 de mayo 2018
+10. Se agragan las clases (Repositorios) de Blog en app/providers/RepositoryServiceProvider.php
+			BlogRepositoryInterface
+			BlogRepository
+
+11. Crear BlogModelFactory.php en database/factories
+12. Se creo la variable  description_short a la tabla de blog en la db
+13. Todo lo relacionado a la Creacion de un Blog
+		App/Shop/Blogs
+				Repositories/BlogRepository.php
+				Request/CreateblogsRequest.php
+		
+		Crear el controlador de blogs para el admin 
+				php artisan make:controller Admin/Blogs/BlogController
+		Route/web.php
+				Se añade para los blogs
+		
+		Se añade las vistas para el admin
+		resources/views
+				admin/blogs
+				layouts/admin/sidebar.blade.php
+		
+		Se Crea el Esquema/Migracion para la tabla blog_images
+				php artisan make:migration create_blogs_images_table
+					create_blogs_images_table.php en Laravel/database/migrations
+
+		Se crea el modelo para BlogImages
+				php artisan make:model Shop/BlogImages/BlogImage
+
+				y se crea BlogImageRepository.php
+AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
+
+14. Se crea resources/view/admin/shared/blogs.blade.php
+
+15. Ya se tiene del blog 
+			crear 
+TAREA		actualizar -- MUCHO CUIDADO CON LOS CAMPOS VACIOS -- admin / BlogController
+TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes vinculadas en otra tabla
+			en la vista principal de blogs / admin .. ya se puede buscar
+
+16. 
+	Se habia creado la tabla blog_images ... el cual almacenaria las imagenes a usar en el blog.. pero se tomo la desicion de no usarla.. se buscara otra manera... de igual .. no se borro nada, solo se comento el codigo
+
+	En la tabla de blog se elimino los campos src_video2 src_video3 src_video4..solo se usara un solo link el cual sera una lista de reproduccion de youtube!
+
+
+

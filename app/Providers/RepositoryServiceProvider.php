@@ -33,6 +33,8 @@ use App\Shop\Products\Repositories\ProductRepository;
 use App\Shop\Provinces\Repositories\Interfaces\ProvinceRepositoryInterface;
 use App\Shop\Provinces\Repositories\ProvinceRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
+use App\Shop\Blogs\Repositories\BlogRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -111,6 +113,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CartRepositoryInterface::class,
             CartRepository::class
+        );
+        $this->app->bind(
+            BlogRepositoryInterface::class,
+            BlogRepository::class
         );
     }
 }

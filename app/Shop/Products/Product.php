@@ -16,7 +16,7 @@ use Sofa\Eloquence\Eloquence;
 class Product extends Model implements Buyable
 {
     use Eloquence;
-
+ 
     protected $searchableColumns = ['name', 'description'];
 
     /**
@@ -81,7 +81,7 @@ class Product extends Model implements Buyable
     public function getBuyablePrice($options = null)
     {
         return $this->price;
-    }
+    } 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -5,155 +5,95 @@
     <section class="content">
         @include('layouts.errors-and-messages')
         <div class="box">
-            <form action="{{ route('admin.products.update', $product->id) }}" method="post" class="form" enctype="multipart/form-data">
+            <form action="{{ route('admin.blogs.update', $blog->id) }}" method="post" class="form" enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="row">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="put">
                         <div class="col-md-12">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist" id="tablist">
-                                <li role="presentation" @if(!request()->has('combination')) class="active" @endif><a href="#info" aria-controls="home" role="tab" data-toggle="tab">Info</a></li>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>{{ ucfirst($blog->name) }}</h2>
+                                    <div class="form-group">
+                                        <label for="name_blog">Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name_blog" id="name_blog" placeholder="Name Blog" class="form-control" value="{!! $blog->name_blog !!}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name_creator">Creator <span class="text-danger">*</span></label>
+                                        <input type="text" name="name_creator" id="name_creator" placeholder="Creator" class="form-control" value="{!! $blog->name_creator !!}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description_short">Description short</label>
+                                        <textarea class="form-control ckeditor" name="description_short" id="description_short" rows="5" placeholder="Description">{!! $blog->description_short  !!}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description </label>
+                                        <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{!! $blog->description  !!}</textarea>
+                                    </div>
+                                    <div class="form-group" id="myId2">
+                                        @if(isset($blog->cover))
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    <img src="{{ asset("storage/$blog->cover") }}" alt="" class="img-responsive"> <br />
 
-                                <li role="presentation" 
-                                    @if(request()->has('combination')) class="active" @endif>
-                                    <a 
-                                        href="#combinations" 
-                                        aria-controls="profile"    
-                                        role="tab" 
-                                        data-toggle="tab">
-                                        Combinations
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content" id="tabcontent">
-                                <div role="tabpanel" class="tab-pane @if(!request()->has('combination')) active @endif" id="info">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <h2>{{ ucfirst($product->name) }}</h2>
-                                            <div class="form-group">
-                                                <label for="sku">SKU <span class="text-danger">*</span></label>
-                                                <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{!! $product->sku !!}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="name">Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{!! $product->name !!}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="description">Description </label>
-                                                <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{!! $product->description  !!}</textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nBox">N° Box <span class="text-danger">*</span></label>
-                                                <input type="text" name="nBox" id="nBox" placeholder="{!! $product->nBox !!}" class="form-control" value="{!! $product->nBox !!}">
-                                            </div>
-                                            <div class="form-group">
-                                                @if(isset($product->cover))
-                                                    <div class="col-md-3">
-                                                        <div class="row">
-                                                            <img src="{{ asset("storage/$product->cover") }}" alt="" class="img-responsive"> <br />
-                                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.product.remove.image', ['product' => $product->id, 'image' => substr($product->cover, 9)]) }}" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="row"></div>
-                                            <div class="form-group">
-                                                <label for="cover">Cover </label>
-                                                <input type="file" name="cover" id="cover" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                @foreach($images as $image)
-                                                    <div class="col-md-3">
-                                                        <div class="row">
-                                                            <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive"> <br />
-                                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.product.remove.thumb', ['src' => $image->src]) }}" class="btn btn-danger btn-sm btn-block">Remove?</a><br />
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                            <div class="row"></div>
-                                            <div class="form-group">
-                                                <label for="image">Images </label>
-                                                <input type="file" name="image[]" id="image" class="form-control" multiple>
-                                                <span class="text-warning">You can use ctr (cmd) to select multiple images</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="quantity">Quantity <span class="text-danger">*</span></label>
-                                                @if($productAttributes->isEmpty())
-                                                    <input
-                                                            type="text"
-                                                            name="quantity"
-                                                            id="quantity"
-                                                            placeholder="Quantity"
-                                                            class="form-control"
-                                                            value="{!! $product->quantity  !!}"
-                                                    >
-                                                @else
-                                                    <input type="hidden" name="quantity" value="{{ $qty }}">
-                                                    <input type="text" value="{{ $qty }}" class="form-control" disabled>
-                                                @endif
-                                                @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Quantity is disabled. Total quantity is calculated by the sum of all the combinations.</span> @endif
-                                            </div>
-                                            <div class="form-group">
-                                                @if($productAttributes->isEmpty())
-                                                    <label for="price">Price <span class="text-danger">*</span></label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">{{ config('cart.currency') }}</span>
-                                                        <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{!! $product->price !!}">
-                                                    </div>
-                                                @else
-                                                    <label for="price">Price <span class="text-danger">*</span></label>
-                                                    <input type="hidden" name="price" value="{!! $product->price !!}">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">{{ config('cart.currency') }}</span>
-                                                        <input type="text" id="price" placeholder="Price" class="form-control" value="{!! $product->price !!}" disabled>
-                                                    </div>
-                                                @endif
-                                                @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Price is disabled. Price is derived based on the combination.</span> @endif
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="buyprice">Buy Price <span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" name="buyprice" id="buyprice" placeholder="{!! $product->buyprice !!}" class="form-control" value="{!! $product->buyprice !!}">
+                                                    <a onclick="myFunction2('<?php  echo $blog->id; ?>','<?php echo substr($blog->cover,9);?>','{{ route('admin.blog.remove.image')}}')" 
+                                                    href="#" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                @include('admin.shared.status-select', ['status' => $product->status])
-                                            </div>
-                                            <!-- /.box-body -->
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h2>Categories</h2>
-                                            @include('admin.shared.categories', ['categories' => $categories, 'ids' => $product])
-                                           <div class="form-group">
-                                                @include('admin.shared.tag-select', ['tag' => $product->tag])
-                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="row"></div>
+                                    <div class="form-group">
+                                        <label for="cover">Cover </label>
+                                        <input type="file" name="cover" id="cover" class="form-control">
+                                    </div>
 
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="src_video1">Video 1 <span class="text-danger">*</span></label>
+                                        <input type="text" name="src_video1" id="src_video1" placeholder="Link video 1" class="form-control" value="{!! $blog->src_video1 !!}">
                                     </div>
-                                    <div class="row">
-                                        <div class="box-footer">
-                                            <div class="btn-group">
-                                                <a href="{{ route('admin.products.index') }}" class="btn btn-default btn-sm">Back</a>
-                                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+
+                                    <!--        
+                                    <div class="form-group" id="myId">
+
+                                        foreach($images as $image)
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    <img src="{ asset("storage/$image->src") }}" alt="" class="img-responsive"> <br />
+                                                    <a  href="#" onclick="myFunction('<php  echo $image->src; ?>','{ route('admin.blog.remove.thumb')}}')"
+                                                      class="btn btn-danger btn-sm btn-block">Remove?</a>
+                                                      
+                                                </div>
                                             </div>
-                                        </div>
+                                        endforeach
+
                                     </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane @if(request()->has('combination')) active @endif" id="combinations">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            @include('admin.products.create-attributes', compact('attributes'))
-                                        </div>
-                                        <div class="col-md-8">
-                                            @include('admin.products.attributes', compact('productAttributes'))
-                                        </div>
+                                            
+                                    <div class="row"></div>
+                                    <div class="form-group">
+                                        <label for="image">Images </label>
+                                        <input type="file" name="image[]" id="image" class="form-control" multiple>
+                                        <span class="text-warning">You can use ctr (cmd) to select multiple images</span>
                                     </div>
+                                -->
+
+
+                                   
+                                    <div class="form-group">
+                                        @include('admin.shared.status-select', ['status' => $blog->status])
+                                    </div>
+                                    <!-- /.box-body -->
                                 </div>
+                                
                             </div>
+                            <div class="row">
+                                <div class="box-footer">
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.blogs.index') }}" class="btn btn-default btn-sm">Back</a>
+                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    </div>
+                                </div>
+                            </div>                               
                         </div>
                     </div>
                 </div>
@@ -190,7 +130,67 @@
     </style>
 @endsection
 @section('js')
+<script  type="text/javascript" charset="utf-8" async defer>
+        
+        /*
+        * MyFunction
+        * Borra sin regar la pagina las imagenes del producto.
+        */
+         function myFunction(nombre, ruta) {
+            
+           if(confirm('Esta seguro?')){
+               $.ajax({
+                  url: ruta,
+                  type: "get", //send it through get method
+                  data: { 
+                    src: nombre
+                  },
+                  success: function(response) {
+                    console.log('Listo loca');
+                    $('#myId').load(location.href + ' #myId');
+                    //location.hash="myId";
+                    $('html, body').animate({
+                        scrollTop: $("#myId").offset().top
+                    }, 1000);
+                  },
+                  error: function(xhr) {
+                    console.log('Nonaz');
+                  }
+                });//End ajax
+           }
+           else{  }
+
+         }//End myFunction  
+
+         function myFunction2(idBlog,cover,ruta) {
+            
+            if(confirm('Esta seguro?')){
+                $.ajax({
+                   url: ruta,
+                   type: "get", //send it through get method
+                   data: { 
+                     blog: idBlog,
+                     image  : cover
+                   },
+                   success: function(response) {
+                     console.log('Listo loca');
+                     $('#myId2').load(location.href + ' #myId2');
+                     //location.hash="myId";
+                     $('html, body').animate({
+                         scrollTop: $("#myId2").offset().top
+                     }, 1000);
+                   },
+                   error: function(xhr) {
+                     console.log('Nonaz');
+                   }
+                 });//End ajax
+            }
+            else{  }
+ 
+          }//End myFunction            
+    </script>
     <script type="text/javascript">
+
         function backToInfo() {
             $('#tablist > li:first-child').addClass('active');
             $('#tablist > li:last-child').removeClass('active');
@@ -198,6 +198,7 @@
             $('#tabcontent > div:first-child').addClass('active');
             $('#tabcontent > div:last-child').removeClass('active');
         }
+
         $(document).ready(function () {
             var checkbox = $('input.attribute');
             $(checkbox).on('change', function () {

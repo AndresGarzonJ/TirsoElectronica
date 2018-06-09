@@ -8,7 +8,7 @@ class BlogNotFoundException extends NotFoundHttpException
 {
 
     /**
-     * ProductNotFoundException constructor.
+     * BlogNotFoundException constructor.
      */
     public function __construct()
     {
