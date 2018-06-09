@@ -43,4 +43,17 @@ class HomeController extends Controller
         return view('index');
     }
 
+    public function tienda(){
+
+        
+        $category2 = $this->categoryRepo->findCategoryById(2);
+        $category3 = $this->categoryRepo->findCategoryById(3);
+
+        $newests = $category2->products;
+        $features = $category3->products;
+
+        return view('front.tienda', compact('newests', 'features', 'category2', 'category3'));
+
+    }
+
 }

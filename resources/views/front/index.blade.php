@@ -138,25 +138,28 @@
                 </div>
             </div>
             <div class="row featuredContainer">
-                <!-- 
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 featured on-sale"> 
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale featured popular">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 popular on-sale featured">
-                -->
-                
+              
                 @if(!is_null($features))
                     @include('front.products.product-list', [
                         'products' => $features, 
                         'form_list' => "grid"
                         ])                        
         
-                    <div id="browse-all-btn"> 
-                        <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
-                        </a>
-                    </div>
+                   
                 @endif
+
+               
                 
             </div>
+            <div class="row">
+                <div id="browse-all-btn"> 
+                    <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
+                    </a>
+                </div> 
+            </div>
+           
+
+           
 
         </div>
     </div>
