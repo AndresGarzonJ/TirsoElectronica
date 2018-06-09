@@ -223,33 +223,7 @@
                                                 @endif
                                             </li>
                                         @endforeach
-                                        <!--
-                                        <li>
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}>
-                                                <i class="flaticon-dress-1"></i>
-                                                Women
-                                                <span>
-                                                    <i class="flaticon-next"></i>
-                                                </span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href={{asset("#")}}>Women Sub Title 1</a></li>
-                                                <li><a href={{asset("#")}}>Women Sub Title 2</a></li>
-                                                <li><a href={{asset("#")}}>Women Sub Title 3</a></li>
-                                                <li><a href={{asset("#")}}>Women Sub Title 4</a></li>
-                                                <li><a href={{asset("#")}}>Women Sub Title 5</a></li>
-                                            </ul>
-                                        </li>                    
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-polo"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-plug"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-necklace"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-screen"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-headphones"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-transport"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-fashion"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-dress"></i></li>
-                                        <li><a class="dropdown-toggle" data-toggle="dropdown" href={{asset("#")}}><i class="flaticon-technology"></i></li>
-                                        -->
+                                    
                                     </ul>
                                 </div>
 
@@ -263,11 +237,11 @@
                                             <li><a href={{route('home')}}>Inicio</a>
                                                 
                                             </li>
-                                            <li><a href={{route('home')}}>Tienda</a></li>
-                                            <li><a href={{route('home')}}>Videos/Tutoriales</a> <!-- BLOG -->
+                                            <li><a href={{route('tienda')}}>Tienda</a></li>
+                                            <li><a href={{route('tienda')}}>Videos/Tutoriales</a> <!-- BLOG -->
                                                
                                             </li>
-                                            <li><a href={{route('home')}}>Contacto</a>
+                                            <li><a href={{route('tienda')}}>Contacto</a>
                                               
                                             </li>
                                             
@@ -285,59 +259,17 @@
                                     <div class="mobile-menu">
                                         <nav id="dropdown">
                                             <ul>
-                                                <li class="active"><a href={{asset("#")}}>Home</a>
-                                                    <ul>
-                                                        <li><a href={{asset("index.html")}}>Home 1</a></li>
-                                                        <li><a href={{asset("index2.html")}}>Home 2</a></li>
-                                                        <li><a href={{asset("index3.html")}}>Home 3</a></li>
-                                                        <li><a href={{asset("index4.html")}}>Home 4</a></li>
-                                                    </ul>
+                                                <li><a href={{route('home')}}>Inicio</a>
+                                                    
                                                 </li>
-                                                <li><a href={{asset("about.html")}}>About</a></li>
-                                                <li><a href={{asset("#")}}>Blog</a>
-                                                    <ul>
-                                                        <li><a href={{asset("blog.html")}}>Blog</a></li>
-                                                        <li><a href={{asset("single-blog.html")}}>Single Blog</a></li>
-                                                        <li class="has-child-menu"><a href={{asset("#")}}>Demo</a>
-                                                            <ul class="thired-level">
-                                                                <li><a href={{asset("#")}}>Demo 1</a></li>
-                                                                <li><a href={{asset("#")}}>Demo 2</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                <li><a href={{route('tienda')}}>Tienda</a></li>
+                                                <li><a href={{route('tienda')}}>Videos/Tutoriales</a> <!-- BLOG -->
+                                                   
                                                 </li>
-                                                <li><a href={{asset("#")}}>Portfolio</a>
-                                                    <ul>
-                                                        <li><a href={{asset("portfolio1.html")}}>Portfolio 1</a></li>
-                                                        <li><a href={{asset("portfolio2.html")}}>Portfolio 2</a></li>
-                                                    </ul>
+                                                <li><a href={{route('tienda')}}>Contacto</a>
+                                                  
                                                 </li>
-                                                <li><a href={{asset("#")}}>Shop</a>
-                                                    <ul>
-                                                        <li><a href={{asset("shop1.html")}}>Shop 1</a></li>
-                                                        <li><a href={{asset("shop2.html")}}>Shop 2</a></li>
-                                                        <li><a href={{asset("shop3.html")}}>Shop 3</a></li>
-                                                        <li><a href={{asset("shop4.html")}}>Shop 4</a></li>
-                                                        <li><a href={{asset("shop5.html")}}>Shop 5</a></li>
-                                                        <li><a href={{asset("shop6.html")}}>Shop 6</a></li>
-                                                        <li><a href={{asset("shop7.html")}}>Shop 7</a></li>
-                                                        <li><a href={{asset("product-details1.html")}}>Shop Details 1</a></li>
-                                                        <li><a href={{asset("product-details2.html")}}>Shop Details 2</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href={{asset("#")}}>Pages</a>
-                                                    <ul>
-                                                        <li><a href={{asset("login-registration.html")}}>Login Registration</a></li>
-                                                        <li><a href={{asset("my-account.html")}}>My Account</a></li>
-                                                        <li><a href={{asset("cart.html")}}>Cart</a></li>
-                                                        <li><a href={{asset("wishlist.html")}}>Wishlist</a></li>
-                                                        <li><a href={{asset("check-out.html")}}>Check Out</a></li>
-                                                        <li><a href={{asset("order-history.html")}}>Order History</a></li>
-                                                        <li><a href={{asset("order-details.html")}}>Order Details</a></li>
-                                                        <li><a href={{asset("404.html")}}>404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href={{asset("contact.html")}}>Contact</a></li>
+                                                
                                             </ul>
                                         </nav>
                                     </div>

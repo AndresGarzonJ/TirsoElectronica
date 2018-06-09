@@ -1,26 +1,7 @@
 @if(!empty($products) && !collect($products)->isEmpty())
     @foreach($products as $product) 
 
-        <!-- 
-        debido a que en layout/front/product es necesario reutilizar esta vista 
-        inicialmente implementado en front/index.. para lograr este acople fue necesario 
-        agregar la variable form_list (tiene valores como grid o listCarousel)
-
-        por ende se usa el siguiente if 
-
-        -->
-
-        <!-- 
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 featured on-sale"> 
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale featured popular">
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 popular on-sale featured">
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-
-            ----------------
-            ESTOY ORGANIZANDO LA VISTA CATEGORIA
-            --------------------
-        -->
+     
         <div
         @if($form_list == "grid")         
          class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale"

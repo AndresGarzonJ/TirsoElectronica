@@ -152,6 +152,11 @@
 
             <!-- -----------
             <div class="row featuredContainer">
+<<<<<<< HEAD
+              
+                @if(!is_null($features))
+                    @include('front.products.product-list', [
+=======
                  
                 Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 featured on-sale"> 
                 Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale featured popular">
@@ -160,10 +165,28 @@
                 
                 if(!is_null($features))
                     include('front.products.product-list', [
+>>>>>>> d71ad9cd7da48158a5f3d793178a6a1cb30769b1
                         'products' => $features, 
                         'form_list' => "grid"
                         ])                        
         
+<<<<<<< HEAD
+                   
+                @endif
+
+               
+                
+            </div>
+            <div class="row">
+                <div id="browse-all-btn"> 
+                    <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
+                    </a>
+                </div> 
+            </div>
+           
+
+           
+=======
                     <div id="browse-all-btn"> 
                         <a class="btn btn-default browse-all-btn" href="{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
                         </a>
@@ -175,6 +198,7 @@
             --------------- -->
 
 
+>>>>>>> d71ad9cd7da48158a5f3d793178a6a1cb30769b1
 
         </div>
     </div>
