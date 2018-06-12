@@ -329,7 +329,18 @@
         <!-- Isotope js -->
         <script src={{asset("indexMetro/js/isotope.pkgd.min.js")}} type="text/javascript"></script>   
         
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6wxiOAAZ8z_EI6eHrWyQfwbb6z0A6c5Q"></script>
+        <script>
+                var map;
+                function initMap() {
+                  map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat:2.446954, lng:-76.598835},
+                    zoom: 16
+                  });
+                }
+              </script>
+              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6wxiOAAZ8z_EI6eHrWyQfwbb6z0A6c5Q&callback=initMap"
+              async defer></script>
+   
 
         <script src={{asset("indexMetro/js/main.js")}} type="text/javascript"></script>
         

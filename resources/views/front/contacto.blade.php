@@ -42,7 +42,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="google-map-area">
-                                        <div id="googleMap" style="width:100%; height:395px;"></div>
+                                        <div id="map" style="width:100%; height:395px;"></div>
                                     </div>
                                 </div>
                             </div>
