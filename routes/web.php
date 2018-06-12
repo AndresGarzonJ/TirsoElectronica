@@ -69,6 +69,7 @@ Route::namespace('Auth')->group(function () {
 Route::namespace('Front')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
+    Route::get('/contacto','HomeController@contacto')->name('contacto');
     Route::get('/homePrueba', 'HomeController@indexVista');
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');

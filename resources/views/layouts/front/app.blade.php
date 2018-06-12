@@ -266,7 +266,7 @@
                                                 <li><a href={{route('tienda')}}>Videos/Tutoriales</a> <!-- BLOG -->
                                                    
                                                 </li>
-                                                <li><a href={{route('tienda')}}>Contacto</a>
+                                                <li><a href={{route('contacto')}}>Contacto</a>
                                                   
                                                 </li>
                                                 
@@ -292,7 +292,7 @@
         @section('js')
         @show
         <!-- Preloader Start Here -->
-        <div id="preloader"></div>
+        <!--<div id="preloader"></div>-->
         <!-- Preloader End Here -->
         <!-- jquery-->
         <script src={{asset("indexMetro/js/vendor/jquery-2.2.4.min.js")}} type="text/javascript"></script>
@@ -320,7 +320,7 @@
         <!-- necesario para product.blade.php --><!-- Select2 Js -->
         <script src={{asset("indexMetro/js/select2.min.js")}} type="text/javascript"></script>
         <!-- Custom Js -->
-        <script src={{asset("indexMetro/js/main.js")}} type="text/javascript"></script>
+       
         <!-- ---------------------------------------------------------- -->
         <!-- necesario para index -->
         <!-- Nivo slider js -->
@@ -328,7 +328,10 @@
         <script src={{asset("indexMetro/lib/custom-slider/home.js")}} type="text/javascript"></script>
         <!-- Isotope js -->
         <script src={{asset("indexMetro/js/isotope.pkgd.min.js")}} type="text/javascript"></script>   
-            
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6wxiOAAZ8z_EI6eHrWyQfwbb6z0A6c5Q"></script>
+
+        <script src={{asset("indexMetro/js/main.js")}} type="text/javascript"></script>
         
         
     </div>    
