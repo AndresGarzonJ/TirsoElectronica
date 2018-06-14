@@ -44,19 +44,24 @@ class HomeController extends Controller
         $newests = $category2->products;
         $features = $category3->products;
 
-        $list = $this->blogRepo->listNBlogs();
+        $list = $this->blogRepo->listNBlogs(6);
         $blogs = $list->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
 
         return view('front.index', compact('newests', 'features', 'category2', 'category3','blogs'));
-    }
+    } 
 
-    public function indexVista()
+    /*public function indexVista()
     {
         return view('index');
-    }
+    }*/
 
+    /**
+     * vista principal de tienda
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function tienda(){
 
         
@@ -69,5 +74,33 @@ class HomeController extends Controller
         return view('front.tienda', compact('newests', 'features', 'category2', 'category3'));
 
     }
+
+    
+
+    /**
+     * Vista principal de blogs/tutoriales
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function vistaPrincipalBlogs(){
+
+        $list = $this->blogRepo->listBlogs();
+        $blogs = $list->map(function (Blog $item) {
+            return $this->transformBlog($item);
+        });
+
+        
+        $listRecentBlogs = $this->blogRepo->listNBlogs(4);
+        $recentBlogs = $listRecentBlogs->map(function (Blog $item) {
+            return $this->transformBlog($item);
+        });
+        
+        return view('front.tutoriales', [
+                'blogs' => $this->blogRepo->paginateArrayResults($blogs->all(), 6)
+            ],
+            compact('recentBlogs')
+        );
+
+    }  
 
 }

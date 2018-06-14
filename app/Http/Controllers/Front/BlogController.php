@@ -62,8 +62,13 @@ class BlogController extends Controller
     public function show(string $slug)
     {
         $blog = $this->blogRepo->findBlogBySlug(['slug' => $slug]);
+
+        $listRecentBlogs = $this->blogRepo->listNBlogs(4);
+        $recentBlogs = $listRecentBlogs->map(function (Blog $item) {
+            return $this->transformBlog($item);
+        });
         
-        return view('front.blogs.blog', compact('blog')
+        return view('front.blogs.blog', compact('blog','recentBlogs')
         ); 
     }
 }

@@ -143,62 +143,14 @@
                     @include('front.products.product-list', ['products' => $features, 'form_list' => "listCarousel"])
                 @endif
             </div>
+
             @if(!is_null($features)) 
                     <div id="browse-all-btn"> 
                         <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
                         </a>
                     </div>
-                @endif
+            @endif          
 
-            <!-- -----------
-            <div class="row featuredContainer">
-<<<<<<< HEAD
-              
-                @if(!is_null($features))
-                    @include('front.products.product-list', [
-=======
-                 
-                Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 featured on-sale"> 
-                Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale featured popular">
-                Comentario -- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 popular on-sale featured">
-                
-                
-                if(!is_null($features))
-                    include('front.products.product-list', [
->>>>>>> d71ad9cd7da48158a5f3d793178a6a1cb30769b1
-                        'products' => $features, 
-                        'form_list' => "grid"
-                        ])                        
-        
-<<<<<<< HEAD
-                   
-                @endif
-
-               
-                
-            </div>
-            <div class="row">
-                <div id="browse-all-btn"> 
-                    <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
-                    </a>
-                </div> 
-            </div>
-           
-
-           
-=======
-                    <div id="browse-all-btn"> 
-                        <a class="btn btn-default browse-all-btn" href="{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
-                        </a>
-                    </div>
-                endif
-                
-            </div>
-                
-            --------------- -->
-
-
->>>>>>> d71ad9cd7da48158a5f3d793178a6a1cb30769b1
 
         </div>
     </div>
@@ -366,14 +318,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="title-carousel">Latest Blog</h2>
-                </div>
+                    <div class="isotop-classes-tab myisotop1">
+                        <a class="current">Latest Blog </a>
+                        @if(!is_null($blogs))
+                            <a href={{route('tutoriales')}} >All</a>
+                        @endif
+                    </div>
+                </div>                    
+                
             </div>
             <div class="metro-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
 
                 @if(!is_null($blogs)) 
                     @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"])
                 @endif
+
                 <!--
                 <div class="blog-box">
                     <a href={asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>

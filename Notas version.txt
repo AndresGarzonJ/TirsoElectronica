@@ -31,7 +31,7 @@ article.blade.php
 
 category.blade.php
 
-
+ 
 
 Tarea
 * Al hacer click en la imagen del top-area ..Redireccionar
@@ -367,6 +367,28 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
 	Se habia creado la tabla blog_images ... el cual almacenaria las imagenes a usar en el blog.. pero se tomo la desicion de no usarla.. se buscara otra manera... de igual .. no se borro nada, solo se comento el codigo
 
 	En la tabla de blog se elimino los campos src_video2 src_video3 src_video4..solo se usara un solo link el cual sera una lista de reproduccion de youtube!
+
+------------------9 Junio 2018
+	
+	*Se acomodo la ruta de tutoriales
+	*Se adapto el modo de vista de las imagenes de productos... para mostrar la imagen cover y el video
+		Se tuvo que modificar un css product-details2-area ... (layouts/front/blog)
+
+17. Tareas
+	
+		*Acomodar vista tienda -- esta hereda de index (reuitliza)
+		*Para el numero de blogs que se muestran .. hay que tener en cuenta lo siguiente (ej: HomeController)
+			return view('front.tutoriales', [
+                'blogs' => $this->blogRepo->paginateArrayResults($blogs->all(), 6)
+            ]);
+        *Tamaño de las imagenes -- Alto igual
+        *Organizar tutoriales -- en la carpeta que es -- blogs
+        *Descripcion corta de blogs - no esta limitada
+        *nombre de blogs o tutoriales en el codigo
+        *Controlador de estilos /anuncios / del index 
+        *Descripcion corta de 112 (tres renglones) 150 (cuatro renglones)
+        *Guardar datos sin espacios vacios
+        *Barra de busqueda -- busqueda global  
 
 
 
