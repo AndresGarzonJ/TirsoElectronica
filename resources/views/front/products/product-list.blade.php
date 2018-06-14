@@ -12,18 +12,22 @@
          >
             <div class="product-box1">
                 <ul class="product-social">
+                    
                     <li>
-                        <form action="{{ route('cart.store') }}" class="form-inline" method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="quantity" value="1" />
-                            <input type="hidden" name="product" value="{{ $product->id }}">
-                            <button id="add-to-cart-btn" type="submit"  data-toggle="modal" data-target="#cart-modal"> 
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                <!-- Add to Cart -->
-                            </button>
-                        </form>                                            
+                        
+                                <form action="{{ route('cart.store') }}" class="" method="post">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="quantity" value="1" />
+                                        <input type="hidden" name="product" value="{{ $product->id }}">
+                                        <button id="add-to-cart-btn" type="submit"  data-toggle="modal" data-target="#cart-modal"> 
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            <!-- Add to Cart -->
+                                        </button>
+                                    </form> 
+                       
+                                                                   
                     </li>
-                    <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                    <li><a href={{route('cart.store')}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                     <li>
                         <!-- Veista rapida -Ventana modal - Creo que relentiza la pag-->
                         <!-- le quite un { -->

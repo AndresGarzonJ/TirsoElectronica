@@ -34,17 +34,38 @@
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 {{ $product->tag }}">
                         <div class="product-box1">
                             <ul class="product-social">
-                                <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                                    <li>
+                                            <form action="{{ route('cart.store') }}" class="form-inline" method="post">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="quantity" value="1" />
+                                                <input type="hidden" name="product" value="{{ $product->id }}">
+                                                <button id="add-to-cart-btn" type="submit"  data-toggle="modal" data-target="#cart-modal"> 
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    <!-- Add to Cart -->
+                                                </button>
+                                            </form>                                            
+                                    </li>
                                 <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                
                             </ul>
                             <div class="product-img-holder">
-                                <a href="#"><img src="img/product/15.jpg" alt="product"></a>
-                            </div>
-                            <div class="product-content-holder">
-                            <h3><a href="#">{{$product->name}}</a></h3>
-                                <span><span>$40.00</span>$25.00</span>
-                            </div>
+                                  
+                
+                                    @if ($product->tag != "Deshabilitado")
+                                        <div class="hot-sale"><span>{{ $product->tag }}</span></div>
+                                    @endif
+                                    
+                                    @if(isset($product->cover))
+                                        <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-bordered img-responsive">
+                                    @else
+                                        <!-- <img src="https://placehold.it/263x330" alt="product->name" class="img-bordered img-responsive" /> -->
+                                        <img src={{asset("indexMetro/img/product/1.jpg")}} alt="{{ $product->name }}" class="img-bordered img-responsive" />
+                                    @endif                
+                                </div>
+                                <div class="product-content-holder">
+                                        <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
+                                        <span><span>$40.00</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
+                                </div>
                         </div>
                 </div> 
                      
@@ -60,4 +81,3 @@
 
     </div>
 </div>
-<!-- Product 2 Area End Here -->

@@ -145,12 +145,30 @@
             </div>
 
             @if(!is_null($features)) 
+            <!-- 
                     <div id="browse-all-btn"> 
-                        <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
+                        <a class="btn btn-default browse-all-btn" href="{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
                         </a>
                     </div>
-            @endif          
+            endif
+            -->          
+                <div class="row">
+                    <div class="col-lg-5">
+                    </div>
+                    <div class="col-lg-4">
+                            <div class="footer-box"> <!-- -->
+                                <ul class="tag-list">
+                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href="{{route('front.category.slug', $category3->slug)}}">Ver mas productos</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
+
+                
+
+    
 
         </div>
     </div>

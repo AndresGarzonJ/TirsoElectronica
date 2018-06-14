@@ -66,7 +66,8 @@ class HomeController extends Controller
 
         
         $category2 = $this->categoryRepo->findCategoryById(2);
-        $category3 = $this->categoryRepo->findCategoryById(3);
+        $category3 = $this->categoryRepo->findCategoryById(3); // Solo devuelvo los de categoria 3, por eso es que 
+                                                                // solo llegan 5.
 
         $newests = $category2->products;
         $features = $category3->products;
@@ -74,8 +75,6 @@ class HomeController extends Controller
         return view('front.tienda', compact('newests', 'features', 'category2', 'category3'));
 
     }
-
-    
 
     /**
      * Vista principal de blogs/tutoriales
@@ -102,5 +101,12 @@ class HomeController extends Controller
         );
 
     }  
+
+    public function contacto(){
+
+
+        return view('front.contacto');
+    }
+
 
 }

@@ -370,8 +370,8 @@
         var initialize = function() {
             var mapOptions = {
                 zoom: 15,
-                scrollwheel: false,
-                center: new google.maps.LatLng(-37.81618, 144.95692)
+                scrollwheel: true,
+                center: new google.maps.LatLng(2.446954, -76.598835)
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
             var marker = new google.maps.Marker({

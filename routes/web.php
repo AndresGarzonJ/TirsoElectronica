@@ -71,6 +71,8 @@ Route::namespace('Front')->group(function () {
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
     Route::get('/tutoriales', 'HomeController@vistaPrincipalBlogs')->name('tutoriales');
     //Route::get('/homePrueba', 'HomeController@indexVista');
+    Route::get('/contacto','HomeController@contacto')->name('contacto');
+
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');
         Route::get('checkout', 'CheckoutController@index')->name('checkout.index');
