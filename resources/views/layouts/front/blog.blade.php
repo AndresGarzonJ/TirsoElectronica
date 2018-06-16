@@ -46,11 +46,18 @@
                             </div>
                             @if( $blog->src_video1 != "")
                                 <div class="tab-pane fade" id="related2">
+                                        <div class="embed-container">
+                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                            <!-- <iframe width="560" height="315" src="//www.youtube.com/embed/watch?v=3jTjBt0Enyw&list=LL-BcnJ2SEv2aO0BEWVbrrAg" frameborder="0" allowfullscreen></iframe>
+                                            -->
+                                        </div>
+                                        <!-- 
                                         <a href="#" class="zoom ex1">
                                             <img id="main-image" class="img-responsive" 
-                                             src="{{ asset("storage/$blog->cover") }}?w=400"
-                                             alt="{{ $blog->name_blog }}">
+                                             src="{ asset("storage/$blog->cover") }}?w=400"
+                                             alt="{ $blog->name_blog }}">
                                         </a>
+                                    -->
                                 </div>
                             @endif                        
                         </div>
@@ -70,16 +77,14 @@
 
                                 </a>
                             </li>
-                            @if( $blog->src_video1 != "")
-                                                               
+                            @if( isset($blog->src_video1))
                                 <li>
                                     <a href="#related2" data-toggle="tab" aria-expanded="false">
-                                    <img class="img-responsive"
-                                         src="{{ asset("storage/$blog->cover") }}"
+                                        <img class="img-responsive"
+                                         src="{{ asset("front/images/videoYoutube.jpg") }}"
                                          alt="{{ $blog->name_blog }}" />
                                     </a>
                                 </li>
-                            
                             @endif                       
                         </ul>
                     </div> 
@@ -110,6 +115,8 @@
                     {!! $blog->description !!}
                 </div>
 </div>
+              
+
                 <div class="single-blog-details-tags">
                     <h3>Did You Like This Post? Share it :</h3>
                     <ul class="single-blog-social">
@@ -199,7 +206,7 @@
 @section('css')
     <style>
 
-
+    
 
     .product-details2-area-personalizada .inner-product-details-left .tab-content {
       border: 1px solid #333333;
@@ -210,6 +217,21 @@
     }
     .product-details2-area-personalizada .inner-product-details-left .tab-content a img {
       width: 100%;
+    }
+
+
+    .embed-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+    }
+    .embed-container iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
     
     .product-details2-area-personalizada .inner-product-details-left ul li {
@@ -226,6 +248,17 @@
     .product-details2-area-personalizada .inner-product-details-left ul li a img:hover {
       opacity: 1;
     }
+
+
+    .product-details2-area-personalizada .inner-product-details-left ul li a iframe {
+      width: 100%;
+      opacity: 0.5;
+    }
+    .product-details2-area-personalizada .inner-product-details-left ul li a iframe:hover {
+      opacity: 1;
+    }
+
+
     .product-details2-area-personalizada .inner-product-details-left ul li:last-child {
       margin: 16px 0 0 0;
     }

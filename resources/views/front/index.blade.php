@@ -165,11 +165,6 @@
                 </div>
             @endif
 
-
-                
-
-    
-
         </div>
     </div>
     <!-- Product Area End Here -->
@@ -338,9 +333,11 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="isotop-classes-tab myisotop1">
                         <a class="current">Latest Blog </a>
-                        @if(!is_null($blogs))
-                            <a href={{route('tutoriales')}} >All</a>
-                        @endif
+                        <!--
+                        if(!is_null($blogs))
+                            <a href={route('tutoriales')}} >All</a>
+                        endif
+                    -->
                     </div>
                 </div>                    
                 
@@ -350,6 +347,8 @@
                 @if(!is_null($blogs)) 
                     @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"])
                 @endif
+
+                
 
                 <!--
                 <div class="blog-box">
@@ -372,6 +371,19 @@
                 -->
                                
             </div>
+            @if(!is_null($blogs))                    
+                <div class="row">
+                    <div class="col-lg-5">
+                    </div>
+                    <div class="col-lg-4">
+                            <div class="footer-box"> <!-- -->
+                                <ul class="tag-list">
+                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href={{route('tutoriales')}}>Ver mas tutoriales</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <!-- Blog Area End Here -->

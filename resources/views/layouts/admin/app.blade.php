@@ -27,7 +27,8 @@
     <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
     <!-- jQueryUI 1.12.1 -->
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('//cdn.ckeditor.com/4.8.0/standard/ckeditor.js') }}"></script>
+    <!-- <script src="{ asset('//cdn.ckeditor.com/4.8.0/standard/ckeditor.js') }}"></script> -->
+    <script src="{{ asset('//cdn.ckeditor.com/4.9.2/full/ckeditor.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

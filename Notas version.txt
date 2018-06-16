@@ -392,3 +392,6 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
 
 
 
+https://ckeditor.com/ckeditor-4/download/
+https://laracasts.com/discuss/channels/general-discussion/ckeditor-image-upload-with-laravel
+http://localhost:8000/blogs/nombre-blog-8
