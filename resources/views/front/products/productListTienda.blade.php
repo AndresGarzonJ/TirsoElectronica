@@ -62,10 +62,10 @@
                                         <img src={{asset("indexMetro/img/product/1.jpg")}} alt="{{ $product->name }}" class="img-bordered img-responsive" />
                                     @endif                
                                 </div>
-                            <div class="product-content-holder">
-                            <h3><a href="#">{{$product->name}}</a></h3>
-                                <span><span>$40.00</span>$25.00</span>
-                            </div>
+                                <div class="product-content-holder">
+                                        <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
+                                        <span><span>$40.00</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
+                                </div>
                         </div>
                 </div> 
                      
