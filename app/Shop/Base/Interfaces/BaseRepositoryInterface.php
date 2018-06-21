@@ -10,6 +10,9 @@ interface BaseRepositoryInterface
 
     public function all($columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc');
 
+    //Busqueda selectiva teniendo en cuenta el valor de status
+    public function all_with_status(int $status = 1, $columns = array('*'), string $orderBy = 'id', string $sortBy = 'asc');
+
     public function find(int $id);
 
     public function findOneOrFail(int $id);

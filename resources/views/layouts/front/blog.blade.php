@@ -44,20 +44,11 @@
                                     @endif                                
                                 </a>
                             </div>
-                            @if( $blog->src_video1 != "")
+                            @if( !empty($blog->src_video1))
                                 <div class="tab-pane fade" id="related2">
                                         <div class="embed-container">
-                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                            <!-- <iframe width="560" height="315" src="//www.youtube.com/embed/watch?v=3jTjBt0Enyw&list=LL-BcnJ2SEv2aO0BEWVbrrAg" frameborder="0" allowfullscreen></iframe>
-                                            -->
-                                        </div>
-                                        <!-- 
-                                        <a href="#" class="zoom ex1">
-                                            <img id="main-image" class="img-responsive" 
-                                             src="{ asset("storage/$blog->cover") }}?w=400"
-                                             alt="{ $blog->name_blog }}">
-                                        </a>
-                                    -->
+                                            <iframe width="560" height="315" src="{{ $blog->src_video1 }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>                                            
+                                        </div>                                        
                                 </div>
                             @endif                        
                         </div>
@@ -77,7 +68,7 @@
 
                                 </a>
                             </li>
-                            @if( isset($blog->src_video1))
+                            @if( !empty($blog->src_video1))
                                 <li>
                                     <a href="#related2" data-toggle="tab" aria-expanded="false">
                                         <img class="img-responsive"
@@ -110,7 +101,7 @@
                         <li>Comments (05)</li>
                     </ul>
 
-                    {{ $blog->src_video1}}<br>
+                    <br>
 
                     {!! $blog->description !!}
                 </div>

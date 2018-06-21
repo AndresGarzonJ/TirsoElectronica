@@ -44,7 +44,7 @@ class HomeController extends Controller
         $newests = $category2->products;
         $features = $category3->products;
 
-        $list = $this->blogRepo->listNBlogs(6);
+        $list = $this->blogRepo->listNBlogs(1,6);
         $blogs = $list->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
@@ -83,13 +83,13 @@ class HomeController extends Controller
      */
     public function vistaPrincipalBlogs(){
 
-        $list = $this->blogRepo->listBlogs();
+        $list = $this->blogRepo->listBlogs_with_status();
         $blogs = $list->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
 
         
-        $listRecentBlogs = $this->blogRepo->listNBlogs(4);
+        $listRecentBlogs = $this->blogRepo->listNBlogs(1,4);
         $recentBlogs = $listRecentBlogs->map(function (Blog $item) {
             return $this->transformBlog($item);
         });

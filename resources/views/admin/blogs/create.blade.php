@@ -20,7 +20,7 @@
                                 <input type="text" name="name_creator" id="name_creator" placeholder="Creator" class="form-control" value="{{ old('name_creator') }}">
                             </div>
                             <div class="form-group">
-                                <label for="description_short">Description short</label>
+                                <label for="description_short">Description short - Max 150</label>
                                 <textarea class="form-control ckeditor" name="description_short" id="description_short" rows="5" placeholder="Description">{{ old('description_short') }}</textarea>
                             </div>
                             <div class="form-group">
@@ -79,4 +79,23 @@
         <!-- /.box -->
     </section>
     <!-- /.content -->
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    CKEDITOR.plugins.addExternal( 'charcount', '/js/ckeditor/cke-charcount-plugin.js', '' );
+    
+    CKEDITOR.replace('description_short', {
+     extraPlugins: 'charcount', 
+     maxLength: 151, 
+     toolbar_CharCount: ['CharCount']
+    });
+
+    CKEDITOR.replace('description', {
+     extraPlugins: 'charcount', 
+     maxLength: 0,
+     toolbar_CharCount: ['CharCount']
+    });
+
+</script>
 @endsection

@@ -389,9 +389,28 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
         *Descripcion corta de 112 (tres renglones) 150 (cuatro renglones)
         *Guardar datos sin espacios vacios
         *Barra de busqueda -- busqueda global  
+        *Admin/Blogs -> Borrar sin recargar la pagina
+        *
 
+21 de Junio - 20108
+	Agregue contador de caracteres para description_short
+		https://github.com/PeteAUK/cke-charcount/tree/master/plugins/charcount
 
+		EL plugin se agrego a public/js/charcount/cke-charcount-plugin.js
 
-https://ckeditor.com/ckeditor-4/download/
-https://laracasts.com/discuss/channels/general-discussion/ckeditor-image-upload-with-laravel
-http://localhost:8000/blogs/nombre-blog-8
+		https://ckeditor.com/ckeditor-4/download/
+		https://laracasts.com/discuss/channels/general-discussion/ckeditor-image-upload-with-laravel
+		https://www.youtube.com/watch?v=o_mgKof9TOQ
+
+	Link Lista de reproduccion/Video del blog
+		Para la lista de reproduccion solo es necesario el link de compartir..similar a este
+			https://www.youtube.com/playlist?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0
+
+		Si es solo un video.. basta con copiar el link del video 
+			https://www.youtube.com/watch?v=hELbAXV5p5U
+
+		internamente el programa le añade al link la palabra  
+			embed/videoseries 	para listas 
+			embed/				para un solo video
+
+	La variable status de blog ya habilita y deshabilita la vista de ellos /para el publico en general

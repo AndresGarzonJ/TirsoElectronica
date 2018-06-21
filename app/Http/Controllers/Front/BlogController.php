@@ -34,11 +34,11 @@ class BlogController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */ 
+     */  
     
        public function search()
     {
-        $list = $this->blogRepo->listBlogs();
+        $list = $this->blogRepo->listBlogs_with_status();
 
         if (request()->has('q') && request()->input('q') != '') {
             $list = $this->blogRepo->searchBlog(request()->input('q'));
@@ -63,12 +63,20 @@ class BlogController extends Controller
     {
         $blog = $this->blogRepo->findBlogBySlug(['slug' => $slug]);
 
-        $listRecentBlogs = $this->blogRepo->listNBlogs(4);
+        $listRecentBlogs = $this->blogRepo->listNBlogs(1,4);
         $recentBlogs = $listRecentBlogs->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
+
+        //Mostrar o no .. segun la variable status
+        if ($blog->status == 1) {
+            return view('front.blogs.blog', compact('blog','recentBlogs'));             
+        }else{
+            return view('layouts.errors.404');
+        }
+
         
-        return view('front.blogs.blog', compact('blog','recentBlogs')
-        ); 
+        
     }
 }
+ 

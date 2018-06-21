@@ -367,7 +367,7 @@
                         </ul>
                         <p>Simply dummy text of the printing and typety esetting industryr drem Ipsum has been thety standard dummy since.</p>
                     </div>
-                </div>
+                </div> 
                 -->
                                
             </div>
