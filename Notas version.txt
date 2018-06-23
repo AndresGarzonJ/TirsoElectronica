@@ -418,3 +418,4 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
 
 ------------------23 de Junio - 2018
 	
+tets
