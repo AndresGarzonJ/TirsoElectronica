@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    <!-- Main content -->
+    <!-- Main content --> 
     <section class="content">
     @include('layouts.errors-and-messages')
     <!-- Default box -->
@@ -12,7 +12,7 @@
                     @include('layouts.search', ['route' => route('admin.blogs.index')])
                     @include('admin.shared.blogs')
                     {{ $blogs->links() }}
-                </div>
+                </div> 
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->

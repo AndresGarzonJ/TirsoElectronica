@@ -418,4 +418,12 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
 
 ------------------23 de Junio - 2018
 	
-tets
+	javascript con Laravel
+		https://laravel.io/forum/12-14-2015-using-laravel-route-in-javascript
+
+	borrar un blog sin recargar la pagina
+		1. En web.php ..crear la ruta porque se va a enviar el id usando get
+		2. En Admin/BlogController ..capturar el id del request y comentar el return
+		3. En la vista de admin/shared/blogs cambiar parametros del formulario, agregar 
+				la funcion de Javascript 
+	

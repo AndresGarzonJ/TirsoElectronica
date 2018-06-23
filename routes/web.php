@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
             });
             Route::namespace('Blogs')->group(function () {
                 Route::resource('blogs', 'BlogController'); 
+                Route::get('delete-blog', 'BlogController@destroy')->name('blog.delete');
                 Route::get('remove-image-blog', 'BlogController@removeImage')->name('blog.remove.image');
                 Route::get('remove-image-thumb', 'BlogController@removeThumbnail')->name('blog.remove.thumb');
             });
