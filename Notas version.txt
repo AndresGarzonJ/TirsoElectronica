@@ -392,7 +392,8 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
         *Admin/Blogs -> Borrar sin recargar la pagina
         *
 
-21 de Junio - 20108
+
+------------------21 de Junio - 2018
 	Agregue contador de caracteres para description_short
 		https://github.com/PeteAUK/cke-charcount/tree/master/plugins/charcount
 
@@ -414,3 +415,6 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
 			embed/				para un solo video
 
 	La variable status de blog ya habilita y deshabilita la vista de ellos /para el publico en general
+
+------------------23 de Junio - 2018
+	

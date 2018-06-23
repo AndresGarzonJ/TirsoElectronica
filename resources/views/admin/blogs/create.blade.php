@@ -20,7 +20,7 @@
                                 <input type="text" name="name_creator" id="name_creator" placeholder="Creator" class="form-control" value="{{ old('name_creator') }}">
                             </div>
                             <div class="form-group">
-                                <label for="description_short">Description short - Max 150</label>
+                                <label for="description_short">Description short - Max 150 Characters</label>
                                 <textarea class="form-control ckeditor" name="description_short" id="description_short" rows="5" placeholder="Description">{{ old('description_short') }}</textarea>
                             </div>
                             <div class="form-group">
@@ -40,7 +40,18 @@
                             -->
                             <div class="form-group">
                                 <label for="src_video1">Video 1 <span class="text-danger">*</span></label>
-                                <input type="text" name="src_video1" id="src_video1" placeholder="Link video 1" class="form-control" value="{{ old('src_video1') }}">
+                                <input type="text" name="src_video1" id="src_video1" placeholder="https://www.youtube.com/playlist?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0" class="form-control" value="{{ old('src_video1') }}">
+
+                                <br>
+                                Ej: Lista de Reproducción
+                                <ul>                                            
+                                    <li>https://www.youtube.com/playlist?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0</li>
+                                </ul>
+
+                                Ej: Solo un video
+                                <ul>
+                                    <li>https://www.youtube.com/watch?v=zD4PFBt3cIg</li>
+                                </ul>
                             </div>
                             <!--
                             <div class="form-group">
