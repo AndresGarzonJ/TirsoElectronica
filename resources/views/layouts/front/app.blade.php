@@ -241,7 +241,7 @@
                                             <li><a href={{route('tienda')}}>Videos/Tutoriales</a> <!-- BLOG -->
                                                
                                             </li>
-                                            <li><a href={{route('tienda')}}>Contacto</a>
+                                            <li><a href={{route('contacto')}}>Contacto</a>
                                               
                                             </li>
                                             
@@ -263,7 +263,7 @@
                                                     
                                                 </li>
                                                 <li><a href={{route('tienda')}}>Tienda</a></li>
-                                                <li><a href={{route('tienda')}}>Videos/Tutoriales</a> <!-- BLOG -->
+                                                <li><a href={{route('contacto')}}>Videos/Tutoriales</a> <!-- BLOG -->
                                                    
                                                 </li>
                                                 <li><a href={{route('contacto')}}>Contacto</a>
