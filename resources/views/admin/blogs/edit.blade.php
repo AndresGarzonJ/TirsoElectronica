@@ -5,7 +5,7 @@
     <section class="content">
         @include('layouts.errors-and-messages')
         <div class="box">
-            <form action="{{ route('admin.blogs.update', $blog->id) }}" method="post" class="form" enctype="multipart/form-data">
+            <form name=form_edit action="{{ route('admin.blogs.update', $blog->id) }}" method="post" class="form" enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="row">
                         {{ csrf_field() }}
@@ -23,8 +23,15 @@
                                         <input type="text" name="name_creator" id="name_creator" placeholder="Creator" class="form-control" value="{!! $blog->name_creator !!}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description_short">Description short</label>
-                                        <textarea class="form-control ckeditor" name="description_short" id="description_short" rows="5" placeholder="Description">{!! $blog->description_short  !!}</textarea>
+                                        <label for="description_short">Description short - Max 150 Characters</label>
+                                        <textarea 
+                                        class="form-control ckeditor" 
+                                        name="description_short" id="description_short" 
+                                        rows="5" 
+                                        placeholder="Description"
+                                        >
+                                            {!! $blog->description_short  !!}
+                                        </textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description </label>
@@ -50,7 +57,18 @@
 
                                     <div class="form-group">
                                         <label for="src_video1">Video 1 <span class="text-danger">*</span></label>
-                                        <input type="text" name="src_video1" id="src_video1" placeholder="Link video 1" class="form-control" value="{!! $blog->src_video1 !!}">
+                                        <input type="text" name="src_video1" id="src_video1" placeholder="https://www.youtube.com/playlist?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0" class="form-control" value="{!! $blog->src_video1 !!}">
+                                        <br>
+                                        Ej: Lista de Reproducción
+                                        <ul>                                            
+                                            <li>https://www.youtube.com/playlist?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0</li>
+                                        </ul>
+
+                                        Ej: Solo un video
+                                        <ul>
+                                            <li>https://www.youtube.com/watch?v=zD4PFBt3cIg</li>
+                                        </ul>
+
                                     </div>
 
                                     <!--        
@@ -130,6 +148,22 @@
     </style>
 @endsection
 @section('js')
+<script type="text/javascript">
+    CKEDITOR.plugins.addExternal( 'charcount', '/js/ckeditor/cke-charcount-plugin.js', '' );
+    
+    CKEDITOR.replace('description_short', {
+     extraPlugins: 'charcount', 
+     maxLength: 151, 
+     toolbar_CharCount: ['CharCount']
+    });
+
+    CKEDITOR.replace('description', {
+     extraPlugins: 'charcount', 
+     maxLength: 0,
+     toolbar_CharCount: ['CharCount']
+    });
+
+</script>
 <script  type="text/javascript" charset="utf-8" async defer>
         
         /*

@@ -1,57 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.front.app') 
+ 
+@section('og')  
+    <meta property="og:type" content="404"/>
+    <meta property="og:title" content=">Service Unavailable"/>
+    <meta property="og:description" content=">Service Unavailable"/>
+    
+@endsection 
 
-    <title>Service Unavailable</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-    </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    <div class="content">
-        <div class="title error404">
-            Ooops, we cannot find what you are looking for. Please try again.
+@section('content')
+    <div class="page-error-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-error-top">
+                        <span>404</span>
+                        <p>Sorry Page Was Not Found</p>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-error-bottom">
+                        <p>The page you are looking is not available or has been removed.</p>
+                        <p>Try going to Home Page by using the button below.</p>
+                        <a href="{{ route('home') }}" class="btn btn-error">Go To Home Page</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <a href="{{ route('home') }}" class="btn btn-default">Go back</a>
     </div>
-</div>
-</body>
-</html>
+
+@endsection

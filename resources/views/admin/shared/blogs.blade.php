@@ -6,7 +6,7 @@
                 <td>Name</td>
                 <td>Creator</td>                
                 <td>Status</td>
-                <td>Actions</td>
+                <td>Actions</td> 
             </tr>
         </thead>
         <tbody>

@@ -41,7 +41,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return $this->find($id)->update($attributes);
     }
-
+ 
     /**
      * @param array $columns
      * @param string $orderBy
@@ -52,6 +52,19 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return $this->model->orderBy($orderBy, $sortBy)->get($columns);
     }
+
+    //Busqueda selectiva teniendo en cuenta el valor de status
+    /**
+     * @param int $status
+     * @param array $columns
+     * @param string $orderBy
+     * @param string $sortBy
+     * @return mixed
+     */
+    public function all_with_status(int $status = 1, $columns = array('*'), string $orderBy = 'id', string $sortBy = 'asc')
+    {
+        return $this->model->orderBy($orderBy, $sortBy)->get($columns)->where('status', $status);
+    } 
 
     /**
      * @param int $id

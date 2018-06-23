@@ -143,29 +143,27 @@
                     @include('front.products.product-list', ['products' => $features, 'form_list' => "listCarousel"])
                 @endif
             </div>
+
             @if(!is_null($features)) 
-
-            <div class="row">
-                <div class="col-lg-5">
-
-                </div>
-                <div class="col-lg-4">
-                        <div class="footer-box"> <!-- -->
-                
-                            <ul class="tag-list">
-                               <li><a class="btn-services-shop-now" style="text-align:center!;"  href="{{route('front.category.slug', $category3->slug)}}">Ver mas productos</a></li> 
-                             
-                            </ul>
-                        
-                        
+            <!-- 
+                    <div id="browse-all-btn"> 
+                        <a class="btn btn-default browse-all-btn" href="{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
+                        </a>
+                    </div>
+            endif
+            -->          
+                <div class="row">
+                    <div class="col-lg-5">
+                    </div>
+                    <div class="col-lg-4">
+                            <div class="footer-box"> <!-- -->
+                                <ul class="tag-list">
+                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href="{{route('front.category.slug', $category3->slug)}}">Ver mas productos</a></li>
+                                </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-          
-             
-                @endif
-
-    
+            @endif
 
         </div>
     </div>
@@ -333,14 +331,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="title-carousel">Latest Blog</h2>
-                </div>
+                    <div class="isotop-classes-tab myisotop1">
+                        <a class="current">Latest Blog </a>
+                        <!--
+                        if(!is_null($blogs))
+                            <a href={route('tutoriales')}} >All</a>
+                        endif
+                    -->
+                    </div>
+                </div>                    
+                
             </div>
             <div class="metro-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
 
                 @if(!is_null($blogs)) 
                     @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"])
                 @endif
+
+                
+
                 <!--
                 <div class="blog-box">
                     <a href={asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
@@ -358,10 +367,23 @@
                         </ul>
                         <p>Simply dummy text of the printing and typety esetting industryr drem Ipsum has been thety standard dummy since.</p>
                     </div>
-                </div>
+                </div> 
                 -->
                                
             </div>
+            @if(!is_null($blogs))                    
+                <div class="row">
+                    <div class="col-lg-5">
+                    </div>
+                    <div class="col-lg-4">
+                            <div class="footer-box"> <!-- -->
+                                <ul class="tag-list">
+                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href={{route('tutoriales')}}>Ver mas tutoriales</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <!-- Blog Area End Here -->

@@ -13,7 +13,7 @@
 	    '-11-' => '-Noviembre-',
 	    '-12-' => '-Diciembre-'
 	];	
-	
+	 
 	$date_split = substr($blog->updated_at, 0, -9);
 	$date = str_replace(array_keys($months), $months, $date_split);
 	$date_array = explode("-", $date);
@@ -25,123 +25,89 @@
     <div class="container">
         <div class="row">
         	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <div class="sidebar hidden-after-tab">
-                    <!-- Barra busqueda ---------------------
-                    <h2 class="title-sidebar">Search</h2>
-                    <div class="sidebar-search-area sidebar-section-margin">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control" placeholder="Search Here . . .">
-                            <span class="input-group-addon">
-			                        <button type="submit">
-			                            <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                            </span>
-                        </div>
-                    </div>
-                    --------------------- -->
-                    <h2 class="title-sidebar">RECENT POSTS</h2>
-                    <div class="recent-posts sidebar-section-margin">
-                        <div class="media">
-                            <a href="#" class="pull-left">
-                                <img alt="Media Object" src="img/sidebar/blog1.jpg" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading"><a href="#">Blog Title Here</a></h3>
-                                <p>7th June, 2014</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a href="#" class="pull-left">
-                                <img alt="Media Object" src="img/sidebar/blog2.jpg" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading"><a href="#">Blog Title Here</a></h3>
-                                <p>7th June, 2014</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a href="#" class="pull-left">
-                                <img alt="Media Object" src="img/sidebar/blog3.jpg" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading"><a href="#">Blog Title Here</a></h3>
-                                <p>7th June, 2014</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a href="#" class="pull-left">
-                                <img alt="Media Object" src="img/sidebar/blog4.jpg" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading"><a href="#">Blog Title Here</a></h3>
-                                <p>7th June, 2014</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 class="title-sidebar">Archives</h2>
-                    <div class="archives sidebar-section-margin">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>January 2016</a></li>
-                            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>December 2015</a></li>
-                            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>November 2015</a></li>
-                            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>March 2015</a></li>
-                            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>January 2015</a></li>
-                        </ul>
-                    </div>
-                    <h2 class="title-sidebar">Product Tags</h2>
-                    <div class="product-tags">
-                        <ul>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Glamour</a></li>
-                            <li><a href="#">Shoes</a></li>
-                            <li><a href="#">Dress</a></li>
-                            <li><a href="#">Kid’s</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Mobile</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @include('layouts.front.blog-side-right', ['blogs' => $recentBlogs])
             </div>
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+            <!-- -------------- Se personalizo el css product-details2-area --------- -->
+                <div class="product-details2-area-personalizada">
+                    <div class="inner-product-details-left">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="related1">
+                                <a href="#" class="zoom ex1">
+                                    @if(isset($blog->cover))
+                                        <img  id="main-image" class="img-responsive"
+                                             src="{{ asset("storage/$blog->cover") }}?w=400"
+                                             alt="{{ $blog->name_blog }}">
+                                    @else
+                                        <img  id="main-image" class="img-responsive" src="https://placehold.it/300x300"
+                                             alt="{{ $blog->name_blog }}">
+                                    @endif                                
+                                </a>
+                            </div>
+                            @if( !empty($blog->src_video1))
+                                <div class="tab-pane fade" id="related2">
+                                        <div class="embed-container">
+                                            <iframe width="560" height="315" src="{{ $blog->src_video1 }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>                                            
+                                        </div>                                        
+                                </div>
+                            @endif                        
+                        </div>
+
+                        <ul>
+                            <li class="active">
+                                <a href="#related1" data-toggle="tab" aria-expanded="false">
+                                    @if(isset($blog->cover))
+                                        <img class="img-responsive"
+                                            src="{{ asset("storage/$blog->cover") }}"
+                                            alt="{{ $blog->name_blog }}" />
+                                    @else
+                                        <img class="img-responsive"
+                                            src="{{ asset("storage/$blog->cover") }}"
+                                            alt="{{ $blog->name_blog }}" />
+                                    @endif
+
+                                </a>
+                            </li>
+                            @if( !empty($blog->src_video1))
+                                <li>
+                                    <a href="#related2" data-toggle="tab" aria-expanded="false">
+                                        <img class="img-responsive"
+                                         src="{{ asset("front/images/videoYoutube.jpg") }}"
+                                         alt="{{ $blog->name_blog }}" />
+                                    </a>
+                                </li>
+                            @endif                       
+                        </ul>
+                    </div> 
+<!-- </div> -->
+                <br>
                 <div class="single-blog-details-content">
+                    <!-- 
                     <a href="#">
-                        @if(isset($blog->cover))
+                        if(isset($blog->cover))
                             <img  id="main-image" class="img-responsive"
-                                 src="{{ asset("storage/$blog->cover") }}?w=400"
-                                 alt="{{ $blog->name }}">
-                        @else
+                                 src="{ asset("storage/$blog->cover") }}?w=400"
+                                 alt="{ $blog->name }}">
+                        else
                             <img  id="main-image" class="img-responsive" src="https://placehold.it/300x300"
-                                 alt="{{ $blog->name }}">
-                        @endif 
+                                 alt="{ $blog->name }}">
+                        endif 
                     </a>
+                    -->
                     <span>{{ $date_array[1] }} {{ $date_array[2] }}, {{ $date_array[0] }}</span>
                     <h3><a href="#">{{ $blog->name_blog}}</a></h3>
                     <ul class="comments-info">
                         <li><span>by</span> {{ $blog->name_creator }}</li>
                         <li>Comments (05)</li>
                     </ul>
-                    <p>Rummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
-                    <p>
-                        <span>We possess within us two minds. So far I have written ere  theronly of theewer conscious mind. within us two mind wewSo far I hheronly of theer conscious mind. within us two mind wewSo far I have only of Duis ntytonre conmind. within us two mind wew. . </span>
-                    </p>
+
                     <br>
-					<br>
-					{{ $blog->slug}}<br>
-					{{ $blog->description}}<br>
-					{{ $blog->cover}}<br>
-					{{ $blog->src_video1}}<br>
-					
-					<h3>xxxxxxxxxxxxxxxxxxxx</h3>
-					{{ $blog->updated_at}}<br>
-					{{ $blog->id}}<br>
-					{{ $blog->status}}<br>
 
-                    <p>Rummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
-                    <p>
-
-
-
+                    {!! $blog->description !!}
                 </div>
+</div>
+              
+
                 <div class="single-blog-details-tags">
                     <h3>Did You Like This Post? Share it :</h3>
                     <ul class="single-blog-social">
@@ -228,5 +194,78 @@
 </div>
 <!-- Single Blog Page Area End Here -->
 
+@section('css')
+    <style>
+
+    
+
+    .product-details2-area-personalizada .inner-product-details-left .tab-content {
+      border: 1px solid #333333;
+    }
+    
+    .product-details2-area-personalizada .inner-product-details-left .tab-content a {
+      display: block;
+    }
+    .product-details2-area-personalizada .inner-product-details-left .tab-content a img {
+      width: 100%;
+    }
 
 
+    .embed-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+    }
+    .embed-container iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .product-details2-area-personalizada .inner-product-details-left ul li {
+      border: 1px solid transparent;
+      width: 22%;
+      display: inline-block;
+      margin: 16px 17px 0 0;
+    }
+        
+    .product-details2-area-personalizada .inner-product-details-left ul li a img {
+      width: 100%;
+      opacity: 0.5;
+    }
+    .product-details2-area-personalizada .inner-product-details-left ul li a img:hover {
+      opacity: 1;
+    }
+
+
+    .product-details2-area-personalizada .inner-product-details-left ul li a iframe {
+      width: 100%;
+      opacity: 0.5;
+    }
+    .product-details2-area-personalizada .inner-product-details-left ul li a iframe:hover {
+      opacity: 1;
+    }
+
+
+    .product-details2-area-personalizada .inner-product-details-left ul li:last-child {
+      margin: 16px 0 0 0;
+    }
+    .product-details2-area-personalizada .inner-product-details-left ul li:hover {
+      border: 1px solid #333333;
+    }
+    .product-details2-area-personalizada .inner-product-details-left ul .active {
+      border: 1px solid #333333;
+    }
+    .product-details2-area-personalizada .inner-product-details-left ul .active a img {
+      opacity: 1;
+    }
+
+
+
+
+
+    </style>
+@endsection

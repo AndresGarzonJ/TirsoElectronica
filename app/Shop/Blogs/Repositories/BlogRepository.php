@@ -36,7 +36,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     /**
      * List all the blogs
      * 
-     * @param string $order
+     * @param string $order 
      * @param string $sort  
      * @param array $columns
      * @return Collection
@@ -47,7 +47,20 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     }
 
     /**
-     * List N the blogs
+     * Busqueda selectiva teniendo en cuenta el valor de status
+     * 
+     * @param string $order 
+     * @param string $sort  
+     * @param array $columns
+     * @return Collection
+     */
+    public function listBlogs_with_status(int $status = 1, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
+    {
+        return $this->all_with_status($status,$columns, $order, $sort);
+    }
+
+    /**
+     * List N the blogs - Busqueda selectiva teniendo en cuenta el valor de status
      * 
      * @param string $order
      * @param string $sort 
@@ -55,9 +68,9 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
      * @param int $nBlogs
      * @return Collection
      */
-    public function listNBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*'], int $nBlogs = 6) : Collection
+    public function listNBlogs(int $status = 1, int $nBlogs = 6, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
     {
-        return $this->all($columns, $order, $sort)->take($nBlogs);
+        return $this->all_with_status($status,$columns, $order, $sort)->take($nBlogs);
     }
 
     /**

@@ -14,8 +14,11 @@ interface BlogRepositoryInterface extends BaseRepositoryInterface
 {
     public function listBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
+    //Busqueda selectiva teniendo en cuenta el valor de status
+    public function listBlogs_with_status(int $status = 1, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
+
     //Solo trae los 6 primeros blogs encontrados
-    public function listNBlogs(string $order = 'id', string $sort = 'desc', array $columns = ['*'], int $nBlogs = 6) : Collection;
+    public function listNBlogs(int $status = 1, int $nBlogs = 6, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
     public function createBlog(array $data) : Blog;
 

@@ -76,6 +76,16 @@ class BlogController extends Controller
         $data = $request->except('_token', '_method');
         $data['slug'] = str_slug($request->input('name_blog'));
 
+       if (strpos($request->input('src_video1'), "playlist") !== false) {
+            $data['src_video1'] = str_replace ( "playlist" , "embed/videoseries" , $request->input('src_video1'));            
+        } elseif (strpos($request->input('src_video1'), "watch?v=") !== false) {
+            $data['src_video1'] = str_replace ( "watch?v=" , "embed/" , $request->input('src_video1'));
+                
+        } else{
+            $data['src_video1'] = $request->input('src_video1');
+        }
+                     
+
         if ($request->hasFile('cover') && $request->file('cover') instanceof UploadedFile) {
             $data['cover'] = $this->blogRepo->saveCoverImage($request->file('cover'));
         }
@@ -135,13 +145,26 @@ class BlogController extends Controller
         $data['status'] = $request->input('status');
         $data['description'] = $request->input('description');
         $data['description_short'] = $request->input('description_short');
-        $data['src_video1'] = $request->input('src_video1');
+        //$data['src_video1'] = $request->input('src_video1');
+
+        
+        if (strpos($request->input('src_video1'), "playlist") !== false) {
+            $data['src_video1'] = str_replace ( "playlist" , "embed/videoseries" , $request->input('src_video1'));            
+        } elseif (strpos($request->input('src_video1'), "watch?v=") !== false) {
+            $data['src_video1'] = str_replace ( "watch?v=" , "embed/" , $request->input('src_video1'));
+                
+        } else{
+            $data['src_video1'] = $request->input('src_video1');
+        }
+        
+ 
+        
         /*
         $data['src_video2'] = $request->input('src_video2');
         $data['src_video3'] = $request->input('src_video3');
         $data['src_video4'] = $request->input('src_video4');
         */
-        
+         
         
         if ($request->hasFile('cover') && $request->file('cover') instanceof UploadedFile) {
             $data['cover'] = $this->blogRepo->saveCoverImage($request->file('cover'));

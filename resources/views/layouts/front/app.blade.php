@@ -238,12 +238,17 @@
                                                 
                                             </li>
                                             <li><a href={{route('tienda')}}>Tienda</a></li>
+<<<<<<< HEAD
                                             <li><a href={{route('tienda')}}>Videos/Tutoriales</a> <!-- BLOG -->
                                                
                                             </li>
                                             <li><a href={{route('contacto')}}>Contacto</a>
                                               
                                             </li>
+=======
+                                            <li><a href={{route('tutoriales')}}>Videos/Tutoriales</a></li>
+                                            <li><a href={{route('tienda')}}>Contacto</a></li>
+>>>>>>> 91ce26f74e2ec7b7be9d304cc2832b0f5cb356c7
                                             
                                         </ul>
                                     </nav>
@@ -286,7 +291,7 @@
         @yield('content')  
 
         <footer>
-            @include('layoutIndexM.layoutFooter')
+            @include('layouts.front.footer')
         </footer>
 
         @section('js')
