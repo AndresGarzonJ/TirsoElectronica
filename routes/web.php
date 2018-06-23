@@ -75,15 +75,9 @@ Route::get('/mail', 'MailController@sendContactMail');
 Route::namespace('Front')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
-<<<<<<< HEAD
-    
-    Route::get('/homePrueba', 'HomeController@indexVista');
-=======
     Route::get('/tutoriales', 'HomeController@vistaPrincipalBlogs')->name('tutoriales');
     //Route::get('/homePrueba', 'HomeController@indexVista');
     Route::get('/contacto','HomeController@contacto')->name('contacto');
-
->>>>>>> 91ce26f74e2ec7b7be9d304cc2832b0f5cb356c7
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');
         Route::get('checkout', 'CheckoutController@index')->name('checkout.index');
