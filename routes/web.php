@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
             });
             Route::namespace('Blogs')->group(function () {
                 Route::resource('blogs', 'BlogController'); 
+                Route::get('delete-blog', 'BlogController@destroy')->name('blog.delete');
                 Route::get('remove-image-blog', 'BlogController@removeImage')->name('blog.remove.image');
                 Route::get('remove-image-thumb', 'BlogController@removeThumbnail')->name('blog.remove.thumb');
             });
@@ -82,12 +83,9 @@ Route::get('/mail', 'MailController@sendContactMail');
 Route::namespace('Front')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
-
     Route::get('/tutoriales', 'HomeController@vistaPrincipalBlogs')->name('tutoriales');
     //Route::get('/homePrueba', 'HomeController@indexVista');
     Route::get('/contacto','HomeController@contacto')->name('contacto');
-
-
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');
         Route::get('checkout', 'CheckoutController@index')->name('checkout.index');

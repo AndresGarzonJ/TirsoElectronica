@@ -188,14 +188,16 @@ class BlogController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $blog = $this->blogRepo->findBlogById($id);
+        //function destroy(id)
+        $id = $request->input('id');
+        //$blog = $this->blogRepo->findBlogById($id);
         
         $this->blogRepo->delete($id);
 
         request()->session()->flash('message', 'Delete successful');
-        return redirect()->route('admin.blogs.index');
+        //return redirect()->route('admin.blogs.index');
     }
 
     /**

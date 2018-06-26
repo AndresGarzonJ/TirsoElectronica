@@ -244,8 +244,7 @@
                                             </li>
                                             <li><a href={{route('contacto')}}>Contacto</a>
                                               
-                                            </li>
-                                            
+                                            </li>                                            
                                         </ul>
                                     </nav>
                                 </div>
