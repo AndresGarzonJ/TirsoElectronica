@@ -241,7 +241,7 @@
 
                                             <li><a href={{route('tutoriales')}}>Videos/Tutoriales</a> <!-- BLOG -->
                                                
-                                            </li>a
+                                            </li>
                                             <li><a href={{route('contacto')}}>Contacto</a>
                                               
                                             </li>                                            

@@ -21,9 +21,6 @@
     <div class="slider-area">
         <div class="container">
             <div class="row">
-                <!-- Se quita el menu que esta al lado de los slider -->
-                
-                <!-- <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12"> -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="main-slider1">
                         <div class="bend niceties preview-2">
@@ -32,36 +29,45 @@
                                 <img src={{asset("indexMetro/img/slider-1/slider-2.jpg")}} alt="" title="#slider-direction-2" />
                             </div>
                             <!-- direction 1 -->
-                            <div id="slider-direction-1" class="slider-direction">
-                                <div class="slider-content t-lfl s-tb slider-1">
-                                    <div class="title-container s-tb-c">
-                                        <h2>Collection</h2>
-                                        <h2 class="title1">2016</h2>
-                                        <h3 class="title3">Summer Dress</h3>
-                                        <p>Simply dummy text of the printing and typesetting industrstandard dummy since.</p>
-                                        <a href={{asset("#")}} class="btn-shop-now-fill-slider">View Collections</a>
+                           <?php  $i = 1;  ?>
+                            @foreach ($panels as $panel)
+                              
+                        <div id="slider-direction-{{$i}}" class="slider-direction">
+                        <div class="slider-content t-lfl s-tb slider-1">
+                                        <div class="title-container s-tb-c">
+                                        <h2>{{ strtoupper($panel->titulo)}} </h2>
+                                        <h2 class="title1">{{$panel->anio}}</h2>
+                                        <h3 class="title3">{{$panel->subtitulo}}</h3>
+                                        <p>{{$panel->descripcion}}</p>
+                                            <a href="/{{$panel->link}}" class="btn-shop-now-fill-slider">Ver categoria</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- layer 1 -->
-                                <div class="layer-1-1">
-                                    <img src={{asset("indexMetro/img/slider-1/layer-1.png")}} alt="" />
-                                </div>
+                                    <!-- layer 1 -->
+                                    <div class="layer-1-1">
+                                        <img src="/images/{{$panel->imagen}}" alt="" />
+                                    </div>
                             </div>
-                            <!-- direction 2 -->
+                            <?php $i++; ?>
+                            @endforeach
+                           
+
+                            <!-- Dir 2 desactivada 
+                            
                             <div id="slider-direction-2" class="t-cn slider-direction">
-                                <!-- layer 1 -->
+                                
                                 <div class="layer-1">
                                     <img src={{asset("indexMetro/img/slider-1/layer2-4.png")}} alt="" />
                                 </div>
-                                <!-- layer 2 -->
+                                
                                 <div class="layer-2">
                                     <img src={{asset("indexMetro/img/slider-1/layer2-5.png")}} alt="" />
                                 </div>
-                                <!-- layer 3 -->
+                                
                                 <div class="layer-3">
                                     <img src={{asset("indexMetro/img/slider-1/layer2-6.png")}} alt="" />
                                 </div>
-                            </div>
+                            </div> -->
+
                         </div>
                     </div>
                 </div>

@@ -29,6 +29,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
                 Route::get('remove-image-blog', 'BlogController@removeImage')->name('blog.remove.image');
                 Route::get('remove-image-thumb', 'BlogController@removeThumbnail')->name('blog.remove.thumb');
             });
+
+            Route::namespace('Panels')->group(function () {
+                Route::resource('panels', 'PanelController'); 
+                Route::get('remove-image-panel', 'PanelController@removeImage')->name('panel.remove.image');
+                
+            });
+
             Route::namespace('Customers')->group(function () {
                 Route::resource('customers', 'CustomerController');
                 Route::resource('customers.addresses', 'CustomerAddressController');
