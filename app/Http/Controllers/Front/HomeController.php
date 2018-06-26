@@ -8,6 +8,7 @@ use App\Shop\Products\Transformations\ProductTransformable;
 use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Shop\Blogs\Transformations\BlogTransformable;
 use App\Shop\Blogs\Blog;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -44,12 +45,13 @@ class HomeController extends Controller
         $newests = $category2->products;
         $features = $category3->products;
 
+        $panels = DB::table('panels')->get();
         $list = $this->blogRepo->listNBlogs(1,6);
         $blogs = $list->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
 
-        return view('front.index', compact('newests', 'features', 'category2', 'category3','blogs'));
+        return view('front.index', compact('newests', 'features', 'category2', 'category3','blogs','panels'));
     } 
 
     /*public function indexVista()

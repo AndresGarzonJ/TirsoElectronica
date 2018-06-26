@@ -16,7 +16,7 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">HOME</li>
+            <li class="header">Inicio</li>
             <li><a href="{{ route('admin.dashboard') }}"> <i class="fa fa-home"></i> Dashboard</a></li>
             @if($admin)
                 <li class="header">SELL</li>
@@ -28,19 +28,31 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.products.index') }}"><i class="fa fa-circle-o"></i> List products</a></li>
+                        <li><a href="{{ route('admin.products.index') }}"><i class="fas fa-circle-notch"></i> List products</a></li>
                         <li><a href="{{ route('admin.products.create') }}"><i class="fa fa-plus"></i> Create product</a></li>
                     </ul>
                 </li>
                 <li class="treeview @if(request()->segment(2) == 'categories') active @endif">
+                        <a href="#">
+                            <i class="fas fa-burn"></i></i> <span>Panel Principal</span>
+                            <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('admin.panels.index') }}"><i class="fas fa-circle-notch"></i> Listar Paneles</a></li>
+                            <li><a href="{{ route('admin.panels.create') }}"><i class="fa fa-plus"></i> Create panel</a></li>
+                        </ul>
+                    </li>
+                <li class="treeview @if(request()->segment(2) == 'categories') active @endif">
                     <a href="#">
-                        <i class="fa fa-folder"></i> <span>Categories</span>
+                        <i class="far fa-folder"></i> <span>Categories</span>
                         <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-circle-o"></i> List categories</a></li>
+                        <li><a href="{{ route('admin.categories.index') }}"><i class="fas fa-circle-notch"></i> List categories</a></li>
                         <li><a href="{{ route('admin.categories.create') }}"><i class="fa fa-plus"></i> Create category</a></li>
                     </ul>
                 </li>
@@ -52,7 +64,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu"> 
-                        <li><a href="{{ route('admin.blogs.index') }}"><i class="fa fa-circle-o"></i> List blogs</a></li>
+                        <li><a href="{{ route('admin.blogs.index') }}"><i class="fas fa-circle-notch"></i> List blogs</a></li>
                         <li><a href="{{ route('admin.blogs.create') }}"><i class="fa fa-plus"></i> Create blog</a></li>
                     </ul>
                 </li>
@@ -64,7 +76,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.customers.index') }}"><i class="fa fa-circle-o"></i> List customers</a></li>
+                        <li><a href="{{ route('admin.customers.index') }}"><i class="fas fa-circle-notch"></i> List customers</a></li>
                         <li><a href="{{ route('admin.customers.create') }}"><i class="fa fa-plus"></i> Create customer</a></li>
                         <li class="@if(request()->segment(2) == 'addresses') active @endif">
                             <a href="#"><i class="fa fa-map-marker"></i> Addresses
@@ -73,7 +85,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="{{ route('admin.addresses.index') }}"><i class="fa fa-circle-o"></i> List addresses</a></li>
+                                <li><a href="{{ route('admin.addresses.index') }}"><i class="fas fa-circle-notch"></i> List addresses</a></li>
                                 <li><a href="{{ route('admin.addresses.create') }}"><i class="fa fa-plus"></i> Create address</a></li>
                             </ul>
                         </li>
@@ -88,7 +100,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-circle-o"></i> List orders</a></li>
+                        <li><a href="{{ route('admin.orders.index') }}"><i class="fas fa-circle-notch"></i> List orders</a></li>
                     </ul>
                 </li>
                 <li class="treeview @if(request()->segment(2) == 'order-statuses') active @endif">
@@ -99,7 +111,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.order-statuses.index') }}"><i class="fa fa-circle-o"></i> List order statuses</a></li>
+                        <li><a href="{{ route('admin.order-statuses.index') }}"><i class="fas fa-circle-notch"></i> List order statuses</a></li>
                         <li><a href="{{ route('admin.order-statuses.create') }}"><i class="fa fa-plus"></i> Create order status</a></li>
                     </ul>
                 </li>
@@ -111,7 +123,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.payment-methods.index') }}"><i class="fa fa-circle-o"></i> List payment methods</a></li>
+                        <li><a href="{{ route('admin.payment-methods.index') }}"><i class="fas fa-circle-notch"></i> List payment methods</a></li>
                         <li><a href="{{ route('admin.payment-methods.create') }}"><i class="fa fa-plus"></i> Create payment method</a></li>
                     </ul>
                 </li>
@@ -124,7 +136,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.couriers.index') }}"><i class="fa fa-circle-o"></i> List couriers</a></li>
+                        <li><a href="{{ route('admin.couriers.index') }}"><i class="fas fa-circle-notch"></i> List couriers</a></li>
                         <li><a href="{{ route('admin.couriers.create') }}"><i class="fa fa-plus"></i> Create courier</a></li>
                     </ul>
                 </li>
@@ -137,7 +149,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.employees.index') }}"><i class="fa fa-circle-o"></i> List employees</a></li>
+                        <li><a href="{{ route('admin.employees.index') }}"><i class="fas fa-circle-notch"></i> List employees</a></li>
                         <li><a href="{{ route('admin.employees.create') }}"><i class="fa fa-plus"></i> Create employee</a></li>
                     </ul>
                 </li>
@@ -149,7 +161,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.attributes.index') }}"><i class="fa fa-circle-o"></i> List attributes</a></li>
+                        <li><a href="{{ route('admin.attributes.index') }}"><i class="fas fa-circle-notch"></i> List attributes</a></li>
                         <li><a href="{{ route('admin.attributes.create') }}"><i class="fa fa-plus"></i> Create attribute</a></li>
                     </ul>
                 </li>
@@ -161,7 +173,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.countries.index') }}"><i class="fa fa-circle-o"></i> List</a></li>
+                        <li><a href="{{ route('admin.countries.index') }}"><i class="fas fa-circle-notch"></i> List</a></li>
                     </ul>
                 </li>
             @endif

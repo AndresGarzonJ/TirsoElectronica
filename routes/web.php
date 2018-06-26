@@ -28,6 +28,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
                 Route::get('remove-image-blog', 'BlogController@removeImage')->name('blog.remove.image');
                 Route::get('remove-image-thumb', 'BlogController@removeThumbnail')->name('blog.remove.thumb');
             });
+
+            Route::namespace('Panels')->group(function () {
+                Route::resource('panels', 'PanelController'); 
+                Route::get('remove-image-panel', 'PanelController@removeImage')->name('panel.remove.image');
+                
+            });
+
             Route::namespace('Customers')->group(function () {
                 Route::resource('customers', 'CustomerController');
                 Route::resource('customers.addresses', 'CustomerAddressController');
@@ -75,15 +82,12 @@ Route::get('/mail', 'MailController@sendContactMail');
 Route::namespace('Front')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
-<<<<<<< HEAD
-    
-    Route::get('/homePrueba', 'HomeController@indexVista');
-=======
+
     Route::get('/tutoriales', 'HomeController@vistaPrincipalBlogs')->name('tutoriales');
     //Route::get('/homePrueba', 'HomeController@indexVista');
     Route::get('/contacto','HomeController@contacto')->name('contacto');
 
->>>>>>> 91ce26f74e2ec7b7be9d304cc2832b0f5cb356c7
+
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');
         Route::get('checkout', 'CheckoutController@index')->name('checkout.index');

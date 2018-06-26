@@ -23,6 +23,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('css/skins/skin-purple.min.css') }}">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
     <!-- jQuery 2.2.3 -->
     <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
     <!-- jQueryUI 1.12.1 -->
@@ -64,6 +66,8 @@
         #admin-search {
             margin-bottom: 15px;
         }
+
+        
     </style>
     @yield('css')
 
@@ -122,6 +126,21 @@
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <!-- DataTable JS -->
 <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js') }}"></script>
+
+<script>
+
+    document.getElementById("files").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+</script>
 <!-- Custom JS -->
 <script src="{{ asset('js/admin.js?v=0.1') }}"></script>
 @yield('js')
