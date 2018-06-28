@@ -20,7 +20,7 @@
                     
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Titulo</label>
-                        <input type="text" class="form-control" id="" name="titulo" value="{{$panel->descripcion}}">
+                        <input type="text" class="form-control" id="" name="titulo" value="{{$panel->titulo}}">
                         </div>
 
                         <div class="form-group">

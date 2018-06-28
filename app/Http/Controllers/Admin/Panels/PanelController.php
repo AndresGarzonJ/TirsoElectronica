@@ -72,7 +72,7 @@ class PanelController extends Controller
         $panels = DB::table('panels')->get();
         return view('admin.panels.list', [
             'panels' => $panels
-        ]);
+        ])->with('info','Panel creado con exito');
 
     }
 
@@ -135,7 +135,7 @@ class PanelController extends Controller
         $panels = DB::table('panels')->get();
         return view('admin.panels.list', [
             'panels' => $panels
-        ]);
+        ])->with('info','Panel actualizado con exito!');
     }
 
     /**
@@ -153,7 +153,11 @@ class PanelController extends Controller
         $panels = DB::table('panels')->get();
         return view('admin.panels.list', [
             'panels' => $panels
-        ]);
+        ])->with('info','Panel eliminado con exito!');
+
+        //Manera correcta
+
+        //return redirect()->route('products.edit',$panels)->with('infod','Actualizado con exito');
 
 
     }

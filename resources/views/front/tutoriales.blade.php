@@ -22,9 +22,9 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcrumb-area">
-                        <h1>Blog Page</h1>
+                        <h1>Tutoriales/Blogs</h1>
                         <ul>
-                            <li><a href="#">Home</a> /</li>
+                            <li><a href="/">Home</a> /</li>
                             <li>Blog</li>
                         </ul>
                     </div>

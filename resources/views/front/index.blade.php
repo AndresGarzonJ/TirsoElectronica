@@ -25,8 +25,13 @@
                     <div class="main-slider1">
                         <div class="bend niceties preview-2">
                             <div id="ensign-nivoslider-2" class="slides">
-                                <img src={{asset("indexMetro/img/slider-1/slider-2.jpg")}} alt="" title="#slider-direction-1" />
-                                <img src={{asset("indexMetro/img/slider-1/slider-2.jpg")}} alt="" title="#slider-direction-2" />
+                            <?php  $i = 1;  ?>
+                             @foreach ($panels as $panel)
+                                    
+                                
+                            <img src={{asset("indexMetro/img/slider-1/slider-2.jpg")}} alt="" title="#slider-direction-{{$i}}" /> <!-- es la img gris de fondo -->
+                                <?php $i++; ?>
+                                @endforeach
                             </div>
                             <!-- direction 1 -->
                            <?php  $i = 1;  ?>
@@ -39,7 +44,8 @@
                                         <h2 class="title1">{{$panel->anio}}</h2>
                                         <h3 class="title3">{{$panel->subtitulo}}</h3>
                                         <p>{{$panel->descripcion}}</p>
-                                            <a href="/{{$panel->link}}" class="btn-shop-now-fill-slider">Ver categoria</a>
+                                            <a href="/category/{{$panel->link}}" class="btn-shop-now ">Ver categoria</a>
+                                        
                                         </div>
                                     </div>
                                     <!-- layer 1 -->
@@ -51,23 +57,6 @@
                             @endforeach
                            
 
-                            <!-- Dir 2 desactivada 
-                            
-                            <div id="slider-direction-2" class="t-cn slider-direction">
-                                
-                                <div class="layer-1">
-                                    <img src={{asset("indexMetro/img/slider-1/layer2-4.png")}} alt="" />
-                                </div>
-                                
-                                <div class="layer-2">
-                                    <img src={{asset("indexMetro/img/slider-1/layer2-5.png")}} alt="" />
-                                </div>
-                                
-                                <div class="layer-3">
-                                    <img src={{asset("indexMetro/img/slider-1/layer2-6.png")}} alt="" />
-                                </div>
-                            </div> -->
-
                         </div>
                     </div>
                 </div>
@@ -76,61 +65,8 @@
     </div>
     <!-- Slider Area End Here -->
     
-    <!-- 
-    Services1 Area Start Here 
-    <div class="services1-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-area-box">
-                        <div class="media">
-                            <a class="pull-left" href={{asset("#")}}>
-                                <img src={{asset("indexMetro/img/services/home1-services1.png")}} alt="services" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <span>360 Gear</span>
-                                <h3><a href={{asset("#")}}>Brand Name</a></h3>
-                                <p>Camera</p>
-                                <a href={{asset("#")}} class="btn-shop-now">Shop Now<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-area-box">
-                        <div class="media">
-                            <a class="pull-left" href={{asset("#")}}>
-                                <img src={{asset("indexMetro/img/services/home1-services2.png")}} alt="services" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <span>Casual Shoes</span>
-                                <h3><a href={{asset("#")}}>Brand Name</a></h3>
-                                <p>Top-Brand</p>
-                                <a href={{asset("#")}} class="btn-shop-now">Shop Now<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-area-box">
-                        <div class="media">
-                            <a class="pull-left" href={{asset("#")}}>
-                                <img src={{asset("indexMetro/img/services/home1-services3.png")}} alt="services" class="img-responsive">
-                            </a>
-                            <div class="media-body">
-                                <span>100% Leather</span>
-                                <h3><a href={{asset("#")}}>Brand Name</a></h3>
-                                <p>Mountain</p>
-                                <a href={{asset("#")}} class="btn-shop-now">Shop Now<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    Services1 Area End Here 
-    -->
+    
+    
     <!-- Product Area Start Here -->
     <div class="product-area">
         <div class="container" id="home-isotope">
