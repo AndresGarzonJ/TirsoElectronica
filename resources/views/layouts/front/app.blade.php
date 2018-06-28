@@ -122,7 +122,7 @@
                     </div>
                     <!-- Logo y buscador ------------ -->
                     <div class="header-top-inner-bottom"> 
-                        <div class="container">
+                        <div class="container"> 
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <div class="logo-area">
@@ -133,7 +133,7 @@
                                     <!-- search form -->
                                                     
                                     <form action="{{route('search.product')}}" method="GET">
-                                        <div class="search-area">
+                                        <div class="search-area"> 
                                             <div class="input-group" id="adv-search">
                                                 <!--<input type="text" class="form-control" placeholder="Search Product" /> -->
                                                 <input type="text" name="q" class="form-control" id ="stringBusqueda" placeholder="Busqueda..." value="{!! request()->input('q') !!}">

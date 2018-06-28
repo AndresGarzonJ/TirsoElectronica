@@ -34,7 +34,7 @@ category.blade.php
  
 
 Tarea
-* Al hacer click en la imagen del top-area ..Redireccionar
+
 * Falta redireccionar los links del menu
 * Colocar la imagen para layoutProduct.blade.php .. guardada en la BD
 * 
@@ -358,9 +358,6 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 14. Se crea resources/view/admin/shared/blogs.blade.php
 
 15. Ya se tiene del blog 
-			crear 
-TAREA		actualizar -- MUCHO CUIDADO CON LOS CAMPOS VACIOS -- admin / BlogController
-TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes vinculadas en otra tabla
 			en la vista principal de blogs / admin .. ya se puede buscar
 
 16. 
@@ -374,24 +371,48 @@ TAREA		borrar -- En la logica de borra .. no se permite si este tiene imagenes v
 	*Se adapto el modo de vista de las imagenes de productos... para mostrar la imagen cover y el video
 		Se tuvo que modificar un css product-details2-area ... (layouts/front/blog)
 
-17. Tareas
-	
-		*Acomodar vista tienda -- esta hereda de index (reuitliza)
-		*Para el numero de blogs que se muestran .. hay que tener en cuenta lo siguiente (ej: HomeController)
+	*Para el numero de blogs que se muestran .. hay que tener en cuenta lo siguiente (ej: HomeController)
 			return view('front.tutoriales', [
                 'blogs' => $this->blogRepo->paginateArrayResults($blogs->all(), 6)
             ]);
-        *Tamaño de las imagenes -- Alto igual
-        *Organizar tutoriales -- en la carpeta que es -- blogs
-        *Descripcion corta de blogs - no esta limitada
-        *nombre de blogs o tutoriales en el codigo
-        *Controlador de estilos /anuncios / del index 
-        *Descripcion corta de 112 (tres renglones) 150 (cuatro renglones)
-        *Guardar datos sin espacios vacios
-        *Barra de busqueda -- busqueda global  
-        *Admin/Blogs -> Borrar sin recargar la pagina
-        *
+        
+17. Tareas
+		
+		*Seccion de comentarios
+		*Seccion de noticias		
+		*Tamaño de las imagenes -- Alto igual -- Redimensionar al guardar / front tambien
+		* Al hacer click en la imagen del top-area ..Redireccionar
 
+		Principal
+			*Barra de busqueda -- busqueda global
+		Tienda
+			*Acomodar vista tienda -- esta hereda de index (reuitliza)
+			*Botones / Iconos -- Por ej. el boton de carro de compras tiene estilos diferentes
+			*Enlace con mercadolibre
+			*Tags
+			*Barra Categorias 
+			*Organizar front/products/products-search 
+
+		Tutoriales
+			*(Echo) - Descripcion corta de blogs - no esta limitada
+			*(Echo) Admin/Blogs -> Borrar sin recargar la pagina
+			*(Recomendacion) actualizar -- MUCHO CUIDADO CON LOS CAMPOS VACIOS -- admin / BlogController
+			*(Echo - La tabla blog_imagenes se deshabilito ) borrar -- En la logica de borra .. no se permite si este tiene imagenes vinculadas en otra tabla
+
+			*Barra lateral izquierda -- Organizar los blogs por Fecha
+			*Organizar tutoriales -- en la carpeta que es -- blogs
+			*nombre de blogs o tutoriales en el codigo		
+			*Guardar datos sin espacios vacios
+			*El texto de description ..guardarla en un txt ?
+
+		Contacto
+			*Redes sociales YouTube/Mercadolibre/Facebook
+			*Logica / Formulario para ingresar los datos
+
+		Carro
+			*Acciones de los botones actualicen la pag sin recargar 
+
+        
 
 ------------------21 de Junio - 2018
 	Agregue contador de caracteres para description_short
