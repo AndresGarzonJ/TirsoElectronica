@@ -412,6 +412,9 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 		Carro
 			*Acciones de los botones actualicen la pag sin recargar 
 
+		Panel Index
+			*Las rutas/href no sean estaticas!
+
         
 
 ------------------21 de Junio - 2018
