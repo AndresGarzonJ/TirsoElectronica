@@ -7,16 +7,18 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcrumb-area">
-                        <h1>My Account</h1>
+                        <h1>My cuenta</h1>
                         <ul>
-                            <li><a href="#">Home</a> /</li>
-                            <li>Account</li>
+                            <li><a href="#">Inicio</a> /</li>
+                            <li>Cuenta</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
     <!-- Inner Page Banner Area End Here -->
     <!-- Login Registration Page Area Start Here -->
     <div class="login-registration-page-area">

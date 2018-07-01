@@ -23,7 +23,10 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('css/skins/skin-purple.min.css') }}">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+     integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    
 
     <!-- jQuery 2.2.3 -->
     <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
@@ -126,6 +129,8 @@
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <!-- DataTable JS -->
 <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js') }}"></script>
+
+
 
 <script>
 

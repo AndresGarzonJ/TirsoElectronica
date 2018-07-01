@@ -23,7 +23,7 @@ class PanelController extends Controller
     public function index()
     {
 
-        $panels = DB::table('panels')->get();
+        $panels = DB::table('panels')->paginate(10);
         return view('admin.panels.list', [
             'panels' => $panels
         ]);
@@ -69,7 +69,7 @@ class PanelController extends Controller
         $panel->save();
 
 
-        $panels = DB::table('panels')->get();
+        $panels = DB::table('panels')->paginate(10);
         return view('admin.panels.list', [
             'panels' => $panels
         ])->with('info','Panel creado con exito');
@@ -132,7 +132,7 @@ class PanelController extends Controller
         }
         $panel->save();
 
-        $panels = DB::table('panels')->get();
+        $panels = DB::table('panels')->paginate(10);
         return view('admin.panels.list', [
             'panels' => $panels
         ])->with('info','Panel actualizado con exito!');
@@ -150,7 +150,7 @@ class PanelController extends Controller
 
         $panel->delete();
 
-        $panels = DB::table('panels')->get();
+        $panels = DB::table('panels')->paginate(10);
         return view('admin.panels.list', [
             'panels' => $panels
         ])->with('info','Panel eliminado con exito!');
