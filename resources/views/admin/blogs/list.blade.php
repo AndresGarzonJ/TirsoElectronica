@@ -8,6 +8,8 @@
         @if($blogs)
             <div class="box">
                 <div class="box-body">
+                    <a href="{{ route('admin.blogs.create') }}" class="btn btn-success ">Crear Blog</a> 
+
                     <h2>Blogs</h2>
                     @include('layouts.search', ['route' => route('admin.blogs.index')])
                     @include('admin.shared.blogs')
@@ -17,6 +19,6 @@
             </div>
             <!-- /.box -->
         @endif
-    </section>
+    </section>  
     <!-- /.content -->
 @endsection

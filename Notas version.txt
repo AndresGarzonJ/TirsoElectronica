@@ -399,6 +399,7 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 			*(Recomendacion) actualizar -- MUCHO CUIDADO CON LOS CAMPOS VACIOS -- admin / BlogController
 			*(Echo - La tabla blog_imagenes se deshabilito ) borrar -- En la logica de borra .. no se permite si este tiene imagenes vinculadas en otra tabla
 
+			*Redimensionar imagenes blogs 373x219 
 			*Barra lateral izquierda -- Organizar los blogs por Fecha
 			*Organizar tutoriales -- en la carpeta que es -- blogs
 			*nombre de blogs o tutoriales en el codigo		
@@ -414,6 +415,9 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 
 		Panel Index
 			*Las rutas/href no sean estaticas!
+			*Rehubicar las imagenes  -- Ya que no son imagenes estaticas //public/storage/
+			*Establecer limite de caracteres a los campos .. por estetica del panel 
+
 
         
 
@@ -450,4 +454,24 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 		2. En Admin/BlogController ..capturar el id del request y comentar el return
 		3. En la vista de admin/shared/blogs cambiar parametros del formulario, agregar 
 				la funcion de Javascript 
+
+-------------------28 de Junio de 2018
+	-Se actualizo los repositorios ..instalar laravel collective 
+		composer update
+	-Se agrego el boton crear blog .. a la vista de list blogs
+	-Se agrego el boton crear producto .. a la vista de list products
 	
+	FALTA -Redimensionar imagenes blogs 373x219 
+			composer require intervention/image
+
+			config/app.php
+				Intervention\Image\ImageServiceProvider::class,
+				'Image' => Intervention\Image\Facades\Image::class,
+
+			php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
+
+
+
+
+
+

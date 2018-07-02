@@ -8,14 +8,16 @@ use App\Shop\Blogs\Blog;
 use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Shop\Blogs\Repositories\BlogRepository;
 use App\Shop\Blogs\Requests\CreateBlogRequest;
-use App\Shop\Blogs\Requests\UpdateBlogRequest;
+use App\Shop\Blogs\Requests\UpdateBlogRequest; 
 use App\Shop\Blogs\Transformations\BlogTransformable;
 use App\Shop\Tools\UploadableTrait;
 use Illuminate\Http\UploadedFile;
+use Intervention\Image\ImageManagerStatic;
 
 class BlogController extends Controller
 {
     use BlogTransformable, UploadableTrait; 
+    
 
     /**
      * @var BlogRepositoryInterface
@@ -89,6 +91,15 @@ class BlogController extends Controller
         if ($request->hasFile('cover') && $request->file('cover') instanceof UploadedFile) {
             $data['cover'] = $this->blogRepo->saveCoverImage($request->file('cover'));
         }
+        
+
+        /*
+        if ($request->hasFile('cover') && $request->file('cover') instanceof ImageManagerStatic) {
+            $data['cover'] = $this->blogRepo->saveCoverImage($request->file('cover'));
+        }
+        */
+
+
 
         $blog = $this->blogRepo->createBlog($data);
         //Funcion de guardar imagenes den blog_images

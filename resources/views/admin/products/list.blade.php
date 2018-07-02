@@ -8,6 +8,8 @@
         @if($products)
             <div class="box">
                 <div class="box-body">
+                    <a href="{{ route('admin.products.create') }}" class="btn btn-success ">Crear Producto</a> 
+
                     <h2>Products</h2>
                     @include('layouts.search', ['route' => route('admin.products.index')])
                     @include('admin.shared.products')

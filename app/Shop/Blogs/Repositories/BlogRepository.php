@@ -14,7 +14,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-
+use Intervention\Image\ImageManagerStatic;
 
 
 
@@ -170,11 +170,13 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
 
     /**
      * @param UploadedFile $file
-     * @return string
+     * @return string 
      */
     public function saveCoverImage(UploadedFile $file) : string
+    //public function saveCoverImage(ImageManagerStatic $file) : string
     {
         return $file->store('blogs', ['disk' => 'public']);
+        //return 'blogs/'.$filename; 
     }
 
     //Funciones de la tabla blog_images

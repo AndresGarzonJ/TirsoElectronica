@@ -24,14 +24,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_short">Description short - Max 150 Characters</label>
+                                        <textarea class="form-control" rows="5" name="description_short" id="description_short" onKeyDown="valida_longitud()" onKeyUp="valida_longitud()">{!! $blog->description_short  !!}</textarea>
+                                        <!-- 
                                         <textarea 
                                         class="form-control ckeditor" 
                                         name="description_short" id="description_short" 
                                         rows="5" 
                                         placeholder="Description"
                                         >
-                                            {!! $blog->description_short  !!}
+                                            !! $blog->description_short  !!}
                                         </textarea>
+                                        -->
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description </label>
@@ -151,11 +154,13 @@
 <script type="text/javascript">
     CKEDITOR.plugins.addExternal( 'charcount', '/js/ckeditor/cke-charcount-plugin.js', '' );
     
+    /*
     CKEDITOR.replace('description_short', {
      extraPlugins: 'charcount', 
      maxLength: 151, 
      toolbar_CharCount: ['CharCount']
     });
+    */
 
     CKEDITOR.replace('description', {
      extraPlugins: 'charcount', 
@@ -257,5 +262,27 @@
                 }
             });
         });
+
+        //Limitar caracteres - Description_short
+        contenido_textarea = "" 
+        num_caracteres_permitidos = 151 
+
+        function valida_longitud(){ 
+           num_caracteres = document.forms[0].description_short.value.length 
+
+           if (num_caracteres > num_caracteres_permitidos){ 
+              document.forms[0].description_short.value = contenido_textarea 
+           }else{ 
+              contenido_textarea = document.forms[0].description_short.value    
+           } 
+
+           if (num_caracteres >= num_caracteres_permitidos){ 
+              document.forms[0].description_short.style.color="#ff0000"; 
+           }else{ 
+              document.forms[0].description_short.style.color="#000000"; 
+           } 
+
+         
+        } 
     </script>
 @endsection

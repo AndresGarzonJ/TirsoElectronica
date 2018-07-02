@@ -7,8 +7,9 @@ namespace App\Shop\Blogs\Repositories\Interfaces;
 
 use App\Shop\Base\Interfaces\BaseRepositoryInterface;
 use App\Shop\Blogs\Blog;
-use Illuminate\Http\UploadedFile;
+use Illuminate\Http\UploadedFile; 
 use Illuminate\Support\Collection;
+use Intervention\Image\ImageManagerStatic;
 
 interface BlogRepositoryInterface extends BaseRepositoryInterface
 {
@@ -34,6 +35,7 @@ interface BlogRepositoryInterface extends BaseRepositoryInterface
 
     public function searchBlog(string $text) : Collection;
 
+    //public function saveCoverImage(ImageManagerStatic $file) : string;
     public function saveCoverImage(UploadedFile $file) : string;
 
     //Funciones de la tabla blog_images

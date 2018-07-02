@@ -23,9 +23,9 @@ use Illuminate\Http\UploadedFile;
         'name_creator' => "Andres Garzon",
         'slug' => str_slug($blog),
         'description' => $this->faker->paragraph,
-        'description_short' => $this->faker->paragraph,
+        'description_short' => "ajshdas dajshdkjash d sd shdjas dhasg djhagsd ashdgahs dhasdhsdhsa jdahsd ashd jashdgh sad ahsdg ahsd ahsdgashd ashd ahsdgashd ashdashdg as dash dahsd",
         'cover' => $file->store('blogs', ['disk' => 'public']),
-        'src_video1' => "link video 1",        
+        'src_video1' => "https://www.youtube.com/embed/videoseries?list=PLQqX8aKGHZ3HdskDWHss9poPRecOOhjh0",        
         'status' => 1
 
     ];
