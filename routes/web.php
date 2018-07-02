@@ -7,6 +7,10 @@ Route::get('/test', function () {
     return view('test');
 })->name('test');
 
+// OAuth Routes
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 
 
 Route::namespace('Admin')->group(function () {

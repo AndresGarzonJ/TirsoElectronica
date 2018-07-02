@@ -1,9 +1,14 @@
 Tirso Electronica Version Beta 1.0
 
 --------------------- -------------------------------------
+Bienvenido al mundo de la electronica, aqui podras buscar proyectos,
+productos, herramientas y demas dispositivos para comenzar un camino
+lleno de curiosidades y tecnologia!.
 
+Ven!. Dale un vistazo.
 
 #### Framework Used : Laravel 5.6
+
 
 #### Features
 
@@ -54,7 +59,6 @@ Tirso Electronica Version Beta 1.0
     - Mobile responsive design for the admin and front store
     - Access anywhere your admin and front store
 
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
+Desarrolladores: Andres Garzon - Yeison Caicedo
 
-[![Beerpay](https://www.dropbox.com/s/srxfghrj3apeajt/bp.png?raw=1)](https://beerpay.io/jsdecena/laracom)
+Creditos: laracom.net(base para e-commerce)

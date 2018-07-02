@@ -19,6 +19,8 @@
             </div>
         </div>
         <!-- Inner Page Banner Area End Here -->
+        <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+    
     <!-- Login Registration Page Area Start Here -->
     <div class="login-registration-page-area">
         <div class="container">

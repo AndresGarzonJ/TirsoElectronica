@@ -40,7 +40,7 @@
                             <td scope="row">{{ $panel->subtitulo }}</td>
                             <td scope="row">{{ $panel->link }}</td>
                           <td scope="row"><a class="btn btn-outline-primary btn-primary" href="/admin/panels/{{$panel->id}}/edit">Editar</a></td>
-                          <td scope="row">{{ Form::open([ 'route'=>['admin.panels.destroy',$panel->id],   'method'=>'DELETE' ])}}
+                          <td scope="row" onclick="return confirm('Está seguro de que quiere borrar esta panel de portada?');" >{{ Form::open([ 'route'=>['admin.panels.destroy',$panel->id],   'method'=>'DELETE' ])}}
                         
                                             {!! Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
                                             {{ Form::close()}}
@@ -49,6 +49,7 @@
                           </tr>
                           @endforeach
                         </tbody>
+                        {{ $panels->render() }}
                       </table>
                   
                 </div>
