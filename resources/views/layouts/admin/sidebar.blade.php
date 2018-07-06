@@ -68,6 +68,17 @@
                         <li><a href="{{ route('admin.blogs.create') }}"><i class="fa fa-plus"></i> Create blog</a></li>
                     </ul>
                 </li>
+                <li class="treeview @if(request()->segment(2) == 'contacts') active @endif">
+                    <a href="#">
+                        <i class="fa fa-gift"></i> <span>Page Contact</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu"> 
+                        <li><a href="{{ route('admin.contacts.index') }}"><i class="fas fa-circle-notch"></i> Edit</a></li>
+                    </ul>
+                </li>
                 <li class="treeview @if(request()->segment(2) == 'customers' || request()->segment(2) == 'addresses') active @endif">
                     <a href="#">
                         <i class="fa fa-user"></i> <span>Customers</span>

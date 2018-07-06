@@ -35,6 +35,8 @@ use App\Shop\Provinces\Repositories\ProvinceRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Shop\Blogs\Repositories\BlogRepository; 
+use App\Shop\Contacts\Repositories\Interfaces\ContactRepositoryInterface;
+use App\Shop\Contacts\Repositories\ContactRepository; 
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -118,5 +120,11 @@ class RepositoryServiceProvider extends ServiceProvider
             BlogRepositoryInterface::class,
             BlogRepository::class
         );
+        $this->app->bind(
+            ContactRepositoryInterface::class,
+            ContactRepository::class
+        );
+
+
     }
 }

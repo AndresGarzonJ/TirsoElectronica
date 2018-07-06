@@ -41,7 +41,7 @@
                             <li><a href={{asset("#")}}>Dress</a></li>
                             <li><a href={{asset("#")}}>Dress</a></li>
                             <li><a href={{asset("#")}}>Summer Style</a></li>
-                            <li><a href={{asset("#")}}>Leather</a></li>
+                            <li><a href={{asset("#")}}>Leather</a></li> 
                         </ul>
                     </div>
                 </div>
@@ -50,12 +50,10 @@
                         <h3>Stay With Us</h3>
                         <p>Tmply dummy text of the printing and typesetting industry nummy ever.</p>
                         <ul class="footer-social">
-                            <li><a href={{asset("#")}}><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href={{asset("#")}}><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href={{asset("#")}}><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                            <li><a href={{asset("#")}}><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                            <li><a href={{asset("#")}}><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                            <li><a href={{asset("#")}}><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="{ $contact->profile_facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="{ $contact->profile_twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="{ $contact->profile_youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                            <li><a href="{ $contact->profile_mercadolibre}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li> 
                         </ul>
                         <div class="newsletter-area">
                             <h3>NewsLetter Sign Up!</h3>
@@ -82,7 +80,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <ul class="payment-method">
                         <li>
-                            <a href={{asset("#")}}><img src={{asset("indexMetro/img/payment-method1.jpg")}} alt="payment-method"></a>
+                            <a href={{asset("#")}}><img src={{asset("indexMetro/img/payment-method1.jpg")}} alt="payment-method"></a> 
                         </li>
                         <li>
                             <a href={{asset("#")}}><img src={{asset("indexMetro/img/payment-method2.jpg")}} alt="payment-method"></a>
