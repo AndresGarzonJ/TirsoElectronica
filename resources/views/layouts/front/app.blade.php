@@ -48,7 +48,7 @@
     
     <!-- Colores Personalizados -->
     <link rel="stylesheet" href="{{ asset('css/color/deep-purple.css') }}">
-
+    <!-- comentario para push -->
     @yield('css')   
     
     @yield('og')
