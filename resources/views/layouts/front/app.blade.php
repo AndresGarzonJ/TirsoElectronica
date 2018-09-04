@@ -35,6 +35,7 @@
     <link rel="stylesheet" href={{asset("indexMetro/css/select2.min.css")}}>
     <link rel="stylesheet" href={{asset("indexMetro/vendor/noUiSlider/nouislider.min.css")}}>
     <link rel="stylesheet" href={{asset("indexMetro/style.css")}}>
+    <link rel="stylesheet" href="{{ asset("indexMetro/css/switch-style.css") }}">
     <script src={{asset("indexMetro/js/vendor/modernizr-2.8.3.min.js")}}></script>
     <!-- Nivo Slider CSS --> <!-- necesario para index -->
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/nivo-slider.css")}} type="text/css" />
@@ -43,7 +44,10 @@
     <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>    
+    crossorigin="anonymous"></script>  
+    
+    <!-- Colores Personalizados -->
+    <link rel="stylesheet" href="{{ asset('css/color/deep-purple.css') }}">
 
     @yield('css')   
     
@@ -126,7 +130,7 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <div class="logo-area">
-                                        <a href="{{ route('home') }}"><img class="img-responsive" src={{asset("indexMetro/img/logo.png")}} alt="logo"></a>
+                                        <a href="{{ route('home') }}"><img class="img-responsive" src={{asset("indexMetro/img/tirsoelectronica.com.png")}} alt="logo"></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -284,7 +288,75 @@
 
         
         @yield('content')  
+        
 
+         <!-- Style Switch Start Here -->
+    <link id="switch_style" href="#" rel="stylesheet" type="text/css">
+    <div class="style-switch left" id="switch-style">
+        <a id="toggle-switcher" class="switch-button" title="Change Styles">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        </a>
+        <div class="switched-options">
+            <div class="config-title">Style Switcher</div>
+            <ul class="list-unstyled styles">
+                <li>
+                    <a href="#" title="black" class="black color" id="black"></a>
+                </li>
+                <li>
+                    <a href="#" title="amber" class="amber color" id="amber"> </a>
+                </li>
+                <li>
+                    <a href="#" title="blue-grey" class="blue-grey color" id="blue-grey"> </a>
+                </li>
+                <li>
+                    <a href="#" title="blue" class="blue color" id="blue"> </a>
+                </li>
+                <li>
+                    <a href="#" title="cyan" class="cyan color" id="cyan"> </a>
+                </li>
+                <li>
+                    <a href="#" title="deep orange" class="deep-orange color" id="deep-orange"> </a>
+                </li>
+                <li>
+                    <a href="#" title="deep-purle" class="deep-purle color" id="deep-purle"> </a>
+                </li>
+                <li>
+                    <a href="#" title="green" class="green color" id="green"> </a>
+                </li>
+                <li>
+                    <a href="#" title="indigo" class="indigo color" id="indigo"> </a>
+                </li>
+                <li>
+                    <a href="#" title="light-blue" class="light-blue color" id="light-blue"> </a>
+                </li>
+                <li>
+                    <a href="#" title="light-green" class="light-green color" id="light-green"></a>
+                </li>
+                <li>
+                    <a href="#" title="lime" class="lime color" id="lime"></a>
+                </li>
+                <li>
+                    <a href="#" title="orange" class="orange color" id="orange"></a>
+                </li>
+                <li>
+                    <a href="#" title="palette" class="palette color" id="palette"></a>
+                </li>
+                <li>
+                    <a href="#" title="pink" class="pink color" id="pink"></a>
+                </li>
+                <li>
+                    <a href="#" title="purple" class="purple color" id="purple"></a>
+                </li>
+                <li>
+                    <a href="#" title="red" class="red color" id="red"></a>
+                </li>
+                <li>
+                    <a href="#" title="teal" class="teal color" id="teal"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Style Switch End Here -->
         <footer>
             @include('layouts.front.footer')
         </footer>
@@ -326,6 +398,9 @@
         <!-- Nivo slider js -->
         <script src={{asset("indexMetro/lib/custom-slider/js/jquery.nivo.slider.js")}} type="text/javascript"></script>
         <script src={{asset("indexMetro/lib/custom-slider/home.js")}} type="text/javascript"></script>
+
+            <script  src="{{ asset('indexMetro/js/switch-style.js') }}"></script>
+
         <!-- Isotope js -->
         <script src={{asset("indexMetro/js/isotope.pkgd.min.js")}} type="text/javascript"></script>   
         
