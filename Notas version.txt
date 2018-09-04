@@ -296,7 +296,7 @@ Crear Todo lo relacionado para los Blogs
 			php artisan migrate:rollback
 
 3.Crear el modelo Blog .. con el comando
-		php artisan make:model Shop/Blogs/Blog
+		php artisan make:model Shop/Blogs/Blog 
 		
 4. Se crean las variables ... en app/Shop/Blogs/Blog.php
     	protected $searchableColumns = ['name_blog', 'description'];
@@ -382,9 +382,11 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 		*Seccion de noticias		
 		*Tamaño de las imagenes -- Alto igual -- Redimensionar al guardar / front tambien
 		* Al hacer click en la imagen del top-area ..Redireccionar
+		* EN LOS OCNTROLADORES DE FRONT NO DEBERIA IR CONSULTAS A LA DB --> EJ: HOMECONTROLLER
 
 		Principal
 			*Barra de busqueda -- busqueda global
+			*Agregar los iconos de redes sociales
 		Tienda
 			*Acomodar vista tienda -- esta hereda de index (reuitliza)
 			*Botones / Iconos -- Por ej. el boton de carro de compras tiene estilos diferentes
@@ -392,6 +394,7 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 			*Tags
 			*Barra Categorias 
 			*Organizar front/products/products-search 
+			*Agregar a la tabla products - Link de MercadoLibre 
 
 		Tutoriales
 			*(Echo) - Descripcion corta de blogs - no esta limitada
@@ -409,6 +412,9 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 		Contacto
 			*Redes sociales YouTube/Mercadolibre/Facebook
 			*Logica / Formulario para ingresar los datos
+			*El cover de contactos se está guardando en public/storage
+			*Iconos -- que aparezca el nombre del lugar
+			*Añadir icono de whatsapp
 
 		Carro
 			*Acciones de los botones actualicen la pag sin recargar 
@@ -417,9 +423,10 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 			*Las rutas/href no sean estaticas!
 			*Rehubicar las imagenes  -- Ya que no son imagenes estaticas //public/storage/
 			*Establecer limite de caracteres a los campos .. por estetica del panel 
+			*El controlador en Front .. la func removeImage se podria pasar a Admin
+					Por lo tanto se podria eliminar este controlador
+			*Consulta directa a la db en HomeController -- las consultas estan en App/Shop/Base/BaseRepository.php
 
-
-        
 
 ------------------21 de Junio - 2018
 	Agregue contador de caracteres para description_short
@@ -471,7 +478,28 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 			php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
 
 
+-------------------3 de julio de 2018
+
+	Logica de la pag de contactos
+			ver **** http://www.videorockola.com/consultoria/
+
+			1. php artisan make:migration create_contacts_table 
+			2. php artisan make:model Shop/Contacts/Contact
+			3. php artisan make:controller Admin/Contacts/ContactController --resource
+			4. php artisan make:seeder ContactsTableSeeder
+			5. Agregar a database/seeds/DatabaseSeeder
+			6. Se agragan las clases (Repositorios) de Contact en app/providers/RepositoryServiceProvider.php
+					ContactRepositoryInterface
+					ContactRepository
+
+			7. en la vista views/front/contacto.blade.php 
+					se colocaron los datos traidos de la db
+
+					Los iconos de las redes sociales tocó agregarles el css manualmente
+			8. No se creo el controlador de Front
+			9. Ya funciona! 
 
 
+	Logica de la seccion Footer
 
 

@@ -36,6 +36,7 @@
     <link rel="stylesheet" href={{asset("indexMetro/vendor/noUiSlider/nouislider.min.css")}}>
     <link rel="stylesheet" href={{asset("indexMetro/style.css")}}>
     <link rel="stylesheet" href="{{ asset("indexMetro/css/switch-style.css") }}">
+    <!-- <link rel="stylesheet" href={asset("indexMetro/css/color/teal.css")}}> -->
     <script src={{asset("indexMetro/js/vendor/modernizr-2.8.3.min.js")}}></script>
     <!-- Nivo Slider CSS --> <!-- necesario para index -->
     <link rel="stylesheet" href={{asset("indexMetro/lib/custom-slider/css/nivo-slider.css")}} type="text/css" />
@@ -211,7 +212,7 @@
                                         @foreach($categories as $category)
                                             <li>
                                                 @if($category->children()->count() > 0)
-                                                    @include('layouts.front.category-sub', ['subs' => $category->children])
+                                                    @include('layouts.front.category-sub', ['subs' => $category->children]) 
                                                 @else
                                                     <a class="dropdown-toggle" data-toggle="dropdown"
                                                         @if(request()->segment(2) == $category->slug) 
@@ -273,7 +274,7 @@
                                                 <li><a href={{route('contacto')}}>Contacto</a>
                                                   
                                                 </li>
-                                                
+                                                 
                                             </ul>
                                         </nav>
                                     </div>
@@ -282,7 +283,7 @@
                         </div>
                     </div>
                     <!-- Mobile Menu Area End Here -->
-                </div>
+                </div> 
             </div>
         </header>
 

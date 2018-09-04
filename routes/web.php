@@ -40,6 +40,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.' ]
                 
             });
 
+            Route::namespace('Contacts')->group(function () {
+                Route::resource('contacts', 'ContactController'); 
+                Route::get('remove-image-contact', 'ContactController@removeImage')->name('contact.remove.image');
+                Route::get('remove-image-thumb', 'ContactController@removeThumbnail')->name('contact.remove.thumb');
+            });
+
             Route::namespace('Customers')->group(function () {
                 Route::resource('customers', 'CustomerController');
                 Route::resource('customers.addresses', 'CustomerAddressController');
@@ -89,7 +95,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
     Route::get('/tutoriales', 'HomeController@vistaPrincipalBlogs')->name('tutoriales');
     //Route::get('/homePrueba', 'HomeController@indexVista');
-    Route::get('/contacto','HomeController@contacto')->name('contacto');
+    Route::get('/contacto','HomeController@vistaContacto')->name('contacto'); 
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');
         Route::get('checkout', 'CheckoutController@index')->name('checkout.index');

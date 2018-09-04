@@ -53,7 +53,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
         return $this->model->orderBy($orderBy, $sortBy)->get($columns);
     }
 
-    //Busqueda selectiva teniendo en cuenta el valor de status
+    //Busqueda selectiva teniendo en cuenta el valor de status -- Necesaria para blogs / products
     /**
      * @param int $status
      * @param array $columns

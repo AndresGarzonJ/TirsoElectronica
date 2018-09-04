@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Panels;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Shop\Panels\Panel;
+use App\Shop\Panels\Panel; 
 use App\Shop\Categories\Category;
 use Illuminate\Support\Facades\DB;
 
