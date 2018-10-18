@@ -91,7 +91,7 @@ Route::get('/contacto', function () {
 Route::get('/mail', 'MailController@sendContactMail');
 
 Route::namespace('Front')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@tienda')->name('home');
     Route::get('/tienda', 'HomeController@tienda')->name('tienda');
     Route::get('/tutoriales', 'HomeController@vistaPrincipalBlogs')->name('tutoriales');
     //Route::get('/homePrueba', 'HomeController@indexVista');
