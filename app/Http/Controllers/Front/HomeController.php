@@ -57,14 +57,12 @@ class HomeController extends Controller
   
         $panels = DB::table('panels')->get();
 
-        $contact = $this->contactRepo->findContactById(1);
-
         $list = $this->blogRepo->listNBlogs(1,6);
         $blogs = $list->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
 
-        return view('front.index', compact('newests', 'features', 'category2', 'category3','blogs','panels','contact'));
+        return view('front.index', compact('newests', 'features', 'category2', 'category3','blogs','panels'));
     } 
 
     /*public function indexVista()
@@ -83,7 +81,7 @@ class HomeController extends Controller
         $category2 = $this->categoryRepo->findCategoryById(2);
         $category3 = $this->categoryRepo->findCategoryById(3); // Solo devuelvo los de categoria 3, por eso es que 
                                                                 // solo llegan 5.
-
+ 
         $newests = $category2->products;
         $features = $category3->products;
 
@@ -91,12 +89,12 @@ class HomeController extends Controller
 
     }
 
-    /**
+    /** 
      * Vista principal de blogs/tutoriales
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function vistaPrincipalBlogs(){
+    public function vistaPrincipalBlogs(){ 
 
         $list = $this->blogRepo->listBlogs_with_status();
         $blogs = $list->map(function (Blog $item) {
@@ -104,18 +102,21 @@ class HomeController extends Controller
         });
 
         
+        /*
         $listRecentBlogs = $this->blogRepo->listNBlogs(1,4);
         $recentBlogs = $listRecentBlogs->map(function (Blog $item) {
             return $this->transformBlog($item);
         });
-        
+
+        compact('recentBlogs')
+        */
+
         return view('front.tutoriales', [
                 'blogs' => $this->blogRepo->paginateArrayResults($blogs->all(), 6)
-            ],
-            compact('recentBlogs')
+            ],compact('countBlogsAnioMes')            
         );
 
-    }  
+    }   
 
     /**
      * Vista principal de pagina de contacto

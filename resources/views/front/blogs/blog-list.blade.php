@@ -1,13 +1,11 @@
 @if(!empty($blogs) && !collect($blogs)->isEmpty())
 
-    @foreach($blogs as $blog) 
-
-        @php 
-            $months = [
+    @php
+        $months = [
                 '-01-' => '-Enero-', 
-                '-02-' => '-Febrero-', 
+                '-02-' => '-Febrero-',
                 '-03-' => '-Marzo-',
-                '-04-' => '-Abril-', 
+                '-04-' => '-Abril-',
                 '-05-' => '-Mayo-',
                 '-06-' => '-Junio-',
                 '-07-' => '-Julio-',
@@ -16,14 +14,39 @@
                 '-10-' => '-Octubre-',
                 '-11-' => '-Noviembre-',
                 '-12-' => '-Diciembre-'
-            ];  
-            
+        ];  
+    @endphp
+
+
+    @foreach($blogs as $blog) 
+
+        @php
+
+        /* 
+            $months [0] = "NULL";
+            $months [1] = "Enero";
+            $months [2] = "Febrero";
+            $months [3] = "Marzo";
+            $months [4] = "Abril";
+            $months [5] = "Mayo";
+            $months [6] = "Junio";
+            $months [7] = "Julio";
+            $months [8] = "Agosto";
+            $months [9] = "Septiembre";
+            $months [10] = "Octubre";
+            $months [11] = "Noviembre";
+            $months [12] = "Diciembre";
+                        
+            $blogMonth = $months[$blog->month];             
+         */   
             $date_split = substr($blog->updated_at, 0, -9);
             $date = str_replace(array_keys($months), $months, $date_split);
             $date_array = explode("-", $date);
+        
+            
                 
         @endphp
-        
+
         <div
         @if($form_list == "grid")         
             class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
@@ -74,7 +97,7 @@
                         <a href="{{ route('front.get.blog', str_slug($blog->slug)) }}"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
                         <div class="blog-img-holder">
                             <div class="post-date">
-                                <span>{{ $date_array[1] }} {{ $date_array[2] }}</span>
+                                <span>>{{ $date_array[1] }} {{ $date_array[2] }}</span>
                             </div>
 
                             @if(isset($blog->cover))
@@ -109,7 +132,8 @@
                         </div>
             @endif
 
-            @if($form_list == "column") 
+            @if($form_list == "column")
+                <hr> 
                 <div class="media">
                     @if(isset($blog->cover))
                         <a href="{{ route('front.get.blog', str_slug($blog->slug)) }}" class="pull-left">
@@ -144,6 +168,11 @@
             </div>            
         </div>
     @endforeach
+
+    
+
+
+
     @if($blogs instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

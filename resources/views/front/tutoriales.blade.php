@@ -1,7 +1,7 @@
 @extends('layouts.front.app')
 
 @section('css')
-   
+    
 @endsection
 
 
@@ -38,13 +38,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                    @include('layouts.front.blog-side-right', ['blogs' => $recentBlogs])
+                    @include('layouts.front.blog-side-right') 
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                     <div class="row">
                         @if(!is_null($blogs)) 
-                            @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "grid"])
-                            
+                            @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "grid"])                            
                         @endif
                     </div>                    
                 </div>                

@@ -15,7 +15,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic;
-
+ 
 
 
 
@@ -57,7 +57,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     public function listBlogs_with_status(int $status = 1, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
     {
         return $this->all_with_status($status,$columns, $order, $sort);
-    }
+    } 
 
     /**
      * List N the blogs - Busqueda selectiva teniendo en cuenta el valor de status
@@ -71,6 +71,26 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
     public function listNBlogs(int $status = 1, int $nBlogs = 6, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection
     {
         return $this->all_with_status($status,$columns, $order, $sort)->take($nBlogs);
+    }
+
+    /**
+     * Contar/Agrupar blogs por anio y mes ..teniendo en cuenta la variable status
+     * 
+     * @return Collection
+     */
+    public function countBlogsMonthYear()
+    {
+        return $this->count_blogs_month_year();
+    }
+
+    /**
+     * Mostrar blogs por anio y mes ..teniendo en cuenta la variable status
+     * 
+     * @return Collection
+     */
+    public function blogsMonthYear()
+    {
+        return $this->blogs_month_year();
     }
 
     /**
@@ -170,7 +190,7 @@ class BlogRepository extends BaseRepository implements BlogRepositoryInterface
 
     /**
      * @param UploadedFile $file
-     * @return string 
+     * @return string  
      */
     public function saveCoverImage(UploadedFile $file) : string
     //public function saveCoverImage(ImageManagerStatic $file) : string

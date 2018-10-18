@@ -90,8 +90,8 @@
                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                     <div class="header-contact">
                                         <ul>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href={{asset("+1234567890")}}> + 123 456 7890</a></li>
-                                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href={{asset("#")}}> info@metro.com</a></li>
+                                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href={{asset("#")}}> {{ $contact->telephone_number_1 }}</a></li>
+                                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href={{asset("#")}}> {{ $contact->e_mail }}</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -22,6 +22,7 @@ class CreateBlogsTable extends Migration
             $table->text('description_short')->nullable();
             $table->string('cover')->nullable();
             $table->string('src_video1');
+            
             /*
             $table->string('src_video2');
             $table->string('src_video3');

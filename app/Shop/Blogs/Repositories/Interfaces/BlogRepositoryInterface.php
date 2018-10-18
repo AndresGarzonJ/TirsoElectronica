@@ -21,6 +21,12 @@ interface BlogRepositoryInterface extends BaseRepositoryInterface
     //Solo trae los 6 primeros blogs encontrados
     public function listNBlogs(int $status = 1, int $nBlogs = 6, string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
+    //Contar/Agrupar blogs por anio y mes ..teniendo en cuenta la variable status
+    public function countBlogsMonthYear();
+
+    //Mostrar blogs por anio y mes ..teniendo en cuenta la variable status
+    public function blogsMonthYear();
+
     public function createBlog(array $data) : Blog;
 
     public function updateBlog(array $params, int $id) : bool;

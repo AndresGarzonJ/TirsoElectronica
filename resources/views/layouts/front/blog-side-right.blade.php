@@ -1,3 +1,38 @@
+@php
+    function cvf_convert_object_to_array($data) {
+
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        if (is_array($data)) {
+            return array_map(__FUNCTION__, $data);
+        }
+        else {
+            return $data;
+        }
+    }
+
+    $months [0] = "Vacio";
+    $months [1] = "Ene";
+    $months [2] = "Feb";
+    $months [3] = "Mar";
+    $months [4] = "Abr";
+    $months [5] = "May";
+    $months [6] = "Jun";
+    $months [7] = "Jul";
+    $months [8] = "Ago";
+    $months [9] = "Sep";
+    $months [10] = "Oct";
+    $months [11] = "Nov";
+    $months [12] = "Dic";
+
+    $countBlogsMostrado = 0;
+    $temp_countBlogsMostrado = 0;
+    $i = 0;
+    
+@endphp
+
 <div class="sidebar hidden-after-tab">
     <!-- Barra busqueda ---------------------
     <h2 class="title-sidebar">Search</h2>
@@ -10,11 +45,11 @@
             </button>
             </span>
         </div>
-    </div>
+    </div>  
     --------------------- -->
     <h2 class="title-sidebar">RECENT POSTS</h2>
     <div class="recent-posts sidebar-section-margin">
-        @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "column"])
+        @include('front.blogs.blog-list', ['blogs' => $recentBlogs, 'form_list' => "column"])
                             
         <!--
         <div class="media">
@@ -31,14 +66,80 @@
     </div>
     <h2 class="title-sidebar">Archives</h2>
     <div class="archives sidebar-section-margin">
-        <ul>
-            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>January 2016</a></li>
-            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>December 2015</a></li>
-            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>November 2015</a></li>
-            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>March 2015</a></li>
-            <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>January 2015</a></li>
-        </ul>
+        <div class="category-menu-area">
+            @foreach ($countBlogsAnioMes as $grupoMesAnio)
+                <ul class="category-menu-area-inner">
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-chevron-right"  aria-hidden="true"></i>{{ $months[$grupoMesAnio->mes] }} {{ $grupoMesAnio->anio }}({{ $grupoMesAnio->total }})
+                        </a>                       
+
+                        <ul class="dropdown-menu">
+                            @for ($i = $countBlogsMostrado; $i < count($blogsAnioMes) ; $i++)
+                                @if ($blogsAnioMes[$i]->anio == $grupoMesAnio->anio && $blogsAnioMes[$i]->mes == $grupoMesAnio->mes)
+                                    <li>
+                                        <a href="{{  route('front.get.blog', str_slug($blogsAnioMes[$i]->slug)) }}">
+                                            {{ $blogsAnioMes[$i]->name_blog}}
+                                        </a>
+                                    </li>
+                                    @php
+                                        $temp_countBlogsMostrado++;
+                                    @endphp
+                                @else
+                                                                                                           
+                                @endif
+                            @endfor
+                            @php
+                                $countBlogsMostrado = $temp_countBlogsMostrado;
+                                //array_splice($blogsAnioMes, 0, $countBlogsMostrado);
+                            @endphp
+                        </ul>
+                        
+                    </li>
+                </ul>                
+            @endforeach  
+        </div>
     </div>
+
+       
+    <!-- 
+    <div class="archives sidebar-section-margin">
+        <div class="category-menu-area"> 
+            foreach ($countBlogsAnioMes as $grupoMesAnio)
+                <ul>
+                    <li data-toggle="collapse" data-target="#{ $grupoMesAnio->mes }}{ $grupoMesAnio->anio }}" class="collapsed has-sub-menu">
+                        <a>
+                            <i class="fa fa-chevron-right"  aria-hidden="true"></i>{ $months[$grupoMesAnio->mes] }} { $grupoMesAnio->anio }}({ $grupoMesAnio->total }})
+                        </a>                       
+
+                        <ul class="sub-menu collapse" id="{ $grupoMesAnio->mes }}{ $grupoMesAnio->anio }}">
+                            for ($i = $countBlogsMostrado; $i < count($blogsAnioMes) ; $i++)
+                                if ($blogsAnioMes[$i]->anio == $grupoMesAnio->anio && $blogsAnioMes[$i]->mes == $grupoMesAnio->mes)
+                                    <li>
+                                        <a href="{  route('front.get.blog', str_slug($blogsAnioMes[$i]->slug)) }}"><i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                            { $blogsAnioMes[$i]->name_blog}}
+                                        </a>
+                                    </li>
+                                    php
+                                        $temp_countBlogsMostrado++;
+                                    endphp
+                                else
+                                                                                                           
+                                endif
+                            endfor
+                            php
+                                $countBlogsMostrado = $temp_countBlogsMostrado;
+                                //array_splice($blogsAnioMes, 0, $countBlogsMostrado);
+                            endphp
+                        </ul>
+                        
+                    </li>
+                </ul>                
+            endforeach  
+        </div>
+    </div>
+    -->
+    
     <h2 class="title-sidebar">Product Tags</h2>
     <div class="product-tags">
         <ul>

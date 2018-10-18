@@ -26,10 +26,9 @@
                         <div class="bend niceties preview-2">
                             <div id="ensign-nivoslider-2" class="slides">
                             <?php  $i = 1;  ?>
-                             @foreach ($panels as $panel)
-                                    
+                             @foreach ($panels as $panel)                                   
                                 
-                            <img src={{asset("indexMetro/img/slider-1/slider-2.jpg")}} alt="" title="#slider-direction-{{$i}}" /> <!-- es la img gris de fondo -->
+                            <img src={{asset("images/slider-2.jpg")}} alt="" title="#slider-direction-{{$i}}" /> <!-- es la img gris de fondo -->
                                 <?php $i++; ?>
                                 @endforeach
                             </div>
@@ -44,13 +43,12 @@
                                         <h2 class="title1">{{$panel->anio}}</h2>
                                         <h3 class="title3">{{$panel->subtitulo}}</h3>
                                         <p>{{$panel->descripcion}}</p>
-                                            <a href="/category/{{$panel->link}}" class="btn-shop-now ">Ver categoria</a>
-                                        
+                                            <a href="/category/{{$panel->link}}" class="btn-shop-now ">Ver categoria</a>                                      
                                         </div>
                                     </div>
                                     <!-- layer 1 -->
                                     <div class="layer-1-1">
-                                        <img src="/images/{{$panel->imagen}}" alt="" />
+                                        <img src="/storage/panels/{{$panel->imagen}}" alt="" />
                                     </div>
                             </div>
                             <?php $i++; ?>

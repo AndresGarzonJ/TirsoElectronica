@@ -13,6 +13,12 @@ interface BaseRepositoryInterface
     //Busqueda selectiva teniendo en cuenta el valor de status
     public function all_with_status(int $status = 1, $columns = array('*'), string $orderBy = 'id', string $sortBy = 'asc');
 
+    //contar blogs por anio mes
+    public function count_blogs_month_year();
+
+    //Mostrar blogs por anio mes
+    public function blogs_month_year();
+
     public function find(int $id);
 
     public function findOneOrFail(int $id);

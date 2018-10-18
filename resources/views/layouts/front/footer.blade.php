@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-box">
-                        <h3>Information</h3>
+                        <h3>Information</h3> 
                         <ul class="info-list">
                             <li><a href={{asset("about.html")}}>About us</a></li>
                             <li><a href={{asset("#")}}>Customer Service</a></li>
@@ -43,17 +43,17 @@
                             <li><a href={{asset("#")}}>Summer Style</a></li>
                             <li><a href={{asset("#")}}>Leather</a></li> 
                         </ul>
-                    </div>
+                    </div> 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-box">
                         <h3>Stay With Us</h3>
                         <p>Tmply dummy text of the printing and typesetting industry nummy ever.</p>
                         <ul class="footer-social">
-                            <li><a href="{ $contact->profile_facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="{ $contact->profile_twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="{ $contact->profile_youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                            <li><a href="{ $contact->profile_mercadolibre}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li> 
+                            <li><a href="{{ $contact->profile_facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ $contact->profile_twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ $contact->profile_youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ $contact->profile_mercadolibre}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li> 
                         </ul>
                         <div class="newsletter-area">
                             <h3>NewsLetter Sign Up!</h3>

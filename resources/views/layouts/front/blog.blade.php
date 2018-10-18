@@ -1,22 +1,39 @@
  @php 
-	$months = [
-	    '-01-' => '-Enero-', 
-	    '-02-' => '-Febrero-',
-	    '-03-' => '-Marzo-',
-	    '-04-' => '-Abril-',
-	    '-05-' => '-Mayo-',
-	    '-06-' => '-Junio-',
-	    '-07-' => '-Julio-',
-	    '-08-' => '-Agosto-',
-	    '-09-' => '-Septiembre-',
-	    '-10-' => '-Octubre-',
-	    '-11-' => '-Noviembre-',
-	    '-12-' => '-Diciembre-'
-	];	
-	 
-	$date_split = substr($blog->updated_at, 0, -9);
-	$date = str_replace(array_keys($months), $months, $date_split);
-	$date_array = explode("-", $date);
+	/*
+        $months = [
+    	    '-01-' => '-Enero-', 
+    	    '-02-' => '-Febrero-',
+    	    '-03-' => '-Marzo-',
+    	    '-04-' => '-Abril-',
+    	    '-05-' => '-Mayo-',
+    	    '-06-' => '-Junio-',
+    	    '-07-' => '-Julio-',
+    	    '-08-' => '-Agosto-',
+    	    '-09-' => '-Septiembre-',
+    	    '-10-' => '-Octubre-',
+    	    '-11-' => '-Noviembre-',
+    	    '-12-' => '-Diciembre-'
+    	];	
+    	 
+    	$date_split = substr($blog->updated_at, 0, -9);
+    	$date = str_replace(array_keys($months), $months, $date_split);
+    	$date_array = explode("-", $date);
+    */
+    $months [0] = "NULL";
+    $months [1] = "Enero";
+    $months [2] = "Febrero";
+    $months [3] = "Marzo";
+    $months [4] = "Abril";
+    $months [5] = "Mayo";
+    $months [6] = "Junio";
+    $months [7] = "Julio";
+    $months [8] = "Agosto";
+    $months [9] = "Septiembre";
+    $months [10] = "Octubre";
+    $months [11] = "Noviembre";
+    $months [12] = "Diciembre";
+                
+    $blogMonth = $months[$blog->month];
 		
 @endphp
 
@@ -25,7 +42,7 @@
     <div class="container">
         <div class="row">
         	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                @include('layouts.front.blog-side-right', ['blogs' => $recentBlogs])
+                @include('layouts.front.blog-side-right')
             </div>
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
             <!-- -------------- Se personalizo el css product-details2-area --------- -->
@@ -94,7 +111,7 @@
                         endif 
                     </a>
                     -->
-                    <span>{{ $date_array[1] }} {{ $date_array[2] }}, {{ $date_array[0] }}</span>
+                    <span>{{ $blogMonth }} {{ $blog->day }}, {{ $blog->year }}</span>
                     <h3><a href="#">{{ $blog->name_blog}}</a></h3>
                     <ul class="comments-info">
                         <li><span>by</span> {{ $blog->name_creator }}</li>

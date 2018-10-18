@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PanelsTableSeeder extends Seeder
 {
@@ -11,6 +12,8 @@ class PanelsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //Eliminar registros
+        DB::table('panels')->truncate();
+        
     }
 }

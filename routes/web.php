@@ -1,5 +1,5 @@
 <?php
-
+ 
 //Admin Rules
 
 Route::get('/test', function () {

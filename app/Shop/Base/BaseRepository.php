@@ -6,6 +6,7 @@ use App\Shop\Base\Interfaces\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @codeCoverageIgnore
@@ -57,7 +58,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @param int $status
      * @param array $columns
-     * @param string $orderBy
+     * @param string $orderBy 
      * @param string $sortBy
      * @return mixed
      */
@@ -65,6 +66,31 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return $this->model->orderBy($orderBy, $sortBy)->get($columns)->where('status', $status);
     } 
+
+
+    //contar blogs por anio mes y contarlos
+    /**
+     * @return mixed
+     */
+    public function count_blogs_month_year()
+    {
+        //#SELECT YEAR(updated_at) AS ANIO, MONTH(updated_at) AS MES, MONTHNAME(updated_at) AS NOMBRE, COUNT(id) AS TotalPorMesAnio FROM laracomgit.blogs WHERE status = 1 GROUP BY ANIO DESC, MES DESC
+
+        return DB::select('SELECT YEAR(updated_at) AS anio, MONTH(updated_at) AS mes,COUNT(id) AS total FROM blogs WHERE status = 1 GROUP BY anio DESC, mes DESC');
+    }
+
+    //blogs por anio mes
+    /**
+     * @return mixed
+     */
+    public function blogs_month_year()
+    {
+        //#SELECT YEAR(updated_at) AS ANIO, MONTH(updated_at) AS MES, slug, name_blog FROM laracomgit.blogs WHERE status = 1 ORDER BY updated_at DESC
+
+
+        return DB::select('SELECT YEAR(updated_at) AS anio, MONTH(updated_at) AS mes, slug, name_blog FROM blogs WHERE status = 1 ORDER BY updated_at DESC');
+    }
+        
 
     /**
      * @param int $id

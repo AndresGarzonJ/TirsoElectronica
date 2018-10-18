@@ -7,7 +7,7 @@ Notas version
 
 v2
 -------------------------------------------------------------------------
-
+ 
 layoutSearch
 	Se quito la busqueda por cuidad
 
@@ -285,7 +285,7 @@ En la nueva version de Laracom se encontro:
 Crear Todo lo relacionado para los Blogs
 
 1. Crear la migracion
-		php artisan make:migration create_blogs_table 
+		php artisan make:migration create_blogs_table  
 
 2. Crear el Esquema/Migracion para la db
 		se crea el archivo create_blogs_table.php en Laravel/database/migrations
@@ -498,8 +498,40 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 					Los iconos de las redes sociales tocó agregarles el css manualmente
 			8. No se creo el controlador de Front
 			9. Ya funciona! 
+			10. Como en el footer se utiliza los links de las redes sociales que estan en Contact.. y el footer se utiliza en todas las vistas, entonces contact se agrega a 
+				app/providers/GlobalTemplateServiceProvider.php
+			De esta manera los links de las redes sociales siempre los podra acceder el layout de footer
 
+-------------------13 de septiembre de 2018
+	Se acomodaron las rutas front/back para redirigir las imagenes a storage/panels
+		SIN EMBARGO falta acomodar logica controller-repositories-consultas DB
 
-	Logica de la seccion Footer
+	En Blogs - Panel izquierdo - Agrupar los blogs por mes año
 
+		(El paso1 fue desecho)
+		1. se agregaron las columnas (dia mes anio)a la tabla blogs en los arhivos
+				database/migrations/create_blogs_table
+				database/factories/BlogModelFactory
+				app/Shop/Blogs/Blog 
+				app/Shop/Blogs/Transformations/BlogTransformable
 
+		2. El echo que la barra lateral de los blogs se use en mas de una interfaz, complica la tranferencia de las variables con compact() o en json.
+
+			Por lo que fue necesario recurrir a 
+				app/providers/GlobalTemplateServiceProvider.php
+			para compartir los datos de manera global hacia 
+				blog-side-right.blade.php
+
+		3. Esta consulta con los helpers-sql de Lavarel es dificil de hacer... por lo que se recurre al SQL tradicional (junto con una libreria de Laravel)
+
+			3.1 La consulta SQL se define en BaseRepository.php
+			3.2 En BlogRepository se obtienen los datos de la consulta
+			3.3 Y por ultimo en app/providers/GlobalTemplateServiceProvider.php se envian los datos
+
+			(Los anteriores sub-pasos se hacen en el orden indicado)
+
+		4. Se tuvieron que realizar dos consultas 
+			Una para contar/total los blogs por anio y mes
+			Otra para traer los slug y nombres de los blogs
+
+	app/providers/GlobalTemplateServiceProvider.php tambien se uso para enviar los datos del footer-contact barra-lateral-blogs-recientes

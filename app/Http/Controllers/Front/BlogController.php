@@ -10,13 +10,13 @@ use App\Http\Controllers\Controller;
 use App\Shop\Blogs\Blog;
 use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Shop\Blogs\Transformations\BlogTransformable;
-
+ 
 class BlogController extends Controller
 {
     use BlogTransformable;
 
     /**
-     * @var BlogRepositoryInterface
+     * @var BlogRepositoryInterface 
      * 
      */
     private $blogRepo;
@@ -63,14 +63,9 @@ class BlogController extends Controller
     {
         $blog = $this->blogRepo->findBlogBySlug(['slug' => $slug]);
 
-        $listRecentBlogs = $this->blogRepo->listNBlogs(1,4);
-        $recentBlogs = $listRecentBlogs->map(function (Blog $item) {
-            return $this->transformBlog($item);
-        });
-
         //Mostrar o no .. segun la variable status
         if ($blog->status == 1) {
-            return view('front.blogs.blog', compact('blog','recentBlogs'));             
+            return view('front.blogs.blog', compact('blog'));             
         }else{
             return view('layouts.errors.404');
         }

@@ -55,7 +55,7 @@ class PanelController extends Controller
         if($request->hasFile('imagenName')){
             $file=  $request->file('imagenName');
             $name = time().$file->getClientOriginalName();  
-            $file->move(public_path().'/images/',$name);
+            $file->move(public_path().'/storage/panels/',$name);
             //return $name;
         }
 
@@ -122,7 +122,7 @@ class PanelController extends Controller
             $temporal = 1;
             $file=  $request->file('imagen');
             $name = time().$file->getClientOriginalName();  
-            $file->move(public_path().'/images/',$name);
+            $file->move(public_path().'/storage/panels/',$name);
             //return $name;
         }
         if($temporal==1){
@@ -153,7 +153,7 @@ class PanelController extends Controller
         $panels = DB::table('panels')->paginate(10);
         return view('admin.panels.list', [
             'panels' => $panels
-        ])->with('info','Panel eliminado con exito!');
+        ])->with('info','Panel eliminado con exito!'); 
 
         //Manera correcta
 
