@@ -2,7 +2,7 @@
 
 @section('css')
    
-@endsection
+@endsection 
 
 
 @section('og')
@@ -22,10 +22,12 @@
 <!-- Slider Area Start Here -->
     <div class="main-slider3">
         <div class="bend niceties preview-1">
+            
             <div id="ensign-nivoslider-3" class="slides">
                 <img src={{asset("indexMetro/img/slider-3/slider-1.jpg")}} alt="" title="#slider-direction-1" />
                 <img src={{asset("indexMetro/img/slider-3/slider-2.jpg")}} title="#slider-direction-2" />
             </div>
+
             <div id="slider-direction-1" class="slider-direction">
                 <div class="slider-content t-lfr s-tb slider-1">
                     <div class="title-container s-tb-c">
@@ -37,6 +39,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="slider-direction-2" class="t-cn slider-direction">
                 <div class="slider-content t-lfl s-tb slider-2">
                     <div class="title-container s-tb-c">

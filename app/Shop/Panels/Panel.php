@@ -10,11 +10,12 @@ class Panel extends Model
     
         
         protected $fillable = [
-            'titulo',
-            'anio',
-            'subtitulo', 
+            'title',
+            'location_image', 
             'imagen',
-            'descripcion',
+            'description1',
+            'description2',
+            'text_btn_link', 
             'link'
                  
         ];

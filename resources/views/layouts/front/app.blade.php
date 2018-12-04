@@ -35,7 +35,7 @@
     <link rel="stylesheet" href={{asset("indexMetro/css/select2.min.css")}}>
     <link rel="stylesheet" href={{asset("indexMetro/vendor/noUiSlider/nouislider.min.css")}}>
     <link rel="stylesheet" href={{asset("indexMetro/style.css")}}>
-    <link rel="stylesheet" href="{{ asset("indexMetro/css/switch-style.css") }}">
+    <link rel="stylesheet" href={{asset("indexMetro/css/switch-style.css") }}>
     <!-- <link rel="stylesheet" href={asset("indexMetro/css/color/teal.css")}}> -->
     <script src={{asset("indexMetro/js/vendor/modernizr-2.8.3.min.js")}}></script>
     <!-- Nivo Slider CSS --> <!-- necesario para index -->
@@ -81,7 +81,7 @@
             
             <div
             @if ($namePage == "http://localhost:8000")
-                class="header-area-style1" 
+                class="header-area-style2"
             @else
                 class="header-area-style3" 
             @endif

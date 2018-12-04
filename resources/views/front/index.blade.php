@@ -4,7 +4,7 @@
    
 @endsection
 
-
+ 
 @section('og')
     <!--
         El Open Graph Protocol es un método simple que nos permite incluir meta información en nuestra página web y así convertirla en un objeto Social Graph, una vez siendo un objeto puede interactuar con otros objetos Social Graph como el share de Google+ o el like de Facebook de modo correcto.
@@ -17,51 +17,57 @@
 
 
 @section('content')
-    <!-- Slider Area Start Here -->
-    <div class="slider-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="main-slider1">
-                        <div class="bend niceties preview-2">
-                            <div id="ensign-nivoslider-2" class="slides">
-                            <?php  $i = 1;  ?>
-                             @foreach ($panels as $panel)                                   
-                                
-                            <img src={{asset("images/slider-2.jpg")}} alt="" title="#slider-direction-{{$i}}" /> <!-- es la img gris de fondo -->
-                                <?php $i++; ?>
-                                @endforeach
-                            </div>
-                            <!-- direction 1 -->
-                           <?php  $i = 1;  ?>
-                            @foreach ($panels as $panel)
-                              
-                        <div id="slider-direction-{{$i}}" class="slider-direction">
-                        <div class="slider-content t-lfl s-tb slider-1">
-                                        <div class="title-container s-tb-c">
-                                        <h2>{{ strtoupper($panel->titulo)}} </h2>
-                                        <h2 class="title1">{{$panel->anio}}</h2>
-                                        <h3 class="title3">{{$panel->subtitulo}}</h3>
-                                        <p>{{$panel->descripcion}}</p>
-                                            <a href="/category/{{$panel->link}}" class="btn-shop-now ">Ver categoria</a>                                      
-                                        </div>
-                                    </div>
-                                    <!-- layer 1 -->
-                                    <div class="layer-1-1">
-                                        <img src="/storage/panels/{{$panel->imagen}}" alt="" />
-                                    </div>
-                            </div>
-                            <?php $i++; ?>
-                            @endforeach
-                           
 
+<div class="main-slider3">
+        <div class="bend niceties preview-1">
+            
+            <div id="ensign-nivoslider-3" class="slides">
+                <?php  $i = 1;  ?>
+                @foreach ($panels as $panel)  
+                    <img src="/storage/panels/{{$panel->imagen}}" alt="" title="#slider-direction-{{$i}}" />
+                <?php $i++; ?>
+                @endforeach
+            </div>
+
+            <?php  $k = 1;  ?>
+            @foreach ($panels as $panel)                 
+                <div id="slider-direction-{{$k}}" 
+
+                @if ($panel->location_image == "left")
+                    class="slider-direction"                    
+                @endif
+
+                @if ($panel->location_image == "right")
+                     class="t-cn slider-direction"                    
+                @endif
+                >
+                    <div 
+
+                    @if ($panel->location_image == "left")
+                        class="slider-content t-lfr s-tb slider-1"                    
+                    @endif
+
+                    @if ($panel->location_image == "right")
+                         class="slider-content t-lfl s-tb slider-2"                    
+                    @endif
+                    >
+                        <div class="title-container s-tb-c">
+                            <h2 class="title1">{{$panel->title}}</h2>
+                            <p>{{$panel->description1}}</p>
+                            <p>{{$panel->description2}}</p>
+                            <a href="{{$panel->link}}" class="btn-shop-now-fill-slider">{{$panel->text_btn_link}}</a>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            <?php $k++; ?>
+            @endforeach
+            
         </div>
     </div>
-    <!-- Slider Area End Here -->
+<!-- Slider Area End Here -->
+
+
     
     
     
@@ -285,7 +291,7 @@
             <div class="metro-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
 
                 @if(!is_null($blogs)) 
-                    @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"])
+                    @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"]) 
                 @endif
 
                 

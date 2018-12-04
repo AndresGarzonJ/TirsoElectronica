@@ -15,33 +15,41 @@
                        @csrf
                        <div class="form-group">
                           <label for="exampleFormControlInput1">Titulo</label>
-                          <input type="text" class="form-control" id="" name="tituloName" placeholder="Collection">
+                          <input type="text" class="form-control" id="titleName" name="titleName" placeholder="Titulo">
                        </div>
+
                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Año</label>
-                          <input type="number" min="2018" max="2050" class="form-control"  id="exampleFormControlInput1" name="anioName" placeholder="2018">
-                       </div>
+                            <label for="description1Name">Descripcion 1 - Max 70 Characters</label>
+                            <textarea class="form-control" rows="5" name="description1Name" id="description1Name" onKeyDown="valida_longitud_1()" onKeyUp="valida_longitud_1()">{{ old('description1Name') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="description2Name">Descripcion 2 - Max 70 Characters</label>
+                            <textarea class="form-control" rows="5" name="description2Name" id="description2Name" onKeyDown="valida_longitud_2()" onKeyUp="valida_longitud_2()">{{ old('description2Name') }}</textarea>
+                        </div>
+                       
+                       
                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Subtitulo</label>
-                          <input type="text" class="form-control" id="" name="subName" placeholder="Subtitulo">
+                          <label for="text_btn_linkName">Texto Boton</label>
+                          <textarea class="form-control" rows="5" name="text_btn_linkName" id="text_btn_linkName" placeholder="Ver Producto"></textarea>
                        </div>
+                       
                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Descripcion</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcionName" placeholder="Aprovecha la promocion de transistores...">
-                          </textarea>
-                       </div>
-                       <select name ="linkName">
-                          <label for="exampleFormControlInput1">Link a Categoria</label>
-                          @foreach ($categories as $cat)
-                          <option value="{{$cat->slug}}">{{$cat->name}}</option>
-                          @endforeach
+                         <label for="linkName">Link</label>
+                         <input type="text" class="form-control" id="linkName" name="linkName" placeholder="Link">
+                      </div>
+
+                      <label for="location_imageName">Ubicación Imagen</label>
+                       <select name ="location_imageName">
+                          <option value="right">Derecha</option>
+                          <option value="left">Izquierda</option>
                        </select>
+
                        <div class="form-group">
                           <label for="exampleFormControlFile1">Imagen</label>
                           <input type="file" class="form-control-file" id="files" name="imagenName" >
                        </div>
                        <div class="form-group">
-                          <img id="image" class="img-thumbnail" style="width: 300px; height: 300px;"/>
+                          <img id="image" class="img-thumbnail" style="width: 100%; height: auto;"/>
                        </div>
                        <div class="form-group">
                           <button type="subtmit" class="btn btn-primary btn-large form-control">Crear</button>
@@ -53,5 +61,53 @@
            <div class="col-lg-2"></div>
         </div>
     </div>
+@endsection
+
+
+@section('js')
+<script type="text/javascript">
+    
+
+    //Limitar caracteres - Description_short
+    contenido_textarea = ""  
+    num_caracteres_permitidos = 71 
+
+    function valida_longitud_1(){ 
+       num_caracteres = document.forms[0].description1Name.value.length 
+
+       if (num_caracteres > num_caracteres_permitidos){ 
+          document.forms[0].description1Name.value = contenido_textarea 
+       }else{ 
+          contenido_textarea = document.forms[0].description1Name.value    
+       } 
+
+       if (num_caracteres >= num_caracteres_permitidos){ 
+          document.forms[0].description1Name.style.color="#ff0000"; 
+       }else{ 
+          document.forms[0].description1Name.style.color="#000000"; 
+       } 
+
+     
+    }
+
+    function valida_longitud_2(){ 
+       num_caracteres = document.forms[0].description2Name.value.length 
+
+       if (num_caracteres > num_caracteres_permitidos){ 
+          document.forms[0].description2Name.value = contenido_textarea 
+       }else{ 
+          contenido_textarea = document.forms[0].description2Name.value    
+       } 
+
+       if (num_caracteres >= num_caracteres_permitidos){ 
+          document.forms[0].description2Name.style.color="#ff0000"; 
+       }else{ 
+          document.forms[0].description2Name.style.color="#000000"; 
+       } 
+
+     
+    } 
+    
+</script>
 @endsection
 

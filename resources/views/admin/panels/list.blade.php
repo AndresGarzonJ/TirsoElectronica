@@ -21,9 +21,11 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Titulo</th>
-                            <th scope="col">Anio</th>
-                            <th scope="col">Subtitulo</th>
-                            <th scope="col">Categoria</th>
+                            <th scope="col">Ubicación Imagen</th>
+                            <th scope="col">Descripcion1</th>
+                            <th scope="col">Descripcion2</th>
+                            <th scope="col">Texto Boton</th>
+                            <th scope="col">Link</th>
                             <th scope="col">Editar</th>
                             <th scope="col">Eliminar</th>
                           </tr>
@@ -35,9 +37,11 @@
                          
                           <tr>
                             <td scope="row">{{ $panel->id }}</td>
-                            <td scope="row">{{ $panel->titulo }}</td>
-                            <td scope="row">{{ $panel->anio }}</td>
-                            <td scope="row">{{ $panel->subtitulo }}</td>
+                            <td scope="row">{{ $panel->title }}</td>
+                            <td scope="row">{{ $panel->location_image }}</td>
+                            <td scope="row">{{ $panel->description1}}</td>
+                            <td scope="row">{{ $panel->description2}}</td>
+                            <td scope="row">{{ $panel->text_btn_link}}</td>
                             <td scope="row">{{ $panel->link }}</td>
                           <td scope="row"><a class="btn btn-outline-primary btn-primary" href="/admin/panels/{{$panel->id}}/edit">Editar</a></td>
                           <td scope="row" onclick="return confirm('Está seguro de que quiere borrar esta panel de portada?');" >{{ Form::open([ 'route'=>['admin.panels.destroy',$panel->id],   'method'=>'DELETE' ])}}

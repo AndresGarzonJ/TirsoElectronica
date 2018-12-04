@@ -17,11 +17,12 @@ class CreatePanelsTable extends Migration
 
         Schema::create('panels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
-            $table->integer('anio');
-            $table->string('subtitulo');
+            $table->string('title');
+            $table->string('location_image');
             $table->string('imagen');
-            $table->string('descripcion');
+            $table->string('desciption1');
+            $table->string('desciption2');
+            $table->string('text_btn_link');
             $table->string('link');
             $table->timestamps();
         });

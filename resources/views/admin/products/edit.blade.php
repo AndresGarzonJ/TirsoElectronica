@@ -136,7 +136,7 @@
                                             </div>
                                             <!-- /.box-body -->
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4"> 
                                             <h2>Categories</h2>
                                             @include('admin.shared.categories', ['categories' => $categories, 'ids' => $product])
                                             <div class="form-group">

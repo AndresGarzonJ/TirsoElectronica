@@ -60,11 +60,12 @@ class PanelController extends Controller
         }
 
         $panel = new Panel();
-        $panel->titulo= $request->input('tituloName');
-        $panel->anio= $request->input('anioName');
-        $panel->subtitulo= $request->input('subName');
+        $panel->title= $request->input('titleName');
+        $panel->location_image= $request->input('location_imageName');
         $panel->imagen= $name;
-        $panel->descripcion= $request->input('descripcionName');
+        $panel->description1= $request->input('description1Name');
+        $panel->description2= $request->input('description2Name');
+        $panel->text_btn_link= $request->input('text_btn_linkName');
         $panel->link= $request->input('linkName');
         $panel->save();
 
@@ -96,12 +97,7 @@ class PanelController extends Controller
      */
     public function edit(Panel $panel)
     {
-        //
-
-        //$category= Category::find($panel->link);
-        $categoryName = DB::table('categories')->where('slug', $panel->link)->value('slug');
-        $categories= DB::table('categories')->get();
-        return view('admin.panels.edit',compact('panel','categoryName','categories'));
+        return view('admin.panels.edit',compact('panel'));
 
     }
 
@@ -114,8 +110,16 @@ class PanelController extends Controller
      */
     public function update(Request $request, Panel $panel)
     {
-        //Implicit binding perros
         //Fill se encarga de actualizar los datos que estamos recibiendo
+
+        $panel->title=$request->input('titleName');
+        $panel->location_image=$request->input('location_imageName');
+        $panel->description1=$request->input('description1Name');
+        $panel->description2=$request->input('description2Name');
+        $panel->text_btn_link=$request->input('text_btn_linkName');
+        $panel->link=$request->input('linkName');
+        
+
         $panel->fill($request->except('imagen'));
         $temporal=0;
         if($request->hasFile('imagen')){

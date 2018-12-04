@@ -535,3 +535,23 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 			Otra para traer los slug y nombres de los blogs
 
 	app/providers/GlobalTemplateServiceProvider.php tambien se uso para enviar los datos del footer-contact barra-lateral-blogs-recientes
+
+	-------------------4 de Diciembre de 2018
+
+	Paneles .. index
+		1. Se re-organizaron las variables de la tabla
+			'title',
+            'location_image', 
+            'imagen',
+            'description1',
+            'description2',
+            'text_btn_link', 
+            'link'
+        2. El link puede ser cualquiera .. (antes solo era para categorias)
+        
+        3. En public se encuentran las imagenes de guia para incrustar las imagenes-producto
+        	public/guia-1-derecho.jpg
+        	public/guia-2-derecho.jpg
+        4. En index.blade.php (principal) se reemplazo la interfaz-marco para los paneles
+
+        5. Se organizaron los formularios-paneles para el admin 
