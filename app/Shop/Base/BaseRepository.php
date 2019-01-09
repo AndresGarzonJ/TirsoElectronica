@@ -90,6 +90,19 @@ abstract class BaseRepository implements BaseRepositoryInterface
 
         return DB::select('SELECT YEAR(updated_at) AS anio, MONTH(updated_at) AS mes, slug, name_blog FROM blogs WHERE status = 1 ORDER BY updated_at DESC');
     }
+
+
+    //productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
+    /**
+     * @return mixed
+     */
+    public function products_tags()
+    {
+        //SELECT * FROM laracomgit.products WHERE tag='Nuevo' OR tag='En-Oferta' OR tag='Destacado' OR tag='Por-Llegar'
+
+
+        return DB::select('SELECT * FROM products WHERE tag="Nuevo" OR tag="Remate" OR tag="Locura" OR tag="Pronto"');
+    } 
         
 
     /**

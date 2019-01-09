@@ -19,6 +19,9 @@ interface BaseRepositoryInterface
     //Mostrar blogs por anio mes
     public function blogs_month_year();
 
+    //productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
+    public function products_tags();
+
     public function find(int $id);
 
     public function findOneOrFail(int $id);

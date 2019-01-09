@@ -11,6 +11,10 @@ use Illuminate\Support\Collection;
 
 interface ProductRepositoryInterface extends BaseRepositoryInterface
 {
+
+    //Productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
+    public function productsTags();
+
     public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
     public function createProduct(array $data) : Product;

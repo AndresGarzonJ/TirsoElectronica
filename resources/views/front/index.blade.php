@@ -70,41 +70,44 @@
 
     
     
-    
+     
     <!-- Product Area Start Here -->
     <div class="product-area">
         <div class="container" id="home-isotope">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="isotop-classes-tab myisotop1">
-                        <a href={{asset("#")}} data-filter=".on-sale" class="current">On Sale</a>
-                        <a href={{asset("#")}} data-filter=".featured">Featured</a>
-                        <a href={{asset("#")}} data-filter=".popular">Popular</a>
+                        
+                        <!-- SI QUREMOS APLICAR LOS FILTROS TAGS --Descomentar lo siguiente-->
+                        <!--
+                        <a href={asset("#")}} data-filter=".on-sale" class="current">On Sale</a>
+                        <a href={asset("#")}} data-filter=".featured">Featured</a>
+                        <a href={asset("#")}} data-filter=".popular">Popular</a>
+                        -->
+                        <a href={{route('tienda')}} class="current">Novedades</a>
+
+
                     </div>
                 </div>
             </div>
-            <div class="metro-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="true" data-r-large-dots="false">
-                
-                @if(!is_null($features)) 
-                    @include('front.products.product-list', ['products' => $features, 'form_list' => "listCarousel"])
-                @endif
-            </div>
+            
+            <!-- SI QUREMOS APLICAR LOS FILTROS TAGS --Descomentar div-->
+            <!-- <div class="row featuredContainer"> -->
+                <div class="metro-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="true" data-r-large-dots="false">
+                    @if(!is_null($productsTags)) 
+                        @include('front.products.product-list', ['products' => $productsTags, 'form_list' => "listCarousel"])
+                    @endif
+                </div>
+            <!-- </div> -->
 
-            @if(!is_null($features)) 
-            <!-- 
-                    <div id="browse-all-btn"> 
-                        <a class="btn btn-default browse-all-btn" href="{ route('front.category.slug', $category3->slug) }}" role="button">browse all items
-                        </a>
-                    </div>
-            endif
-            -->          
+            @if(!is_null($productsTags)) 
                 <div class="row">
                     <div class="col-lg-5">
                     </div>
                     <div class="col-lg-4">
                             <div class="footer-box"> <!-- -->
                                 <ul class="tag-list">
-                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href="{{route('front.category.slug', $category3->slug)}}">Ver mas productos</a></li>
+                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href={{route('tienda')}}">Ver más</a></li>
                                 </ul>
                         </div>
                     </div>
@@ -113,117 +116,7 @@
 
         </div>
     </div>
-    <!-- Product Area End Here -->
-    <!-- PROMOCION -- Offer Area 1 Start Here -->
-    <!--
-    <div class="offer-area1 hidden-after-desk">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="brand-area-box-l">
-                        <span>Winter Collections</span>
-                        <h1>50% Off</h1>
-                        <p>Sale Going On</p>
-                        <a href={{asset("#")}} class="btn-shop-now-fill">Shop Now</a>
-                    </div>
-                </div>
-                <div id="countdown"></div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="brand-area-box-r">
-                        <a href={{asset("#")}}><img src={{asset("indexMetro/img/offer.png")}} alt="offer"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
-    <!-- Offer Area 1 End Here -->
-    <!-- Best Seller Area Start Here -->
-    <!--
-    <div class="best-seller-area padding-top-0-after-desk">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="title-carousel">Best Seller</h2>
-                </div>
-            </div>
-            <div class="metro-carousel" data-loop="true" data-items="3" data-margin="15" data-autoplay="false" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="2" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
-                <div class="best-seller-box">
-                    <div class="media">
-                        <a href={{asset("#")}} class="pull-left">
-                            <img alt="best-seller" src={{asset("indexMetro/img/best-seller/1.jpg")}} class="img-responsive">
-                        </a>
-                        <div class="media-body">
-                            <div class="best-seller-box-content">
-                                <h3><a href={{asset("#")}}>Product Title Here1</a></h3>
-                                <span><span>$65.00</span>$59.00</span>
-                            </div>
-                            <ul class="best-seller-box-cart">
-                                <li><a href={{asset("#")}}><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}} data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="best-seller-box">
-                    <div class="media">
-                        <a href={{asset("#")}} class="pull-left">
-                            <img alt="best-seller" src={{asset("indexMetro/img/best-seller/1.jpg")}} class="img-responsive">
-                        </a>
-                        <div class="media-body">
-                            <div class="best-seller-box-content">
-                                <h3><a href={{asset("#")}}>Product Title Here2</a></h3>
-                                <span><span>$65.00</span>$59.00</span>
-                            </div>
-                            <ul class="best-seller-box-cart">
-                                <li><a href={{asset("#")}}><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}} data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="best-seller-box">
-                    <div class="media">
-                        <a href={{asset("#")}} class="pull-left">
-                            <img alt="best-seller" src={{asset("indexMetro/img/best-seller/1.jpg")}} class="img-responsive">
-                        </a>
-                        <div class="media-body">
-                            <div class="best-seller-box-content">
-                                <h3><a href={{asset("#")}}>Product Title Here3</a></h3>
-                                <span><span>$65.00</span>$59.00</span>
-                            </div>
-                            <ul class="best-seller-box-cart">
-                                <li><a href={{asset("#")}}><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}} data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="best-seller-box">
-                    <div class="media">
-                        <a href={{asset("#")}} class="pull-left">
-                            <img alt="best-seller" src={{asset("indexMetro/img/best-seller/1.jpg")}} class="img-responsive">
-                        </a>
-                        <div class="media-body">
-                            <div class="best-seller-box-content">
-                                <h3><a href={{asset("#")}}>Product Title Here4</a></h3>
-                                <span><span>$65.00</span>$59.00</span>
-                            </div>
-                            <ul class="best-seller-box-cart">
-                                <li><a href={{asset("#")}}><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}}><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                <li><a href={{asset("#")}} data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>      
-            </div>
-        </div>
-    </div>
-    -->
+   
     <!-- Best Seller Area End Here -->
     <!-- Advantage Area Start Here -->
     <div class="advantage1-area">
@@ -277,8 +170,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="isotop-classes-tab myisotop1">
-                        <a class="current">Latest Blog </a>
+                    <div class="isotop-classes-tab myisotop1">                        
+                        <a href={{route('tutoriales')}} class="current">Ultimos Blogs</a>
+
+
                         <!--
                         if(!is_null($blogs))
                             <a href={route('tutoriales')}} >All</a>
@@ -294,29 +189,9 @@
                     @include('front.blogs.blog-list', ['blogs' => $blogs, 'form_list' => "listCarousel"]) 
                 @endif
 
-                
-
-                <!--
-                <div class="blog-box">
-                    <a href={asset("#")}}><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-                    <div class="blog-img-holder">
-                        <div class="post-date">
-                            <span>25 June</span>
-                        </div>
-                        <a href={asset("#")}}><img src={asset("indexMetro/img/blog/1.jpg")}} alt="blog"></a>
-                    </div>
-                    <div class="blog-content-holder">
-                        <h3><a href={asset("#")}}>Blog Title Goes Here</a></h3>
-                        <ul class="solid-underline">
-                            <li><span>by</span> Admin</li>
-                            <li>Comments (03)</li>
-                        </ul>
-                        <p>Simply dummy text of the printing and typety esetting industryr drem Ipsum has been thety standard dummy since.</p>
-                    </div>
-                </div> 
-                -->
-                               
+                          
             </div>
+            <br>
             @if(!is_null($blogs))                    
                 <div class="row">
                     <div class="col-lg-5">
@@ -324,7 +199,7 @@
                     <div class="col-lg-4">
                             <div class="footer-box"> <!-- -->
                                 <ul class="tag-list">
-                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href={{route('tutoriales')}}>Ver mas tutoriales</a></li>
+                                   <li><a class="btn-services-shop-now" style="text-align:center!;"  href={{route('tutoriales')}}>Ver más tutoriales</a></li>
                                 </ul>
                         </div>
                     </div>

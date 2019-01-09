@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Front;
 
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Shop\Products\Transformations\ProductTransformable;
+use App\Shop\Products\Product;
+
 use App\Shop\Blogs\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Shop\Blogs\Transformations\BlogTransformable;
 use App\Shop\Blogs\Blog;
-use Illuminate\Support\Facades\DB;
 
 use App\Shop\Contacts\Repositories\Interfaces\ContactRepositoryInterface;
 use App\Shop\Contacts\Transformations\ContactTransformable;
@@ -24,10 +28,12 @@ class HomeController extends Controller
     /**
      * @var CategoryRepositoryInterface
      * @var BlogRepositoryInterface
+     * @var ProductRepositoryInterface
      * @var ContactRepositoryInterface
      */
     private $categoryRepo;
     private $blogRepo; 
+    private $productRepo; 
     private $contactRepo; 
 
 
@@ -35,25 +41,23 @@ class HomeController extends Controller
      * HomeController constructor.
      * @param CategoryRepositoryInterface $categoryRepository
      * @param BlogRepositoryInterface $blogRepository
+     * @param ProductRepositoryInterface $productRepository
      * @param ContactRepositoryInterface $contactRepository
      */
-    public function __construct(CategoryRepositoryInterface $categoryRepository, BlogRepositoryInterface $blogRepository, ContactRepositoryInterface $contactRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, BlogRepositoryInterface $blogRepository, ProductRepositoryInterface $productRepository, ContactRepositoryInterface $contactRepository)
     {
         $this->categoryRepo = $categoryRepository;
         $this->blogRepo = $blogRepository;
+        $this->productRepo = $productRepository;
         $this->contactRepo = $contactRepository;
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+     */ 
     public function index() 
     { 
-        $category2 = $this->categoryRepo->findCategoryById(2);
-        $category3 = $this->categoryRepo->findCategoryById(3);
-
-        $newests = $category2->products;
-        $features = $category3->products;
+        $productsTags = $this->productRepo->productsTags();
   
         $panels = DB::table('panels')->get();
 
@@ -62,7 +66,7 @@ class HomeController extends Controller
             return $this->transformBlog($item);
         });
 
-        return view('front.index', compact('newests', 'features', 'category2', 'category3','blogs','panels'));
+        return view('front.index', compact('productsTags','blogs','panels'));
     } 
 
     /*public function indexVista()

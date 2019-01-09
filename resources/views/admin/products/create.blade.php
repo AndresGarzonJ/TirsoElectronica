@@ -70,8 +70,10 @@
                                 <select name="tag" id="tag" class="form-control">
                                     <option value="Deshabilidado">Deshabilitado</option>
                                     <option value="Nuevo">Nuevo</option>
-                                    <option value="En Oferta">En Oferta</option>
-                                    <option value="Destacado">Destacado</option>
+                                    <option value="Remate">Remate</option>
+                                    <option value="Locura">Locura</option>
+                                    <option value="Agotado">Agotado</option>
+                                    <option value="Pronto">Pronto</option> 
                                 </select>
                             </div>
                         </div>

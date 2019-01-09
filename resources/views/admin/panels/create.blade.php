@@ -43,6 +43,9 @@
                           <option value="right">Derecha</option>
                           <option value="left">Izquierda</option>
                        </select>
+                       <a data-toggle="modal" data-target="#modal_location_image">
+                            <i class="fa fa-question-circle" aria-hidden="false"></i>
+                        </a>
 
                        <div class="form-group">
                           <label for="exampleFormControlFile1">Imagen</label>
@@ -60,6 +63,29 @@
            </div>
            <div class="col-lg-2"></div>
         </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal_location_image" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Guia panel</h3>
+          </div>
+          <div class="modal-body">
+            <h4>Hacia la izquierda</h4>
+            <img src={{asset("guia_izquierda.jpg")}} alt=""  class="img-thumbnail" style="width: 100%; height: auto;">
+            <h4>Hacia la derecha</h4>
+            <img src={{asset("guia_derecha.jpg")}} alt=""  class="img-thumbnail" style="width: 100%; height: auto;">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 @endsection
 

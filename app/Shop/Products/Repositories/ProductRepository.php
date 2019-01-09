@@ -33,6 +33,16 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * Productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
+     * 
+     * @return Collection
+     */
+    public function productsTags()
+    {
+        return $this->products_tags();
+    }
+
+    /**
      * List all the products
      *
      * @param string $order

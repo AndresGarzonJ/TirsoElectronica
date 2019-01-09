@@ -2,18 +2,18 @@
 
     @php
         $months = [
-                '-01-' => '-Enero-', 
-                '-02-' => '-Febrero-',
-                '-03-' => '-Marzo-',
-                '-04-' => '-Abril-',
-                '-05-' => '-Mayo-',
-                '-06-' => '-Junio-',
-                '-07-' => '-Julio-',
-                '-08-' => '-Agosto-',
-                '-09-' => '-Septiembre-',
-                '-10-' => '-Octubre-',
-                '-11-' => '-Noviembre-',
-                '-12-' => '-Diciembre-'
+                '-01-' => '-Ene-', 
+                '-02-' => '-Feb-',
+                '-03-' => '-Mar-',
+                '-04-' => '-Abr-',
+                '-05-' => '-May-',
+                '-06-' => '-Jun-',
+                '-07-' => '-Jul-',
+                '-08-' => '-Ago-',
+                '-09-' => '-Sep-',
+                '-10-' => '-Oct-',
+                '-11-' => '-Nov-',
+                '-12-' => '-Dic-'
         ];  
     @endphp
 
@@ -97,7 +97,7 @@
                         <a href="{{ route('front.get.blog', str_slug($blog->slug)) }}"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
                         <div class="blog-img-holder">
                             <div class="post-date">
-                                <span>>{{ $date_array[1] }} {{ $date_array[2] }}</span>
+                                <span>{{ $date_array[1] }} {{ $date_array[2] }}</span>
                             </div>
 
                             @if(isset($blog->cover))
@@ -105,8 +105,7 @@
                                     <img 
                                     src="{{ asset("storage/$blog->cover") }}"
                                     alt="{{ $blog->name_blog }}"
-                                    height="219"
-                                    width="373"                                    
+                                    style="width: 100%; height: 50%;" 
                                     class="img-bordered img-responsive">
                                 </a>
 

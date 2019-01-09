@@ -6,11 +6,10 @@
         @if($form_list == "grid")         
          class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale"
         @else
-
-
+ 
         @endif
          >
-            <div class="product-box1">
+            <div class="product-box1 ">
                 <ul class="product-social">
                     
                     <li>
@@ -47,7 +46,11 @@
                     <!-- <div class="hot-sale"><span>New</span></div> -->
 
                     @if ($product->tag != "Deshabilitado")
-                        <div class="hot-sale"><span>{{ $product->tag }}</span></div>
+                        
+                        <div class="hot-sale">
+                            <span></span>
+                            <span>{{ $product->tag }}</span>
+                        </div>
                     @endif
                     
                     @if(isset($product->cover))

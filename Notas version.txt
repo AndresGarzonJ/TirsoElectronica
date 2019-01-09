@@ -524,8 +524,8 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 
 		3. Esta consulta con los helpers-sql de Lavarel es dificil de hacer... por lo que se recurre al SQL tradicional (junto con una libreria de Laravel)
 
-			3.1 La consulta SQL se define en BaseRepository.php
-			3.2 En BlogRepository se obtienen los datos de la consulta
+			3.1 La consulta SQL se define en app/Shop/Base/BaseRepository.php
+			3.2 En app/Shop/Blogs/Repositories/BlogRepository se obtienen los datos de la consulta
 			3.3 Y por ultimo en app/providers/GlobalTemplateServiceProvider.php se envian los datos
 
 			(Los anteriores sub-pasos se hacen en el orden indicado)
@@ -555,3 +555,18 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
         4. En index.blade.php (principal) se reemplazo la interfaz-marco para los paneles
 
         5. Se organizaron los formularios-paneles para el admin 
+
+---Continuacion ... paneles
+        6. Se añadio una ventana modal para guiar el sentido de la imagen en create-edit panel (admin)..  
+
+        7. En index se cambio los tags a una sola vista--es decir sinfiltros
+        		Para aplicar filtros ..descomentar una parte
+        7.1 Se añadio tags...
+        		Agotado
+        		Por Llegar
+        
+        Ensayar con diferentes tamaños de imagen ---productos
+		En productos colocar descuento!!
+		Continuar-... El filtro de Tienda-Tags aplicar al index
+
+
