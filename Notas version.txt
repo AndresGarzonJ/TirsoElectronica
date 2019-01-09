@@ -570,3 +570,15 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 		Continuar-... El filtro de Tienda-Tags aplicar al index
 
 
+Blade Snippets
+CodeFormatter
+Laravel 5 Docs Light Color Scheme
+Laravel 5 Snippets
+Laravel Blade AutoComplete
+Laravel Blade Highlighter
+Laravel Blade Spacer
+Laravel Colour Scheme
+Laravel Helper Completions
+LaravelCollective HTML Form Snippets
+Material Theme
+Package Control
