@@ -4,7 +4,7 @@
 
 Route::get('/test', function () {
     //
-    return view('test');
+    return view('test'); 
 })->name('test');
 
 // OAuth Routes
@@ -108,7 +108,10 @@ Route::namespace('Front')->group(function () {
         Route::resource('customer.address', 'CustomerAddressController');
     });
     Route::resource('cart', 'CartController');
-    Route::get("category/{slug}", 'CategoryController@getCategory')->name('front.category.slug');
+    Route::get("tienda/{slug}", 'CategoryController@getCategory')->name('front.category.slug');
+
+    Route::get("tienda/novedad/{slug}", 'CategoryController@getNovelty')->name('front.category.novelty.slug');
+
     Route::get("search", 'ProductController@search')->name('search.product');
     Route::get("{product}", 'ProductController@show')->name('front.get.product');
     Route::get("blogs/{slug}", 'BlogController@show')->name('front.get.blog');

@@ -91,7 +91,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
         return DB::select('SELECT YEAR(updated_at) AS anio, MONTH(updated_at) AS mes, slug, name_blog FROM blogs WHERE status = 1 ORDER BY updated_at DESC');
     }
 
-
     //productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
     /**
      * @return mixed
@@ -101,8 +100,34 @@ abstract class BaseRepository implements BaseRepositoryInterface
         //SELECT * FROM laracomgit.products WHERE tag='Nuevo' OR tag='En-Oferta' OR tag='Destacado' OR tag='Por-Llegar'
 
 
-        return DB::select('SELECT * FROM products WHERE tag="Nuevo" OR tag="Remate" OR tag="Locura" OR tag="Pronto"');
-    } 
+        return DB::select('SELECT * FROM products WHERE tag="Nuevo" OR tag="Remate" OR tag="Locura" OR tag="Pronto" OR tag="Agotado"');
+    }
+
+    //Busqueda para productos recientes con o sin etiqueta-- Necesaria para front/categories/sidebar-category.blade.php
+    /**
+     * @param int $nProducts
+     * @param string $tag 
+     * @param array $columns
+     * @param string $orderBy 
+     * @param string $sortBy
+     * @return mixed
+     */
+    public function custom_product_search(int $nProducts = 101010, string $tag='all_products', $columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc')
+    {
+        if ($tag != 'all_products' && $nProducts == 101010) {
+
+            $result = $this->model->orderBy($orderBy, $sortBy)->get($columns)->where('tag', $tag);
+            
+        } elseif ($tag == 'all_products' && $nProducts != 101010) {
+
+            $result = $this->model->orderBy($orderBy, $sortBy)->get($columns)->take($nProducts);
+        } else {
+
+            $result = $this->model->orderBy($orderBy, $sortBy)->get($columns)->where('tag', $tag)->take($nProducts);
+        } 
+
+        return $result;
+    }  
         
 
     /**

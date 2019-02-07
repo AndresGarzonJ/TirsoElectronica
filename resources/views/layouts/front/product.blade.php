@@ -71,7 +71,17 @@
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                     </ul>
-                    
+
+                    @if( !is_null($product->discount) && !empty(trim($product->discount)))
+                        <p class="price">
+                            {{ config('cart.currency') }}{{ number_format($product->discount,0) }} <strike >{{ config('cart.currency') }}{{ number_format($product->price,0) }}
+                            </strike>
+                        </p>
+
+                    @else
+                        <p class="price">{{ config('cart.currency') }}{{ number_format($product->price,0) }}</p>
+                    @endif
+
                     <p>{!!  str_limit($product->description, 250, ' ...') !!}</p>
                     <div class="product-details-content">
                         <p><span>SKU:</span> {{ $product->sku }} </p>
@@ -81,54 +91,58 @@
                         <!-- ----------------------------
                             SE QUIERE VER SI AL COMPRAR EL ADMIN PUEDE VER EL PRODUCTO Y EL NUMERO DE LA CAJA 
                         -->
-
-                            
-                        
-                        <p><span>Categoria:</span> 
+                                                  
+                         
                         <!-- include('admin.shared.categories', ['categories' => $categories, 'ids' => $product]) -->
                         <!-- Tomada de la plantilla admin.shared.categories ------------------ -->
                         @foreach($categories as $category)
-                            @if(isset($selectedIds) && in_array($category->id, $selectedIds)) 
-                                {{ $category->name }} 
+                            @if(isset($selectedIds) && in_array($category->id, $selectedIds))                             
+                                <p><span>Categoria:</span>{{ $category->name }}</p> 
                             @endif  
                             @if($category->children->count() >= 1)
                                 <!--include('admin.shared.category-children', ['categories' => $category->children, 'selectedIds' => $selectedIds])
-                                <!-- Tomada de la plantilla admin.shared.category-children -------------- -->
+                                
+                                Tomada de la plantilla admin.shared.category-children -------------- -->
                                 @foreach($categories as $category)
                                         @if(isset($selectedIds) && in_array($category->id, $selectedIds)) 
-                                            {{ $category->name }} 
+                                            <p><span>Categoria:</span>{{ $category->name }}</p> 
                                         @endif 
                                 @endforeach
                             @endif
                         @endforeach 
-                        </p>
-                        
+
+
+                        @if( !is_null($product->link_mercadoLibre) && !empty(trim($product->link_mercadoLibre)))
+                            <p><span><a href="{{ $product->link_mercadoLibre }}">Disponible en MercadoLibre</a></span></p>
+                        @endif
 
                         <!-- Lo que se quiere es que el precio varie en funcion de las caratesristicas del producto... ya se logro para un solo atributo .. ahora se quiere para mas atributos y luego poder enviar esos datos al carro -------------------------- -->
 
                         
-                        @if($productAttributes->isEmpty())
-                            <!-- Si No Hay Atributos -->
-                            <p><span>Disponibilidad:</span>{{ $product->quantity }}</p>
-                            <p class="price">{{ config('cart.currency') }} {{ $product->price }}</p>
-                        @else
-                            <!-- 
+                        <!--
+                        if($productAttributes->isEmpty())
+                        -->
+                            <!-- Si No Hay Atributos --><!--
+                            <p><span>Disponibilidad:</span>{ $product->quantity }}</p>
+                            <p class="price">{ config('cart.currency') }} { $product->price }}</p>
+                        else
+                            
                             <ul class="more-option">
                                 <li>
                                     <div class="form-group">
                                         <div class="custom-select">
                                             
                                             <select id="id_atributo" class='select2'>
-                                                <?php $count_atrib = 0; ?>
-                                                @foreach($productAttributes as $pa)
-                                                    @foreach($pa->attributesValues as $item)
-                                                        @if ($count_atrib == 0)
-                                                            <option value="0">Select Your {{ $item->attribute->name }}</option>                                                     
-                                                            <?php $count_atrib = 1; ?>
-                                                        @endif                                                        
-                                                        <option value="{{ $item->value }}">{{ $item->value }}</option>
-                                                    @endforeach
-                                                @endforeach
+                                                <php $count_atrib = 0; ?>
+                                                foreach($productAttributes as $pa)
+                                                    foreach($pa->attributesValues as $item)
+                                                        if ($count_atrib == 0)
+                                                            <option value="0">Select Your { $item->attribute->name }}</option>                                                     
+                                                            <php $count_atrib = 1; ?>
+                                                        endif                                                        
+                                                        <option value="{ $item->value }}">{ $item->value }}</option>
+                                                    endforeach
+                                                endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -136,36 +150,38 @@
                             </ul>
                             -->
                             <!-- Crea etiquetas con el valor de los atributos, al dar click sobre una etiqueta_atributo aparecia autoamticamente el valor del precio y unid disponibles. -------------------- -->
+                            <!-- 
 
                             <ul class="inner-product-details-cart">
-                                <?php $count_attr1 = 2; ?>
-                                @foreach($productAttributes as $pa)                                        
-                                    @foreach($pa->attributesValues as $item)                             
+                                <php $count_attr1 = 2; ?>
+                                foreach($productAttributes as $pa)                                        
+                                    foreach($pa->attributesValues as $item)                             
                                         <li>
-                                            <a href="#refAttribute{{$count_attr1++}}" data-toggle="tab" aria-expanded="false" class="btn btn-outline mw-md btn-dark btn-sm">
+                                            <a href="#refAttribute{$count_attr1++}}" data-toggle="tab" aria-expanded="false" class="btn btn-outline mw-md btn-dark btn-sm">
                                                 <i>
-                                                    {{ $item->attribute->name }} : {{ $item->value }}
+                                                    { $item->attribute->name }} : { $item->value }}
                                                 </i>
                                             </a>
                                         </li>
-                                    @endforeach                                    
-                                @endforeach        
+                                    endforeach                                    
+                                endforeach        
                             </ul>
                             <ul>  
                                 <div class="tab-content">                          
-                                    <?php $count_attr2 = 2; ?>
-                                    @foreach($productAttributes as $pa)                                        
-                                        @foreach($pa->attributesValues as $item)
-                                            <div class="tab-pane fade " id="refAttribute{{$count_attr2++}}">
-                                                <p><span>Disponibilidad: </span>{{ $pa->quantity }} Unid</p>
-                                                <p class="price">{{ config('cart.currency') }} {{ $pa->price }}</p>
+                                    <php $count_attr2 = 2; ?>
+                                    foreach($productAttributes as $pa)                                        
+                                        foreach($pa->attributesValues as $item)
+                                            <div class="tab-pane fade " id="refAttribute{$count_attr2++}}">
+                                                <p><span>Disponibilidad: </span>{ $pa->quantity }} Unid</p>
+                                                <p class="price">{ config('cart.currency') }} { $pa->price }}</p>
                                             </div>
-                                        @endforeach                                               
-                                    @endforeach
+                                        endforeach                                               
+                                    endforeach
                                 </div>
                             </ul>
                             
-                        @endif
+                        endif
+                        -->
                     </div> 
                     
                     <ul class="inner-product-details-cart">

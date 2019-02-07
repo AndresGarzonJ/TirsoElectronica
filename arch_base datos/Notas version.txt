@@ -567,6 +567,40 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
         
         Ensayar con diferentes tamaños de imagen ---productos
 		En productos colocar descuento!!
-		Continuar-... El filtro de Tienda-Tags aplicar al index
+		
+
+	-------------------24 de Enero de 2019
+
+	1. Acomodo la vista de tienda
+		1.1 Se aplico el Filtro de Products-Tags de Index a la tienda
+		1.2 Se agreo las categorias
+		1.3 Se unifico el archivo products-list
+
+	2. En Categoria 
+		2.1 Se acloplo la vista de Shop1.html (metro)
+		2.2 Agrego productos recientes en el panel izquierdo
+			Esta consulta con los helpers-sql de Lavarel es dificil de hacer... por lo que se recurre al SQL tradicional (junto con una libreria de Laravel)
+
+				1 La consulta SQL se define en app/Shop/Base/BaseRepository.php
+				2 En app/Shop/Blogs/Repositories/BlogRepository se obtienen los datos de la consulta
+				3 Y por ultimo en app/Http/Controllers/Front/CategoryController.php se envian los datos
+
+	Las etiquetas estan fijas!!!!!
+
+	3. Agregar a la gestion de Productos -> descuento, enlace mercadoLibre
+			En las vistas de Front/User se valido 
+					Cuando no existe categoria
+					Cuando no hay descuento
+					Cuando no hay link de mercadoLibre
+
+
+Falta
+	Tienda 
+		Link de los tags
+		Icono de categorias
+		Product tags-- cuando no hay ningun articulo
+		Filtro de Precio
+		Cuadricula de prodcutos -- Colocar nombre en la imagen del product
+		Barra de busqueda 
 
 

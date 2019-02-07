@@ -23,9 +23,13 @@
                                 <label for="description">Description </label>
                                 <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{{ old('description') }}</textarea>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"> 
                                 <label for="nBox">N° Box <span class="text-danger">*</span></label>
                                 <input type="text" name="nBox" id="nBox" placeholder="N° Box" class="form-control" value="{{ old('nBox') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="nBox">Link MercadoLibre <span class="text-danger"></span></label>
+                                <input type="text" name="link_mercadoLibre" id="link_mercadoLibre" placeholder="Link MercadoLibre" class="form-control" value="{{ old('link_mercadoLibre') }}">
                             </div>
                             <div class="form-group">
                                 <label for="cover">Cover </label>
@@ -41,9 +45,16 @@
                                 <input type="text" name="quantity" id="quantity" placeholder="Quantity" class="form-control" value="{{ old('quantity') }}">
                             </div>
                             <div class="form-group">
+                                <label for="price">Discount - Value in Pesos<span class="text-danger"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">{{ config('cart.currency') }}</span>
+                                    <input type="text" name="discount" id="discount" placeholder="Discount" class="form-control" value="{{ old('discount') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="price">Price <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-addon">PHP</span>
+                                    <span class="input-group-addon">{{ config('cart.currency') }}</span>
                                     <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{{ old('price') }}">
                                 </div>
                             </div>

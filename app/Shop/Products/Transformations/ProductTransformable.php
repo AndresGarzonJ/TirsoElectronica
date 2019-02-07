@@ -23,6 +23,8 @@ trait ProductTransformable
         $prod->id = (int) $product->id;
         $prod->name = $product->name;
         $prod->nBox = $product->nBox; 
+        $prod->link_mercadoLibre = $product->link_mercadoLibre; 
+        $prod->discount = $product->discount;
         $prod->tag = $product->tag;        
         $prod->sku = $product->sku;
         $prod->slug = $product->slug;

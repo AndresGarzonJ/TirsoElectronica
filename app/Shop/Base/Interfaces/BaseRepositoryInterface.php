@@ -22,6 +22,9 @@ interface BaseRepositoryInterface
     //productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
     public function products_tags();
 
+    //Busqueda para productos recientes con o sin etiqueta-- Necesaria para front/categories/sidebar-category.blade.php
+    public function custom_product_search(int $nProducts=101010, string $tag='all_products', $columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc');
+
     public function find(int $id);
 
     public function findOneOrFail(int $id);

@@ -48,16 +48,17 @@
                                                 <label for="nBox">N° Box <span class="text-danger">*</span></label>
                                                 <input type="text" name="nBox" id="nBox" placeholder="{!! $product->nBox !!}" class="form-control" value="{!! $product->nBox !!}">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="nBox">Link MercadoLibre <span class="text-danger"></span></label>
+                                                <input type="text" name="link_mercadoLibre" id="link_mercadoLibre" placeholder="{!! $product->link_mercadoLibre !!}" class="form-control" value="{!! $product->link_mercadoLibre !!}">
+                                            </div>
                                             <div class="form-group" id="myId2">
                                                 @if(isset($product->cover))
                                                     <div class="col-md-3">
                                                         <div class="row">
                                                             <img src="{{ asset("storage/$product->cover") }}" alt="" class="img-responsive"> <br />
 
-                                                            <!-- 
-
-
-                                                            -->
+                                                        
                                                             <a onclick="myFunction2('<?php  echo $product->id; ?>','<?php echo substr($product->cover,9);?>','{{ route('admin.product.remove.image')}}')" 
                                                             href="#" class="btn btn-danger btn-sm btn-block">Remove image?</a><br />
                                                         </div>
@@ -74,10 +75,11 @@
                                                 @foreach($images as $image)
                                                     <div class="col-md-3">
                                                         <div class="row">
-                                                            <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive"> <br />
-                                                            <a  href="#" onclick="myFunction('<?php  echo $image->src; ?>','{{ route('admin.product.remove.thumb')}}')"
-                                                              class="btn btn-danger btn-sm btn-block">Remove?</a>
-                                                              
+                                                            <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive"><br/>
+
+                                                            <!--
+                                                            <a  onclick="myFunction('{ $image->src }}','{ route('admin.product.remove.thumb') }}')"  href="#"  class="btn btn-danger btn-sm btn-block">Remove? </a> 
+                                                            -->            
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -105,6 +107,14 @@
                                                     <input type="text" value="{{ $qty }}" class="form-control" disabled>
                                                 @endif
                                                 @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Quantity is disabled. Total quantity is calculated by the sum of all the combinations.</span> @endif
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="price">Discount - Value in Pesos<span class="text-danger"></span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">{{ config('cart.currency') }}</span>
+                                                    <input type="text" name="discount" id="discount" placeholder="{!! $product->discount !!}" class="form-control" value="{!! $product->discount !!}">
+                                                </div>
                                             </div>
 
                                             <div class="form-group">
@@ -301,11 +311,7 @@
 
             //Javascript para borrar imagenes sin refrescar la pagina.
                     
-              
-            
-                       
-                    
-                   
+                  
 
         });
     </script>

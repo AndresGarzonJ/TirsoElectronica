@@ -43,6 +43,21 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * Busqueda para productos recientes con o sin etiqueta-- Necesaria para front/categories/sidebar-category.blade.php
+     *
+     * @param int $nProducts
+     * @param string $tag 
+     * @param array $columns
+     * @param string $orderBy 
+     * @param string $sortBy
+     * @return Collection
+     */
+    public function customProductSearch(int $nProducts = 101010, string $tag='all_products', array $columns = ['*'], string $orderBy = 'id', string $sortBy = 'desc') : Collection
+    {
+        return $this->custom_product_search($nProducts, $tag, $columns, $orderBy, $sortBy);
+    }
+
+    /**
      * List all the products
      *
      * @param string $order

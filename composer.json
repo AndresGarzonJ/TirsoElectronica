@@ -20,8 +20,7 @@
         "laravelcollective/html": "~5.0",
         "paypal/rest-api-sdk-php": "*",
         "santigarcor/laratrust": "5.0.*",
-        "sofa/eloquence": "^5.5",
-         "intervention/image": "dev-master"
+        "sofa/eloquence": "^5.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

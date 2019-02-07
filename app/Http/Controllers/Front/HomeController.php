@@ -66,7 +66,19 @@ class HomeController extends Controller
             return $this->transformBlog($item);
         });
 
-        return view('front.index', compact('productsTags','blogs','panels'));
+        return view('front.index', compact('productsTags','blogs','panels')); 
+
+        /*paginacion al seccion productos destacados Index
+
+        return view(
+            'front.index', 
+            compact('blogs','panels'),
+            ['productsTags' => $this->productRepo->paginateArrayResults($productsTags, 6)]);
+                   
+        */
+
+
+
     } 
 
     /*public function indexVista()
@@ -82,14 +94,18 @@ class HomeController extends Controller
     public function tienda(){
 
         
-        $category2 = $this->categoryRepo->findCategoryById(2);
-        $category3 = $this->categoryRepo->findCategoryById(3); // Solo devuelvo los de categoria 3, por eso es que 
-                                                                // solo llegan 5.
- 
-        $newests = $category2->products;
-        $features = $category3->products;
+        //$category2 = $this->categoryRepo->findCategoryById(2);
+        //$category3 = $this->categoryRepo->findCategoryById(3); 
+        // Solo devuelvo los de categoria 3, por eso es que 
+        // solo llegan 5. 
+        //$newests = $category2->products;
+        //$features = $category3->products;
 
-        return view('front.tienda', compact('newests', 'features', 'category2', 'category3'));
+        $productsTags = $this->productRepo->productsTags();
+
+        $listAllCategories = $this->categoryRepo->listCategories('name', 'asc', 1)->whereIn('parent_id', [1]);
+
+        return view('front.tienda', compact('productsTags', 'listAllCategories'));
 
     }
 

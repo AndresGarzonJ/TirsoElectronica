@@ -3139,11 +3139,8 @@
                 "mail",
                 "mailer"
             ],
-<<<<<<< HEAD
-            "time": "2018-07-04T11:12:44+00:00"
-=======
+
             "time": "2018-07-02T20:24:38+00:00"
->>>>>>> 01e2bd669b529506ba5aecee8af9bebb344fdcce
         },
         {
             "name": "symfony/console",

@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('sku');
             $table->string('name');
             $table->string('nBox');
+            $table->string('link_mercadoLibre');
+            $table->string('discount');            
             $table->string('tag');
             $table->string('slug');
             $table->text('description')->nullable();

@@ -28,6 +28,8 @@ class Product extends Model implements Buyable
         'sku',
         'name',
         'nBox',
+        'link_mercadoLibre',
+        'discount',
         'tag',
         'slug',
         'description',

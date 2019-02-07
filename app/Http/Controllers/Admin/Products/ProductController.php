@@ -64,7 +64,7 @@ class ProductController extends Controller
         $this->attributeValueRepository = $attributeValueRepository;
         $this->productAttribute = $productAttribute;
     }
-
+ 
     /**
      * Display a listing of the resource.
      *

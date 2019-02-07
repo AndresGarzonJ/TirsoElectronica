@@ -15,6 +15,9 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface
     //Productos -- tag = Nuevo En-Oferta Destacado  Por-Llegar
     public function productsTags();
 
+    //Busqueda para productos recientes con o sin etiqueta-- Necesaria para front/categories/sidebar-category.blade.php
+    public function customProductSearch(int $nProducts = 101010, string $tag='all_products', array $columns = ['*'], string $orderBy = 'id', string $sortBy = 'desc') : Collection;
+
     public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
     public function createProduct(array $data) : Product;
