@@ -140,16 +140,14 @@
     </div>
     -->
     
-    <h2 class="title-sidebar">Product Tags</h2>
-    <div class="product-tags">
+    <h2 class="title-sidebar">Productos Destacados</h2>
+    <div class="product-tags sidebar-section-margin">
         <ul>
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Glamour</a></li>
-            <li><a href="#">Shoes</a></li>
-            <li><a href="#">Dress</a></li>
-            <li><a href="#">Kid’s</a></li>
-            <li><a href="#">Accessories</a></li>
-            <li><a href="#">Mobile</a></li>
+            <li><a href="{{ route('front.category.novelty.slug', "Nuevo") }}">Nuevo</a></li>
+            <li><a href="{{ route('front.category.novelty.slug', "Remate") }}">Remate</a></li>
+            <li><a href="{{ route('front.category.novelty.slug', "Locura") }}">Locura</a></li>
+            <li><a href="{{ route('front.category.novelty.slug', "Pronto") }}">Pronto</a></li>
+            <li><a href="{{ route('front.category.novelty.slug', "Agotado") }}">Agotado</a></li>
         </ul>
     </div>
 </div>

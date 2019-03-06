@@ -97,11 +97,13 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="isotop-classes-tab myisotop2"> <!-- -->
                             <a class="current" data-filter="*" href="#">Todos</a>
-                            <a data-filter=".Nuevo" href="#" class="">Nuevo</a>
-                            <a data-filter=".Remate" href="#" class="">Remate</a>
-                            <a data-filter=".Locura" href="#" class="">Locura</a>
-                            <a data-filter=".Agotado" href="#" class="">Agotado</a>
-                            <a data-filter=".Pronto" href="#" class="">Pronto</a>
+                            <a ondblclick="tagNuevo('{{ route('front.category.novelty.slug', "Nuevo") }}')" data-filter=".Nuevo" href="#" class="">Nuevo</a>
+                            <a ondblclick="tagRemate('{{ route('front.category.novelty.slug', "Remate") }}')" data-filter=".Remate" href="#" class="">Remate</a>
+                            <a ondblclick="tagLocura('{{ route('front.category.novelty.slug', "Locura") }}')" data-filter=".Locura" href="#" class="">Locura</a>
+                            <a ondblclick="tagAgotado('{{ route('front.category.novelty.slug', "Agotado") }}')" data-filter=".Agotado" href="#" class="">Agotado</a>
+                            <a ondblclick="tagPronto('{{ route('front.category.novelty.slug', "Pronto") }}')" data-filter=".Pronto" href="#" class="">Pronto</a>
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -180,3 +182,26 @@
 @else
     <p class="alert alert-warning">No products yet.</p>
 @endif
+
+@section('js')
+    <script language="JavaScript" type="text/javascript">
+       
+        function tagNuevo(ruta) {
+          location.href=ruta
+        }
+        function tagPronto(ruta) {
+          location.href=ruta
+        }
+        function tagAgotado(ruta) {
+          location.href=ruta
+        }
+        function tagLocura(ruta) {
+          location.href=ruta
+        }
+        function tagRemate(ruta) {
+          location.href=ruta
+        }
+    </script>
+@endsection
+
+                         

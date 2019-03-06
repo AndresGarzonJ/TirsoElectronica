@@ -30,18 +30,13 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-box">
-                        <h3>Product Tag</h3>
+                        <h3>Destacados</h3>
                         <ul class="tag-list">
-                            <li><a href={{asset("#")}}>Winter</a></li>
-                            <li><a href={{asset("#")}}>Fashion</a></li>
-                            <li><a href={{asset("#")}}>Bag</a></li>
-                            <li><a href={{asset("#")}}>Denime</a></li>
-                            <li><a href={{asset("#")}}>Summer Style</a></li>
-                            <li><a href={{asset("#")}}>Leather</a></li>
-                            <li><a href={{asset("#")}}>Dress</a></li>
-                            <li><a href={{asset("#")}}>Dress</a></li>
-                            <li><a href={{asset("#")}}>Summer Style</a></li>
-                            <li><a href={{asset("#")}}>Leather</a></li> 
+                            <li><a href="{{ route('front.category.novelty.slug', "Nuevo") }}">Nuevo</a></li>
+                            <li><a href="{{ route('front.category.novelty.slug', "Remate") }}">Remate</a></li>
+                            <li><a href="{{ route('front.category.novelty.slug', "Locura") }}">Locura</a></li>
+                            <li><a href="{{ route('front.category.novelty.slug', "Agotado") }}">Agotado</a></li>
+                            <li><a href="{{ route('front.category.novelty.slug', "Pronto") }}">Pronto</a></li>                            
                         </ul>
                     </div> 
                 </div>

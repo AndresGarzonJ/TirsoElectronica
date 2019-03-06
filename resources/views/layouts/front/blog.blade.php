@@ -115,7 +115,7 @@
                     <h3><a href="#">{{ $blog->name_blog}}</a></h3>
                     <ul class="comments-info">
                         <li><span>by</span> {{ $blog->name_creator }}</li>
-                        <li>Comments (05)</li>
+                        <li><a href="#disqus_thread">Comentarios</a></li>
                     </ul>
 
                     <br>
@@ -206,7 +206,7 @@
                         </div>
                     </div>
                 </div>-->
-                <div id="disqus_thread"></div>
+                <div id="disqus_thread" name="disqus_thread"></div>
                     <script>
 
                     /**

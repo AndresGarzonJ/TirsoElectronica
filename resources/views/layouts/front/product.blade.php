@@ -234,8 +234,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <ul>
                         <li class="active"><a href="#description" data-toggle="tab" aria-expanded="false">Description</a></li>
-                        <li><a href="#review" data-toggle="tab" aria-expanded="false">Review(0)</a></li>
-                        <li><a href="#add-tags" data-toggle="tab" aria-expanded="false">ADD TAGS</a></li>
+                        <li><a href="#review" data-toggle="tab" aria-expanded="false">Comentarios</a></li>                        
                     </ul>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -244,11 +243,30 @@
                             <p>{!! $product->description !!}</p>
                         </div>
                         <div class="tab-pane fade" id="review">
-                            <p>Porem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+                            
+                            <div id="disqus_thread"></div>
+                            <script>
+
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                            /*
+                            var disqus_config = function () {
+                            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+                            */
+                            (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://tirsoelectronica.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                            })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                            </noscript>
                         </div>
-                        <div class="tab-pane fade" id="add-tags">
-                            <p>Porem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
-                        </div>
+                       
                     </div> 
                 </div>
             </div>

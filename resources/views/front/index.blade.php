@@ -26,7 +26,7 @@
                 @foreach ($panels as $panel)  
                     <img src="/storage/panels/{{$panel->imagen}}" alt="" title="#slider-direction-{{$i}}" />
                 <?php $i++; ?>
-                @endforeach
+                @endforeach 
             </div>
 
             <?php  $k = 1;  ?>
@@ -226,6 +226,3 @@
 include('mailchimp::mailchimp')
 -->
 
-@section('js')
-        
-@endsection

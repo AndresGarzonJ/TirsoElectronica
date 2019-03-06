@@ -69,8 +69,9 @@ class CategoryController extends Controller
      */
     public function getNovelty(string $slug)
     {
-        
-
+        //Busqueda para productos recientes con o sin etiqueta 
+        //101010 numero de productos
+        //$slug="all_products" cuando quiera traer todos los productos sin importar la etiqueta
         $productsNovelty = $this->productRepo->customProductSearch(101010,$slug);
         $products = $productsNovelty->map(function (Product $item) {
                 return $this->transformProduct($item);
