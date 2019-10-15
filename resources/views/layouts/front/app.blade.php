@@ -66,7 +66,7 @@
 
                 El contenido dentro del elemento <noscript> se mostrará si los scripts no son compatibles o están deshabilitados en el navegador del usuario.
             -->
-            <p class="alert alert-danger">
+            <p class="alert alert-danger"> 
                 You need to turn on your javascript. Some functionality will not work if this is disabled.
                 <a href="https://www.enable-javascript.com/" target="_blank">Read more</a>
             </p>
@@ -141,41 +141,34 @@
                                         <div class="search-area"> 
                                             <div class="input-group" id="adv-search">
                                                 <!--<input type="text" class="form-control" placeholder="Search Product" /> -->
-                                                <input type="text" name="q" class="form-control" id ="stringBusqueda" placeholder="Busqueda..." value="{!! request()->input('q') !!}">
+                                                <input type="text" name="q" class="form-control" id ="stringBusqueda" placeholder="Busqueda..." value="{!! request()->input('q') !!}"> 
+                                                
                                                 <div class="input-group-btn">
                                                     <div class="btn-group" role="group">
+                                                        
+
                                                         <div class="dropdown dropdown-lg">
-                                                            <button type="button" class="btn btn-metro dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span>All Categories</span><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                                                            
+                                                            <button 
+                                                            type="button" 
+                                                            class="btn btn-metro dropdown-toggle" data-toggle="dropdown" 
+                                                            aria-expanded="false">
+
+                                                                <span>All Page</span>
+
+                                                                <i class="fa fa-caret-up" aria-hidden="true"></i>
+
+                                                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+
+                                                            </button>
+
                                                             <div class="dropdown-menu dropdown-menu-right" role="menu">
+
                                                                 <ul class="sidenav-nav">
-                                                                    @foreach($categories as $category)
-                                                                        <li>
-                                                                            @if($category->children()->count() > 0)
-                                                                                @include('layouts.front.category-sub', ['subs' => $category->children])
-                                                                            @else
-                                                                                <a 
-                                                                                    @if(request()->segment(2) == $category->slug) 
-                                                                                        class="active" 
-                                                                                    @endif 
-                                                                                    href="{{route('front.category.slug', $category->slug)}}">
-                                                                                    {{$category->name}}
-                                                                                </a>
-                                                                            @endif
-                                                                        </li>
-                                                                    @endforeach
-                                                                    <!-- 
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-dress-1"></i>Women</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-polo"></i>Men</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-plug"></i>Electornics</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-necklace"></i>Jewellery</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-screen"></i>Computer</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-headphones"></i>Head Phone</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-transport"></i>Toys</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-fashion"></i>Shoes</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-dress"></i>Kid’s Wear</a></li>
-                                                                    <li><a href={{asset("#")}}><i class="flaticon-technology"></i>Mobile</a></li>
-                                                                    -->
+                                                                    <li><i class="flaticon-plug"></i>Tienda</li>
+                                                                    <li><a href={{asset("#")}}><i class="flaticon-technology"></i>Tutoriales</a></li>
                                                                 </ul>
+
                                                             </div>
                                                         </div>
                                                                                                             

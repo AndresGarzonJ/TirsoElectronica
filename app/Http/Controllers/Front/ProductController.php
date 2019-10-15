@@ -49,7 +49,7 @@ class ProductController extends Controller
         ]);
     }*/
 
-       public function search()
+       public function search() 
     {
         $list = $this->productRepo->listProducts();
 
@@ -75,10 +75,6 @@ class ProductController extends Controller
                 'products' => $this->productRepo->paginateArrayResults($products->all(), 10)
             ]);
         }
-
-        
-
-        
     }
  
     /**

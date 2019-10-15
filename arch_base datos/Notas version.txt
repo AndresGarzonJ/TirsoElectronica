@@ -597,11 +597,12 @@ AL PARECER HE CREADO LA TABLA IMAGENES PARA BLOGS PERO NO LA VOY A UTILIZAR
 Falta
 	Tienda 
 		
-		Icono de categorias
+		Icono de categorias -> Toca descargar un paquete de Iconos o Imagenes SVG		
 		Product tags-- cuando no hay ningun articulo
 		Filtro de Precio -- Layout Search - Product Controller
 		Cuadricula de prodcutos -- Colocar nombre en la imagen del product
 		Barra de busqueda -> Product Controller
+		En productController public function show(string $slug)...
 
 
 5 Marzo 2019
@@ -609,3 +610,5 @@ Falta
 	Footer -> Links Tags
 	Blogs -> Rounting productos destacados (Tags) - Seccion lateral izquierda
 	Comentarios Products
+
+12 Marzo 2019

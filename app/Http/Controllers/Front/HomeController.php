@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Front; 
 
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Http\Controllers\Controller;
@@ -76,15 +76,57 @@ class HomeController extends Controller
             ['productsTags' => $this->productRepo->paginateArrayResults($productsTags, 6)]);
                    
         */
-
-
-
     } 
 
-    /*public function indexVista()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function search() 
     {
-        return view('index');
-    }*/
+        $list = $this->productRepo->listProducts();
+
+        if (request()->has('q') && request()->input('q') != '' && request()->input('inputMinimo') != '' && request()->input('inputMaximo') != '') {
+            //$list = $this->productRepo->searchProduct(request()->input('q'))->whereBetween('price', ['inputMinimo', 'inputMaximo']);
+
+            $products = DB::table('products')
+            ->where('name', 'like', '%'.request()->input('q').'%')
+            ->whereBetween('price', [intval(request()->input('inputMinimo')), intval(request()->input('inputMaximo'))])->paginate(10);
+
+            return view('front.products.product-search', [
+                'products' => $products
+            ]);
+        }
+
+        if (request()->has('q') && request()->input('q') != '' && request()->input('inputMinimo') == '' && request()->input('inputMaximo') == '') {
+            $list = $this->productRepo->searchProduct(request()->input('q'));
+            $products = $list->map(function (Product $item) {
+                return $this->transformProduct($item);
+            });
+
+            return view('front.products.product-search', [
+                'products' => $this->productRepo->paginateArrayResults($products->all(), 10)
+            ]);
+        }
+
+        //*********************************************************
+        $list = $this->blogRepo->listBlogs_with_status();
+
+        if (request()->has('q') && request()->input('q') != '') {
+            $list = $this->blogRepo->searchBlog(request()->input('q'));
+        }
+
+        $blogs = $list->map(function (Blog $item) {
+            return $this->transformBlog($item);
+        });
+
+        return view('front.blogs.blog-search', [
+            'blogs' => $this->blogRepo->paginateArrayResults($blogs->all(), 10)
+        ]);
+    }
+
+
+
+
 
     /**
      * vista principal de tienda
