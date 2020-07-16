@@ -5,7 +5,7 @@
                 <div class="inner-product-details-left">
                     <div class="tab-content">
                         <div class="tab-pane fade active in" id="related1">
-                            <a href="#" class="zoom ex1">
+                            <a class="zoom ex1">
                                 @if(isset($product->cover))
                                     <img  id="main-image" class="img-responsive"
                                          src="{{ asset("storage/$product->cover") }}?w=400"
@@ -20,7 +20,7 @@
                             <?php $count = 2; ?>
                             @foreach ($images as $image)
                                 <div class="tab-pane fade" id="related{{$count++}}">
-                                    <a href="#" class="zoom ex1">
+                                    <a class="zoom ex1">
                                         <img id="main-image" class="img-responsive" 
                                          src="{{ asset("storage/$image->src") }}?w=400"
                                          alt="{{ $product->name }}" />

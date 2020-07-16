@@ -175,7 +175,8 @@ class HomeController extends Controller
 
         return view('front.tutoriales', [
                 'blogs' => $this->blogRepo->paginateArrayResults($blogs->all(), 6)
-            ],compact('countBlogsAnioMes')            
+            ]
+            //],compact('countBlogsAnioMes')             
         );
 
     }   

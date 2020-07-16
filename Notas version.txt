@@ -582,3 +582,16 @@ Laravel Helper Completions
 LaravelCollective HTML Form Snippets
 Material Theme
 Package Control
+
+
+--- 16 de Julio de 2020
+
+Tareas Andres:
+	Cuando los productos son presentados en lista
+		1. Linkear hacia el producto - el boton de vista del producto
+		2. Acomodar cuando hay o no descuento ... que se subraye el numero indicado... Sino hay descuento que solo aparezca un solo numero (precio) ... 
+		3. Limitar el numero de caracteres que se muestran -- para que emparejar/ cuadricula
+
+	Listar Tutoriales
+		1. CSS de Paginacion, es decir igual forma, color, y letra.
+
