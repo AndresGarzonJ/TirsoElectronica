@@ -596,3 +596,4 @@ Tareas Andres:
 		1. CSS de Paginacion, es decir igual forma, color, y letra.
 
 ---Test Commit
+---Test Commit 2
