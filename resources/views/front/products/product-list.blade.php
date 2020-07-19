@@ -27,7 +27,7 @@
                         <li>
                             <!-- Veista rapida -Ventana modal - Creo que relentiza la pag-->
                             <!-- le quite un { -->
-                            <a data-toggle="modal" data-target="#myModal_{{ $product->id }}">
+                            <a href="{{ route('front.get.product', str_slug($product->slug)) }}">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                             
@@ -128,7 +128,7 @@
                                         <li>
                                             <!-- Veista rapida -Ventana modal - Creo que relentiza la pag-->
                                             <!-- le quite un { -->
-                                            <a data-toggle="modal" data-target="#myModal_{{ $product->id }}">
+                                            <a href="{{ route('front.get.product', str_slug($product->slug)) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
                                             
