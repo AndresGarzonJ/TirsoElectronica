@@ -58,7 +58,7 @@
                         @endif                
                     </div>
                     <div class="product-content-holder">
-                        <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
+                        <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{$truncated = str_limit($product->name, 30) }}</a></h3>
                         <span><span>${{ $product->discount }}</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                                             @endif                
                                         </div>
                                         <div class="product-content-holder">
-                                            <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{ $product->name }}</a></h3>
+                                            <h4><a style="color:black" href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{$truncated = str_limit($product->name, 30) }}</a></h4>
                                             <span><span>${{ $product->discount }}</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
                                         </div>
                                 </div>
