@@ -127,7 +127,9 @@
                                 <li><span>by</span> {{ $blog->name_creator }}</li>
                                 <li>Comments (03)</li>
                             </ul>
-                            {!! $blog->description_short !!}
+
+                            <!--Se le quito ! 
+                                {! $blog->description_short !!}-->
                         </div>
             @endif
 

@@ -59,7 +59,10 @@
                     </div>
                     <div class="product-content-holder">
                         <h3><a href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{$truncated = str_limit($product->name, 30) }}</a></h3>
-                        <span><span>${{ $product->discount }}</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
+                        @if( !is_null($product->discount) && !empty(trim($product->discount)))
+                        <span><span>${{ $product->discount }}
+                        @endif
+                            <b></span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span></b>
                     </div>
                 </div>
                 <!-- Ventana modal vista rapida -->
@@ -152,8 +155,11 @@
                                             @endif                
                                         </div>
                                         <div class="product-content-holder">
-                                            <h4><a style="color:black" href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{$truncated = str_limit($product->name, 30) }}</a></h4>
-                                            <span><span>${{ $product->discount }}</span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span>
+                                            <h5><a style="color:black" href="{{ route('front.get.product', str_slug($product->slug)) }}" >{{$truncated = str_limit($product->name, 45) }}</a></h5>
+                                              @if( !is_null($product->discount) && !empty(trim($product->discount)))
+                                            <span><span>${{ $product->discount }}
+                                              @endif
+                                             <b></span> {{ config('cart.currency') }}{{ number_format($product->price,0) }}</span></b>
                                         </div>
                                 </div>
                                 <!-- Ventana modal vista rapida -->
