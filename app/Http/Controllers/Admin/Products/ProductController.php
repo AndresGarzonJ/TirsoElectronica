@@ -254,9 +254,11 @@ class ProductController extends Controller
     {
         $this->productRepo->deleteThumb($request->input('src'));
         request()->session()->flash('message', 'Image delete successful');
+        /*return redirect()->back()->with('message', 'Image delete successful');*/
         //return redirect()->back();
     }
 
+    
     /**
      * @param Request $request
      * @param Product $product

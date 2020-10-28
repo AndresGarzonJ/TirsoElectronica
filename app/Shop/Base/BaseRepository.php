@@ -99,7 +99,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         //SELECT * FROM laracomgit.products WHERE tag='Nuevo' OR tag='En-Oferta' OR tag='Destacado' OR tag='Por-Llegar'
 
-
         return DB::select('SELECT * FROM products WHERE tag="Nuevo" OR tag="Remate" OR tag="Locura" OR tag="Pronto" OR tag="Agotado"');
     }
 

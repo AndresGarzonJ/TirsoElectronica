@@ -75,14 +75,16 @@
                                                 @foreach($images as $image)
                                                     <div class="col-md-3">
                                                         <div class="row">
-                                                            <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive"><br/>
+                                                            <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive img-thumbnail"><br/>
 
-                                                            <!--
-                                                            <a  onclick="myFunction('{ $image->src }}','{ route('admin.product.remove.thumb') }}')"  href="#"  class="btn btn-danger btn-sm btn-block">Remove? </a> 
-                                                            -->            
+                                                            <!-- <a onclick="return confirm('Are you sure?')" href="{ route('admin.product.remove.thumb', ['src' => $image->src]) }}" class="btn btn-danger btn-sm btn-block">Remove?</a> -->
+
+                                                            
+                                                            <a  onclick="myFunction('{{ $image->src }}','{{ route('admin.product.remove.thumb') }}')"  href="#"  class="btn btn-danger btn-sm btn-block">Remove? </a>
                                                         </div>
                                                     </div>
                                                 @endforeach
+                                                
 
                                             </div>
                                             <div class="row"></div>

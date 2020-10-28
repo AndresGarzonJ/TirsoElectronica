@@ -600,3 +600,40 @@ Tareas Andres:
 ---Test Commit 3
 
 
+-- 28 de Octubre de 2020
+
+-> Se arreglo la actualizacion/borrar de la imagen_segundaria en el apartado de admin/producto 
+
+Tarea: 
+
+	A nivel responsabilidad:
+		Verificar que no se haga busquedas SQL en los controladores 
+			Admin.PanelController.update
+			Front.ProductController.search
+
+	Admin
+		1-> Verificar en los demas modulos - CRUD en admin. Es decir, en paneles, blogs, categorias, contacto
+		2-> Verificar en los demas modulos los datos oligatorios
+		3-> En categorias el poder crear subcategorias, y mostrarlas en el front
+		4-> Actualizar en la vistaAdmin (lo que ve el administrador) para que todo este en español
+		5-> (Opcional) Re-Implemenar el boton ayuda - Está implementado en Panels
+		6-> (No tan urgente) - Buscar la manera de que todas las imagenes se muestren del mismo tamaño
+
+	Cliente 
+		7-> Busqueda -> Mejorar visualmente el filtro de precio / Adaptar al estilo de la plantilla
+		8-> Busqueda -> Los productos que se encuentra actualizar cantidad en la o junto a la categoria
+		9-> Busqueda -> De bajo de la barra de busqueda implementar un check boton, si desea buscar en productos o en blogs
+		10-> Producto -> Implementar el Zoom en la imagem - Verificar en laracom ecommerce
+		https://shop.laracom.net/esse-voluptas-natus-minima
+		11-> En la paginacion adaptar el estilo visual de la plantilla
+
+	Prioritarias
+		Para presentación con Don Tirso --- Para que nos pague
+			
+			3
+			1
+			2 -> Verificar en BD etiqueta NN -NotNull // Luego en el App/Shop/**/Request verifica (requerido o no)		
+			5 
+			4 - Menos prioridad
+			
+
