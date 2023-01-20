@@ -58,3 +58,5 @@ Tirso Electronica Version Beta 1.0
 Hey dude! Help me out for a couple of :beers:!
 
 [![Beerpay](https://www.dropbox.com/s/srxfghrj3apeajt/bp.png?raw=1)](https://beerpay.io/jsdecena/laracom)
+
+![Image text](https://github.com/AndresGarzonJ/TirsoElectronica/blob/master/TirsoElectronica.png)
